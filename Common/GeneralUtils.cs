@@ -73,6 +73,19 @@ namespace Common
             }
             return pairs;
         }
+        /// <summary>
+        /// Checks if an object is of the specified <see cref="Type"/>
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static bool IsOfType<T>(this object obj) where T : class
+            => obj.GetType() == typeof(T);
+        /// <summary>
+        /// Converts a series of bytes to human readable notation. e.g 45KB, 3.5GB
+        /// </summary>
+        /// <param name="byteCount"></param>
+        /// <returns></returns>
         public static string BytesToString(this long byteCount)
         {
             string[] suf = { "B", "KB", "MB", "GB", "TB", "PB", "EB" }; //Longs run out around EB

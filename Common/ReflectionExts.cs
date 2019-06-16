@@ -62,19 +62,43 @@ namespace Common
         public static void SetPropertyValue<TClass, TValue>(this TClass @class, string propertyName, TValue newValue)
             where TClass : class
         {
+            SetPropertyValue(@class, propertyName, typeof(TValue), newValue);
+        }
+        /// <summary>
+        /// Sets the value of a specific <see cref="class"/> property using an <see cref="Action delegate"/> to access
+        /// and assign class properties by Reflection.
+        /// </summary>
+        /// <typeparam name="TClass"></typeparam>
+        /// <param name="class"></param>
+        /// <param name="propertyName">Property name to assign value to.</param>
+        /// <param name="propType"><see cref="Type"/> of target property</param>
+        /// <param name="newValue">Value to assign the specified property.</param>
+        public static void SetPropertyValue<TClass>(this TClass @class, string propertyName, Type propType, object newValue)
+            where TClass : class
+        {
             PropertyDescriptor prop = GetDescriptor(@class, propertyName);
-
-            if (prop != null)
-            {
-                prop.SetValue(@class, newValue);
+            try {
+                if (prop != null) {
+                    prop.SetValue(@class, Convert.ChangeType(newValue, Nullable.GetUnderlyingType(propType) ?? propType));
+                }
+            }
+            catch (Exception e) {
+                throw e;
             }
         }
-
         public static PropertyDescriptor GetDescriptor<TClass>(this TClass @class, string prop)
             where TClass : class
         {
             return GetPropertyDescriptors(@class).FirstOrDefault(x => x.Name == prop);
         }
+        /// <summary>
+        /// Gets all attributes of a certain class property.
+        /// </summary>
+        /// <typeparam name="TClass"></typeparam>
+        /// <typeparam name="TAttribute"></typeparam>
+        /// <param name="class"></param>
+        /// <param name="prop"></param>
+        /// <returns></returns>
         public static IEnumerable<TAttribute> GetAttributes<TClass, TAttribute>(this TClass @class, string prop)
             where TClass : class
             where TAttribute : Attribute

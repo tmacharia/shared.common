@@ -1,4 +1,6 @@
 ﻿using Common.Structs;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
 using System.Linq;
@@ -114,6 +116,26 @@ namespace Common
                 }
             }
             return string.Empty;
+        }
+        /// <summary>
+        /// Checks if a <see cref="string"/> or text is valid json in terms of formatting.
+        /// </summary>
+        /// <param name="json">Text <see cref="string"/> to validate.</param>
+        /// <returns><see cref="true"/> if valid & <see cref="false"/> if invalid.</returns>
+        public static bool IsValidJson(this string json)
+        {
+            json = json.Trim();
+            if ((json.StartsWith("{") && json.EndsWith("}")) || (json.StartsWith("[") && json.EndsWith("]")))
+            {
+                try
+                {
+                    var obj = JToken.Parse(json);
+                    return true;
+                }
+                catch (JsonReaderException) { }
+                catch (Exception) { }
+            }
+            return false;
         }
         /// <summary>
         /// Converts a <see cref="string"/> of text to a <see cref="byte[]"/>

@@ -1,5 +1,4 @@
-﻿using Common.Primitives;
-using Common.Structs;
+﻿using Common.Structs;
 using System;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;

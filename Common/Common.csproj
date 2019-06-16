@@ -1,7 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>
+      netstandard2.0;
+      netcoreapp2.1;netcoreapp2.0;
+    </TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>Shared.Common</PackageId>
     <Authors>Timothy Macharia</Authors>
@@ -9,10 +12,16 @@
     <Description>Re-usable components and code snippets</Description>
     <Version>1.0.1</Version>
     <PackageReleaseNotes>Updates Reflection Extensions to fix some bugs associated with null handling</PackageReleaseNotes>
+    <Copyright>© Neon Clouds, 2017</Copyright>
+    <PackageLicenseUrl>https://github.com/tmacharia/Shared.Common/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/tmacharia/Shared.Common</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/tmacharia/Shared.Common</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>common, shared, productivity, reuse, helpers, extensions, methods</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
   </ItemGroup>
 
   <ItemGroup>

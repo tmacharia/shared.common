@@ -10,6 +10,18 @@
         /// <returns>true or false</returns>
         public static bool IsPositive(this int i) => i > -1;
         /// <summary>
+        /// Validates if a <see cref="decimal"/> has a value greater than 0.
+        /// </summary>
+        /// <param name="i">Value to check.</param>
+        /// <returns>true or false</returns>
+        public static bool IsPositive(this decimal i) => i > -1;
+        /// <summary>
+        /// Validates if an <see cref="double"/> has a value greater than 0.
+        /// </summary>
+        /// <param name="i">Value to check.</param>
+        /// <returns>true or false</returns>
+        public static bool IsPositive(this double i) => i > -1;
+        /// <summary>
         /// Negates an <see cref="int"/> number by multiplying it by -1.
         /// </summary>
         /// <param name="i">Number to negate</param>
