@@ -9,11 +9,11 @@
     <PackageId>Shared.Common</PackageId>
     <Authors>Timothy Macharia</Authors>
     <Company>Neon Clouds</Company>
-    <Description>Re-usable components and code snippets</Description>
+    <Description>A lightweight .NET library with re-usable resources/software components and extension methods to increase developer productivity</Description>
     <Version>1.0.1</Version>
     <PackageReleaseNotes>Updates Reflection Extensions to fix some bugs associated with null handling</PackageReleaseNotes>
     <Copyright>© Neon Clouds, 2017</Copyright>
-    <PackageLicenseUrl>https://github.com/tmacharia/Shared.Common/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicense>https://github.com/tmacharia/Shared.Common/blob/master/LICENSE</PackageLicense>
     <PackageProjectUrl>https://github.com/tmacharia/Shared.Common</PackageProjectUrl>
     <RepositoryUrl>https://github.com/tmacharia/Shared.Common</RepositoryUrl>
     <RepositoryType>git</RepositoryType>

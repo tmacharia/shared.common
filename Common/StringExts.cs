@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -224,5 +225,38 @@ namespace Common
         /// A <see cref="Stream"/> or <see cref="MemoryStream"/>
         /// </returns>
         public static Stream ToStream(this string s) => new MemoryStream(s.ToByteArray());
+
+        /// <summary>
+        /// Verify that Strings Are in Valid Email Format.
+        /// 
+        /// Derived from Microsoft Documentation. Use the link to get further explanation.
+        /// <see cref="https://docs.microsoft.com/en-us/dotnet/standard/base-types/how-to-verify-that-strings-are-in-valid-email-format"/>
+        /// </summary>
+        /// <param name="email">Email string</param>
+        /// <returns>
+        /// Returns <see cref="true"/> if the <see cref="string"/> contains a valid email address and <see cref="false"/> if it does not
+        /// </returns>
+        /// <exception cref="ArgumentException"/>
+        /// <exception cref="RegexMatchTimeoutException"/>
+        public static bool IsEmailValid(this string email) {
+            if (!email.IsValid())
+                return false;
+            try {
+                // Normalize the domain
+                email = Regex.Replace(email, @"(@)(.+)$", DomainMapper, RegexOptions.None, TimeSpan.FromMilliseconds(200));
+
+                // Examines the domain part of the email and normalizes it.
+                string DomainMapper(Match match) {
+                    // Use IdnMapping class to convert Unicode domain names.
+                    // Pull out and process domain name (throws ArgumentException on invalid)
+                    var domainName = new IdnMapping().GetAscii(match.Groups[2].Value);
+                    return match.Groups[1].Value + domainName;
+                }
+                return Regex.IsMatch(email, Constants.EmailRegex, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+            }
+            catch (Exception) {
+                return false;
+            }
+        }
     }
 }

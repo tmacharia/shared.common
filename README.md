@@ -1,8 +1,10 @@
 # Shared.Common
 
-A lightweight .NET library with re-usable resources/software components that can be shared among multiple application blocks or programs. It has a rich set of commonly used functions and methods with most of which are [Extension Methods](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/extension-methods) to assist software developers avoid re-writing code blocks and only focus on writing new features.
-
 [![Build status](https://ci.appveyor.com/api/projects/status/cj2wsayj5l7nea8e?svg=true)](https://ci.appveyor.com/project/tmacharia/shared-common)
+![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/Shared.Common.svg?logo=nuget&link=https://www.nuget.org/packages/Shared.Common//left)
+![SDK Downloads on Nuget](https://img.shields.io/nuget/dt/Shared.Common.svg?label=downloads&logo=nuget&link=https://www.nuget.org/packages/Shared.Common//left)
+
+A lightweight .NET library with re-usable resources/software components that can be shared among multiple application blocks or programs. It has a rich set of commonly used functions and methods with most of which are [Extension Methods](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/extension-methods) to assist software developers avoid re-writing code blocks and only focus on writing new features.
 
 ## Extension Methods
 
@@ -14,19 +16,19 @@ Below is a list of methods that you can re-use in your code.
 
 + `.IsPositive()`
 + `.Negate()`
-+ `.ToMoney(CurrencyType type)`  `CurrencyTypes: USD,EUR,KES,JPY`
++ `.ToMoney(CurrencyType type)`  `// CurrencyTypes: USD,EUR,KES,JPY`
 
 #### Decimals
 
 + `.IsPositive()`
 + `.Negate()`
-+ `.ToMoney(CurrencyType type)`  `CurrencyTypes: USD,EUR,KES,JPY`
++ `.ToMoney(CurrencyType type)`  `// CurrencyTypes: USD,EUR,KES,JPY`
   
 #### Doubles
 
 + `.IsPositive()`
 + `.Negate()`
-+ `.ToMoney(CurrencyType type)`  `CurrencyTypes: USD,EUR,KES,JPY`
++ `.ToMoney(CurrencyType type)`  `// CurrencyTypes: USD,EUR,KES,JPY`
 
 ### Structs
 
@@ -38,7 +40,7 @@ Below is a list of methods that you can re-use in your code.
 
 #### DateTime
 
-+ `.ToMoment(DateTime? currentTime=null)` `converts to human readable time`
++ `.ToMoment(DateTime? currentTime=null)` `// converts to human readable time`
 
 #### Strings
 
@@ -49,7 +51,7 @@ Below is a list of methods that you can re-use in your code.
 + `.ToDecimal()`
 + `.Matches(string q)` `// regex matching`
 + `.Is(string q, bool ignoreCase=true)`
-+ `.Shorten(int count)` `shorten then append trailing dots(...)`
++ `.Shorten(int count)` `// shorten then append trailing dots(...)`
 + `.IsValidJson()`
 + `.ToByteArray()`
 + `.ToBase64String()`
@@ -57,6 +59,7 @@ Below is a list of methods that you can re-use in your code.
 + `.GetStringAfter(string start)`
 + `.GetStringBefore(string end)`
 + `.ToStream()`
++ `.IsEmailValid()`
 
 ### Collections
 
