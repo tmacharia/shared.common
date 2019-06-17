@@ -16,19 +16,19 @@ Below is a list of methods that you can re-use in your code.
 
 + `.IsPositive()`
 + `.Negate()`
-+ `.ToMoney(CurrencyType type)`  `CurrencyTypes: USD,EUR,KES,JPY`
++ `.ToMoney(CurrencyType type)`  `// CurrencyTypes: USD,EUR,KES,JPY`
 
 #### Decimals
 
 + `.IsPositive()`
 + `.Negate()`
-+ `.ToMoney(CurrencyType type)`  `CurrencyTypes: USD,EUR,KES,JPY`
++ `.ToMoney(CurrencyType type)`  `// CurrencyTypes: USD,EUR,KES,JPY`
   
 #### Doubles
 
 + `.IsPositive()`
 + `.Negate()`
-+ `.ToMoney(CurrencyType type)`  `CurrencyTypes: USD,EUR,KES,JPY`
++ `.ToMoney(CurrencyType type)`  `// CurrencyTypes: USD,EUR,KES,JPY`
 
 ### Structs
 
@@ -40,7 +40,7 @@ Below is a list of methods that you can re-use in your code.
 
 #### DateTime
 
-+ `.ToMoment(DateTime? currentTime=null)` `converts to human readable time`
++ `.ToMoment(DateTime? currentTime=null)` `// converts to human readable time`
 
 #### Strings
 
@@ -51,7 +51,7 @@ Below is a list of methods that you can re-use in your code.
 + `.ToDecimal()`
 + `.Matches(string q)` `// regex matching`
 + `.Is(string q, bool ignoreCase=true)`
-+ `.Shorten(int count)` `shorten then append trailing dots(...)`
++ `.Shorten(int count)` `// shorten then append trailing dots(...)`
 + `.IsValidJson()`
 + `.ToByteArray()`
 + `.ToBase64String()`
@@ -59,6 +59,7 @@ Below is a list of methods that you can re-use in your code.
 + `.GetStringAfter(string start)`
 + `.GetStringBefore(string end)`
 + `.ToStream()`
++ `.IsEmailValid()`
 
 ### Collections
 

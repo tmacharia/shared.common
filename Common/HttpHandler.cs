@@ -11,12 +11,12 @@ namespace Common
         {
             _client = new HttpClient();
         }
-        public HttpHandler(HttpClientHandler clientHandler)
+        public HttpHandler(HttpClientHandler httpClientHandler)
         {
-            if (clientHandler.IsNull())
-                throw new ArgumentNullException(nameof(clientHandler));
+            if (httpClientHandler.IsNull())
+                throw new ArgumentNullException(nameof(httpClientHandler));
 
-            _client = new HttpClient(clientHandler);
+            _client = new HttpClient(httpClientHandler);
         }
 
         public Uri BaseAddress
