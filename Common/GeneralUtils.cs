@@ -6,8 +6,14 @@ using System.Security.Cryptography;
 
 namespace Common
 {
+    /// <summary>
+    /// Contains general extension methods and utilities.
+    /// </summary>
     public static class GeneralUtils
     {
+        /// <summary>
+        /// Instance of MD5 Hash Algorithm.
+        /// </summary>
         public static MD5 md5 = MD5.Create();
         /// <summary>
         /// Checks if an object is not null
@@ -25,13 +31,13 @@ namespace Common
         /// Serializes an object of generic type to JSON <see cref="string"/>
         /// </summary>
         /// <typeparam name="T">Type of object</typeparam>
-        /// <param name="obj">Object/Model/Item to serialize</param>
+        /// <param name="value">Object/Model/Item to serialize</param>
         /// <returns>JSON text</returns>
         public static string ToJson<T>(this T value) where T : class
                 => JsonConvert.SerializeObject(value);
         /// <summary>
         /// Deserializes JSON formatted <see cref="string"/> of text to a strongly typed
-        /// generic of <typeparamref name="T"/>
+        /// generic of 
         /// </summary>
         /// <typeparam name="T">Type to deserialize to</typeparam>
         /// <param name="json">JSON text</param>
@@ -42,14 +48,14 @@ namespace Common
         /// <summary>
         /// Converts a decimal number to an integer
         /// </summary>
-        /// <param name="d">Value to convert</param>
+        /// <param name="value">Value to convert</param>
         /// <returns>Integral equivalent</returns>
         public static int? ToInt(this object value) =>
             value.IsNotNull() ? (int?)Convert.ToInt32(value, Constants.Culture) : 0;
 
         /// <summary>
         /// Reflects all the properties in a model of generic <see cref="Type"/> that must be
-        /// a <see cref="class"/> and returns a <see cref="IDictionary{string, string}"/> pairs 
+        /// a class and returns a <see cref="IDictionary{TKey, TValue}"/> pairs 
         /// collection mapped in the following way:
         /// 
         /// Key: PropertyName,
@@ -58,6 +64,7 @@ namespace Common
         /// <typeparam name="T">Type of model</typeparam>
         /// <param name="model">Model to reflect</param>
         /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public static IDictionary<string, string> ToDictionary<T>(this T model)
             where T : class
         {
