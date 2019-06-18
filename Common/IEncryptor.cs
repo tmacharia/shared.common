@@ -1,5 +1,8 @@
 ﻿namespace Common
 {
+    /// <summary>
+    /// Represents an interface with a list of encryption and decryption methods.
+    /// </summary>
     public interface IEncryptor
     {
         /// <summary>
@@ -17,6 +20,14 @@
         ///     Base64 encoded ciphertext
         /// </returns>
         string Encrypt(string plainText);
+        /// <summary>
+        /// Decrypts a <see cref="string"/> of ciphertext using RSA algorithm
+        /// into plaintext
+        /// </summary>
+        /// <param name="cipherText">Block of text to decrypt</param>
+        /// <returns>
+        ///     Plaintext
+        /// </returns>
         string Decrypt(string cipherText);
         /// <summary>
         /// Encrypts a block of text using RSA algorithm from the public key 
@@ -30,6 +41,17 @@
         ///     Base64 encoded ciphertext
         /// </returns>
         string Encrypt(string plainText, string certificatePath);
+        /// <summary>
+        /// Decrypts a block of ciphertext using RSA algorithm from the public key 
+        /// in the certificate file provided.
+        /// </summary>
+        /// <param name="cipherText">Block of ciphertext to decrypt</param>
+        /// <param name="certicatePath">File path to the Public Key Certificate
+        /// on the current machine.
+        /// </param>
+        /// <returns>
+        ///     Plaintext
+        /// </returns>
         string Decrypt(string cipherText, string certicatePath);
     }
 }

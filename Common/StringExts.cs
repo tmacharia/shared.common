@@ -9,6 +9,9 @@ using System.Text.RegularExpressions;
 
 namespace Common
 {
+    /// <summary>
+    /// Contains extensions methods on <see cref="Type"/> <see cref="string"/>
+    /// </summary>
     public static class StringExts
     {
         /// <summary>
@@ -17,7 +20,7 @@ namespace Common
         /// </summary>
         /// <param name="s">Text to evaluate.</param>
         /// <returns>
-        /// <see cref="true"/> or <see cref="false"/>
+        /// True or False
         /// </returns>
         public static bool IsValid(this string s) {
             if (!string.IsNullOrWhiteSpace(s)) {
@@ -32,8 +35,8 @@ namespace Common
         /// <param name="s">String text to check</param>
         /// <param name="q">Substring to check.</param>
         /// <returns>
-        ///     <see cref="true"/> if it contains or
-        ///     <see cref="false"/> if it doesn't.
+        ///     True if it contains or
+        ///     False if it doesn't.
         /// </returns>
         public static bool Has(this string s, string q)
         {
@@ -43,6 +46,14 @@ namespace Common
             }
             return false;
         }
+        /// <summary>
+        /// Converts a text <see cref="string"/> to an <see cref="int"/>
+        /// </summary>
+        /// <param name="intAsString">Text to convert</param>
+        /// <returns>
+        /// An <see cref="int"/> number
+        /// </returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public static int ToInt(this string intAsString)
         {
             if (intAsString.IsValid())
@@ -58,6 +69,7 @@ namespace Common
         /// <returns>
         /// A <see cref="double"/> number
         /// </returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public static double ToDouble(this string doubleAsString)
         {
             if (doubleAsString.IsValid())
@@ -73,6 +85,7 @@ namespace Common
         /// <returns>
         /// A <see cref="decimal"/> number
         /// </returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public static decimal ToDecimal(this string doubleAsString)
         {
             if (doubleAsString.IsValid())
@@ -89,7 +102,19 @@ namespace Common
         /// <param name="q">The query <see cref="string"/></param>
         /// <returns>true or false.</returns>
         public static bool Matches(this string s, string q) => Regex.IsMatch(s, $"({q})", RegexOptions.IgnoreCase);
+        /// <summary>
+        /// Checks if a string of text contains a digit or number.
+        /// </summary>
+        /// <param name="s">Text to check</param>
+        /// <returns>True or False</returns>
         public static bool HasDigit(this string s) => s.IsValid() ? s.ToCharArray().Any(c => Char.IsDigit(c)) : false;
+        /// <summary>
+        /// Checks if two strings match.
+        /// </summary>
+        /// <param name="s">Original/base/string1 to match against.</param>
+        /// <param name="query">Text to match.</param>
+        /// <param name="ignoreCase">Whether to ignore case or not.</param>
+        /// <returns>True or False</returns>
         public static bool Is(this string s, string query, bool ignoreCase = true)
         {
             if (s.IsValid())
@@ -105,7 +130,7 @@ namespace Common
         /// <param name="s">Text to shorten</param>
         /// <param name="count">Number of characters to take from the first index/start/zero</param>
         /// <returns>
-        /// Shortened version of <see cref="string"/> <paramref name="s"/>
+        /// Shortened version of the supplied <see cref="string"/>
         /// </returns>
         public static string Shorten(this string s, int count)
         {
@@ -122,7 +147,9 @@ namespace Common
         /// Checks if a <see cref="string"/> or text is valid json in terms of formatting.
         /// </summary>
         /// <param name="json">Text <see cref="string"/> to validate.</param>
-        /// <returns><see cref="true"/> if valid & <see cref="false"/> if invalid.</returns>
+        /// <returns>True if valid and False if invalid.</returns>
+        /// <exception cref="JsonReaderException"></exception>
+        /// <exception cref="Exception"></exception>
         public static bool IsValidJson(this string json)
         {
             json = json.Trim();
@@ -139,28 +166,28 @@ namespace Common
             return false;
         }
         /// <summary>
-        /// Converts a <see cref="string"/> of text to a <see cref="byte[]"/>
+        /// Converts a <see cref="string"/> of text to a byte[]
         /// </summary>
         /// <param name="s">Text to convert</param>
         /// <returns>
-        /// <see cref="byte[]"/>
+        /// Byte Array.
         /// </returns>
         public static byte[] ToByteArray(this string s) => Constants.Encoding.GetBytes(s);
         /// <summary>
-        /// Converts a <see cref="string"/> to a <see cref="byte[]"/> and returns
+        /// Converts a <see cref="string"/> to a byte[] and returns
         /// the result as a Base64 encoded <see cref="string"/> of text.
         /// </summary>
         /// <param name="s">Text to convert</param>
         /// <returns>Base64 encoded <see cref="string"/></returns>
         public static string ToBase64String(this string s) => s.ToByteArray().ToBase64String();
         /// <summary>
-        /// Converts a Base64 encoded string to an equivalent <see cref="byte[]"/>
+        /// Converts a Base64 encoded string to an equivalent byte[]
         /// </summary>
         /// <param name="s">base64 encoded string</param>
         /// <returns>byte array</returns>
         public static byte[] FromBase64ToArray(this string s) => Convert.FromBase64String(s);
         /// <summary>
-        /// Trims a piece of <see cref="string"/> text from the location/index of where <paramref name="start"/>
+        /// Trims a piece of <see cref="string"/> text from the location/index of where start
         /// is and returns all text after that.
         /// </summary>
         /// <param name="text">
@@ -170,8 +197,10 @@ namespace Common
         /// Text to find in this block and begin from.
         /// </param>
         /// <returns>
-        /// Truncated block <see cref="string"/> having removed all text that behind the <paramref name="start"/> location.
+        /// Truncated block <see cref="string"/> having removed all text that behind the start location.
         /// </returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         public static string GetStringAfter(this string text, string start)
         {
             if (text.IsValid())
@@ -189,7 +218,7 @@ namespace Common
             throw new ArgumentNullException(nameof(text));
         }
         /// <summary>
-        /// Trims a piece of <see cref="string"/> text from the location/index of where <paramref name="end"/>
+        /// Trims a piece of <see cref="string"/> text from the location/index of where end
         /// is and returns all text before that.
         /// </summary>
         /// <param name="text">
@@ -199,8 +228,10 @@ namespace Common
         /// Text to find in this block and end at.
         /// </param>
         /// <returns>
-        /// Truncated block <see cref="string"/> having removed all text after <paramref name="end"/> location
+        /// Truncated block <see cref="string"/> having removed all text after end location
         /// </returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         public static string GetStringBefore(this string text, string end)
         {
             if (text.IsValid())
@@ -228,13 +259,11 @@ namespace Common
 
         /// <summary>
         /// Verify that Strings Are in Valid Email Format.
-        /// 
-        /// Derived from Microsoft Documentation. Use the link to get further explanation.
-        /// <see cref="https://docs.microsoft.com/en-us/dotnet/standard/base-types/how-to-verify-that-strings-are-in-valid-email-format"/>
         /// </summary>
         /// <param name="email">Email string</param>
         /// <returns>
-        /// Returns <see cref="true"/> if the <see cref="string"/> contains a valid email address and <see cref="false"/> if it does not
+        /// Returns True if the <see cref="string"/> contains a valid email address and 
+        /// False if it does not
         /// </returns>
         /// <exception cref="ArgumentException"/>
         /// <exception cref="RegexMatchTimeoutException"/>
@@ -242,6 +271,8 @@ namespace Common
             if (!email.IsValid())
                 return false;
             try {
+                // Derived from Microsoft Documentation. Use the link to get further explanation.
+                // https://docs.microsoft.com/en-us/dotnet/standard/base-types/how-to-verify-that-strings-are-in-valid-email-format
                 // Normalize the domain
                 email = Regex.Replace(email, @"(@)(.+)$", DomainMapper, RegexOptions.None, TimeSpan.FromMilliseconds(200));
 

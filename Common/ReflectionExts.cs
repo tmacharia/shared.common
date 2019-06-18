@@ -6,11 +6,22 @@ using System.Linq;
 
 namespace Common
 {
+    /// <summary>
+    /// Collection of extension methods that require Reflection to access class
+    /// properties dynamically at runtime.
+    /// </summary>
     public static class ReflectionExts
     {
         private static IDictionary<Type, List<PropertyDescriptor>> _cache =
             new ConcurrentDictionary<Type, List<PropertyDescriptor>>();
 
+        /// <summary>
+        /// Gets all <see cref="PropertyDescriptor"/> of a certain model class for 
+        /// all its properties.
+        /// </summary>
+        /// <typeparam name="TClass"></typeparam>
+        /// <param name="class">Model class</param>
+        /// <returns>Array</returns>
         public static PropertyDescriptor[] GetPropertyDescriptors<TClass>(this TClass @class)
             where TClass : class
         {
@@ -28,11 +39,12 @@ namespace Common
             return _cache[typeof(TClass)].ToArray();
         }
         /// <summary>
-        /// Returns the value of a specific <see cref="class"/> property using a <see cref="delegate"/>
+        /// Returns the value of a specific class property using a delegate
         /// to access class properties by Reflection.
         /// </summary>
         /// <typeparam name="TClass"></typeparam>
-        /// <param name="class">Object value of type <typeparamref name="TClass"/></param>
+        /// <typeparam name="TProperty"></typeparam>
+        /// <param name="class">Object value of type TClass</param>
         /// <param name="propertyName">Property name to return value of.</param>
         /// <returns></returns>
         public static TProperty GetPropertyValue<TClass, TProperty>(this TClass @class, string propertyName)
@@ -51,7 +63,7 @@ namespace Common
         }
 
         /// <summary>
-        /// Sets the value of a specific <see cref="class"/> property using an <see cref="Action delegate"/> to access
+        /// Sets the value of a specific class property using an <see cref="Action"/> to access
         /// and assign class properties by Reflection.
         /// </summary>
         /// <typeparam name="TClass"></typeparam>
@@ -65,7 +77,7 @@ namespace Common
             SetPropertyValue(@class, propertyName, typeof(TValue), newValue);
         }
         /// <summary>
-        /// Sets the value of a specific <see cref="class"/> property using an <see cref="Action delegate"/> to access
+        /// Sets the value of a specific class property using an <see cref="Action"/> to access
         /// and assign class properties by Reflection.
         /// </summary>
         /// <typeparam name="TClass"></typeparam>
@@ -73,6 +85,8 @@ namespace Common
         /// <param name="propertyName">Property name to assign value to.</param>
         /// <param name="propType"><see cref="Type"/> of target property</param>
         /// <param name="newValue">Value to assign the specified property.</param>
+        /// <exception cref="InvalidCastException"></exception>
+        /// <exception cref="Exception"></exception>
         public static void SetPropertyValue<TClass>(this TClass @class, string propertyName, Type propType, object newValue)
             where TClass : class
         {
@@ -86,6 +100,13 @@ namespace Common
                 throw e;
             }
         }
+        /// <summary>
+        /// Gets the <see cref="PropertyDescriptor"/> of a specified property in a class.
+        /// </summary>
+        /// <typeparam name="TClass"></typeparam>
+        /// <param name="class">Model class</param>
+        /// <param name="prop">Property Name</param>
+        /// <returns><see cref="PropertyDescriptor"/></returns>
         public static PropertyDescriptor GetDescriptor<TClass>(this TClass @class, string prop)
             where TClass : class
         {

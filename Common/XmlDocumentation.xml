@@ -1,0 +1,1039 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Common</name>
+    </assembly>
+    <members>
+        <member name="T:Common.AttributesExts">
+            <summary>
+            Collection of extension methods for class property attributes.
+            </summary>
+        </member>
+        <member name="M:Common.AttributesExts.GetSymbolAttribute``1(``0)">
+            <summary>
+            Gets the value of <see cref="T:Common.Attributes.SymbolAttribute"/> for the specified property.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source">Property</param>
+            <returns>Value of symbol.</returns>
+        </member>
+        <member name="M:Common.AttributesExts.DescriptionAttr``1(``0)">
+            <summary>
+            Gets the description text of <see cref="T:System.ComponentModel.DescriptionAttribute"/> for the specified property.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source">Property</param>
+            <returns>Value of Description</returns>
+        </member>
+        <member name="T:Common.Attributes.SymbolAttribute">
+            <summary>
+            Specifies a symbol for a property/field or event.
+            </summary>
+        </member>
+        <member name="M:Common.Attributes.SymbolAttribute.#ctor(System.String)">
+            <summary>
+            Instanciates attributes with a symbol value.
+            </summary>
+            <param name="symbolValue"></param>
+        </member>
+        <member name="P:Common.Attributes.SymbolAttribute.Symbol">
+            <summary>
+            Value of symbol.
+            </summary>
+        </member>
+        <member name="T:Common.CollectionExts">
+            <summary>
+            Represents extension methods for elements that are considered as collections and 
+            mostly inherit from <see cref="T:System.Collections.Generic.IEnumerable`1"/>
+            </summary>
+        </member>
+        <member name="M:Common.CollectionExts.Contains``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})">
+            <summary>
+            Checks if the current collection has an item that matches the specified predicate.
+            </summary>
+            <typeparam name="T">Type of collection</typeparam>
+            <param name="enumerable">Collection</param>
+            <param name="predicate">Predicate function for evaluation.</param>
+            <returns>true or false.</returns>
+        </member>
+        <member name="M:Common.CollectionExts.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+            <summary>
+            Steps through the collection subjecting each item to the <see cref="T:System.Action"/>
+            specified.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="enumerable"></param>
+            <param name="action">Function/method to execute on each item in the collection.</param>
+        </member>
+        <member name="M:Common.CollectionExts.RemoveWhere``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})">
+            <summary>
+            Remove all items in a collection that matches a specified predicate.
+            </summary>
+            <typeparam name="T">Item <see cref="T:System.Type"/></typeparam>
+            <param name="enumerable">Collection to filter</param>
+            <param name="predicate">Predicate of items to remove.</param>
+            <returns>Filtered collection</returns>
+        </member>
+        <member name="T:Common.Constants">
+            <summary>
+            Collection of variables and resources available to any project and supplied immediately
+            the application starts.
+            </summary>
+        </member>
+        <member name="P:Common.Constants.StringComparison">
+            <summary>
+            String Comparison Ordinal.
+            </summary>
+        </member>
+        <member name="P:Common.Constants.StringComparisonIgnoreCase">
+            <summary>
+            String Comparison IgnoreCase.
+            </summary>
+        </member>
+        <member name="P:Common.Constants.Culture">
+            <summary>
+            Current UI Thread <see cref="T:System.Globalization.CultureInfo"/>
+            </summary>
+        </member>
+        <member name="P:Common.Constants.Encoding">
+            <summary>
+            Base UTF8 Encoding to re-use.
+            </summary>
+        </member>
+        <member name="F:Common.Constants.EmailRegex">
+            <summary>
+            Regex expression to verify valid email addresses.
+            </summary>
+        </member>
+        <member name="T:Common.Encryptor">
+            <summary>
+            Contains encyption and decryption methods.
+            </summary>
+        </member>
+        <member name="M:Common.Encryptor.GetMD5(System.String)">
+            <summary>
+            Gets the MD5 Hash of a specified text.
+            </summary>
+            <param name="plaintext"></param>
+            <returns>MD5 Hash</returns>
+        </member>
+        <member name="M:Common.Encryptor.Encrypt(System.String)">
+            <summary>
+            Encrypts plaintext to ciphertext
+            </summary>
+            <param name="plainText">Human readable text.</param>
+            <returns>Ciphertext</returns>
+        </member>
+        <member name="M:Common.Encryptor.Decrypt(System.String)">
+            <summary>
+            Decrypts ciphertext to plaintext
+            </summary>
+            <param name="cipherText">Ciphertext.</param>
+            <returns>Plaintext</returns>
+        </member>
+        <member name="M:Common.Encryptor.Encrypt(System.String,System.String)">
+            <summary>
+            Encrypt plaintext to ciphertext using an X509 certificate
+            </summary>
+            <param name="plainText">Human readable text</param>
+            <param name="certificatePath">Absolute path to certificate file.</param>
+            <returns>Ciphertext</returns>
+        </member>
+        <member name="M:Common.Encryptor.Decrypt(System.String,System.String)">
+            <summary>
+            Decrypts ciphertext to plaintext using an X509 certificate
+            </summary>
+            <param name="cipherText">Ciphertext</param>
+            <param name="certificatePath">Absolute path to certificate file.</param>
+            <returns>Plaintext</returns>
+        </member>
+        <member name="T:Common.Enums.CurrencyType">
+            <summary>
+            Represents supported current types
+            </summary>
+        </member>
+        <member name="F:Common.Enums.CurrencyType.KES">
+            <summary>
+            Kenyan Shilling.
+            </summary>
+        </member>
+        <member name="F:Common.Enums.CurrencyType.USD">
+            <summary>
+            United States Dollar.
+            </summary>
+        </member>
+        <member name="F:Common.Enums.CurrencyType.EUR">
+            <summary>
+            Euro.
+            </summary>
+        </member>
+        <member name="F:Common.Enums.CurrencyType.JPY">
+            <summary>
+            Japanese Yen.
+            </summary>
+        </member>
+        <member name="T:Common.Enums.HttpVerb">
+            <summary>
+            Represents HTTP verbs.
+            </summary>
+        </member>
+        <member name="F:Common.Enums.HttpVerb.GET">
+            <summary>
+            GET request.
+            </summary>
+        </member>
+        <member name="F:Common.Enums.HttpVerb.POST">
+            <summary>
+            POST request.
+            </summary>
+        </member>
+        <member name="F:Common.Enums.HttpVerb.PUT">
+            <summary>
+            PUT request.
+            </summary>
+        </member>
+        <member name="F:Common.Enums.HttpVerb.DELETE">
+            <summary>
+            DELETE Request.
+            </summary>
+        </member>
+        <member name="T:Common.GeneralUtils">
+            <summary>
+            Contains general extension methods and utilities.
+            </summary>
+        </member>
+        <member name="F:Common.GeneralUtils.md5">
+            <summary>
+            Instance of MD5 Hash Algorithm.
+            </summary>
+        </member>
+        <member name="M:Common.GeneralUtils.IsNotNull(System.Object)">
+            <summary>
+            Checks if an object is not null
+            </summary>
+            <param name="value">Object to check</param>
+            <returns>true or false</returns>
+        </member>
+        <member name="M:Common.GeneralUtils.IsNull(System.Object)">
+            <summary>
+            Checks if an object is null
+            </summary>
+            <param name="value"><see cref="T:System.Object"/> to check</param>
+            <returns></returns>
+        </member>
+        <member name="M:Common.GeneralUtils.ToJson``1(``0)">
+            <summary>
+            Serializes an object of generic type to JSON <see cref="T:System.String"/>
+            </summary>
+            <typeparam name="T">Type of object</typeparam>
+            <param name="value">Object/Model/Item to serialize</param>
+            <returns>JSON text</returns>
+        </member>
+        <member name="M:Common.GeneralUtils.DeserializeTo``1(System.String)">
+            <summary>
+            Deserializes JSON formatted <see cref="T:System.String"/> of text to a strongly typed
+            generic of 
+            </summary>
+            <typeparam name="T">Type to deserialize to</typeparam>
+            <param name="json">JSON text</param>
+            <returns></returns>
+        </member>
+        <member name="M:Common.GeneralUtils.ToInt(System.Object)">
+            <summary>
+            Converts a decimal number to an integer
+            </summary>
+            <param name="value">Value to convert</param>
+            <returns>Integral equivalent</returns>
+        </member>
+        <member name="M:Common.GeneralUtils.ToDictionary``1(``0)">
+            <summary>
+            Reflects all the properties in a model of generic <see cref="T:System.Type"/> that must be
+            a class and returns a <see cref="T:System.Collections.Generic.IDictionary`2"/> pairs 
+            collection mapped in the following way:
+            
+            Key: PropertyName,
+            Value: PropertyValue
+            </summary>
+            <typeparam name="T">Type of model</typeparam>
+            <param name="model">Model to reflect</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:Common.GeneralUtils.IsOfType``1(System.Object)">
+            <summary>
+            Checks if an object is of the specified <see cref="T:System.Type"/>
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Common.GeneralUtils.BytesToString(System.Int64)">
+            <summary>
+            Converts a series of bytes to human readable notation. e.g 45KB, 3.5GB
+            </summary>
+            <param name="byteCount"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Common.HttpHandler">
+            <summary>
+            Represents a custom Http Handler.
+            </summary>
+        </member>
+        <member name="M:Common.HttpHandler.#ctor">
+            <summary>
+            Parameter-less constructor that instanciates internal <see cref="T:System.Net.Http.HttpClient"/>
+            </summary>
+        </member>
+        <member name="M:Common.HttpHandler.#ctor(System.Net.Http.HttpClientHandler)">
+            <summary>
+            Constructor that instaciates the internal <see cref="T:System.Net.Http.HttpClient"/> with a custom
+            <see cref="T:System.Net.Http.HttpClientHandler"/>
+            </summary>
+            <param name="httpClientHandler"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="P:Common.HttpHandler.BaseAddress">
+            <summary>
+            Base/Root Address
+            </summary>
+        </member>
+        <member name="M:Common.HttpHandler.AddHeader(System.String,System.String)">
+            <summary>
+            Adds a header item to the default request headers.
+            </summary>
+            <param name="key">Header name</param>
+            <param name="value">Header value</param>
+        </member>
+        <member name="M:Common.HttpHandler.GetAsync(System.Uri)">
+            <summary>
+            Runs a Http GET request.
+            </summary>
+            <param name="uri">Uri resource/route</param>
+            <returns></returns>
+        </member>
+        <member name="M:Common.HttpHandler.PostAsync(System.Uri,System.Net.Http.HttpContent)">
+            <summary>
+            Runs a Http POST request
+            </summary>
+            <param name="uri">Uri resource/route</param>
+            <param name="content">Body content to post.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Common.HttpHandler.Dispose(System.Boolean)">
+            <summary>
+            Dispose the current instance.
+            </summary>
+            <param name="isDisposing"></param>
+        </member>
+        <member name="T:Common.IBaseInterface">
+            <summary>
+            Represents the base interface that classes that have a disposable object
+            should inherit from since it executes safe disposition and suppression.
+            </summary>
+        </member>
+        <member name="M:Common.IBaseInterface.Finalize">
+            <summary>
+            Deconstructor.
+            </summary>
+        </member>
+        <member name="M:Common.IBaseInterface.Dispose">
+            <summary>
+            Dispose method. 
+            </summary>
+        </member>
+        <member name="M:Common.IBaseInterface.Dispose(System.Boolean)">
+            <summary>
+            Dispose method that can be overriden by the inheriting class.
+            </summary>
+            <param name="isDisposing"></param>
+        </member>
+        <member name="M:Common.IBaseInterface.DisposeItem``1(``0@)">
+            <summary>
+            Calls the default dispose method on a object
+            </summary>
+            <param name="item">Item to dispose.</param>
+        </member>
+        <member name="T:Common.IEncryptor">
+            <summary>
+            Represents an interface with a list of encryption and decryption methods.
+            </summary>
+        </member>
+        <member name="M:Common.IEncryptor.GetMD5(System.String)">
+            <summary>
+            Generates the MD5 hash of the specified <see cref="T:System.String"/> text.
+            </summary>
+            <param name="plaintext">Text to convert.</param>
+            <returns>MD5 hash</returns>
+        </member>
+        <member name="M:Common.IEncryptor.Encrypt(System.String)">
+            <summary>
+            Encrypts a <see cref="T:System.String"/> of plaintext using RSA algorithm
+            into ciphertext
+            </summary>
+            <param name="plainText">Block of text to encrypt</param>
+            <returns>
+                Base64 encoded ciphertext
+            </returns>
+        </member>
+        <member name="M:Common.IEncryptor.Decrypt(System.String)">
+            <summary>
+            Decrypts a <see cref="T:System.String"/> of ciphertext using RSA algorithm
+            into plaintext
+            </summary>
+            <param name="cipherText">Block of text to decrypt</param>
+            <returns>
+                Plaintext
+            </returns>
+        </member>
+        <member name="M:Common.IEncryptor.Encrypt(System.String,System.String)">
+            <summary>
+            Encrypts a block of text using RSA algorithm from the public key 
+            in the certificate file provided.
+            </summary>
+            <param name="plainText">Block of text to encrypt</param>
+            <param name="certificatePath">File path to the Public Key Certificate
+            on the current machine.
+            </param>
+            <returns>
+                Base64 encoded ciphertext
+            </returns>
+        </member>
+        <member name="M:Common.IEncryptor.Decrypt(System.String,System.String)">
+            <summary>
+            Decrypts a block of ciphertext using RSA algorithm from the public key 
+            in the certificate file provided.
+            </summary>
+            <param name="cipherText">Block of ciphertext to decrypt</param>
+            <param name="certicatePath">File path to the Public Key Certificate
+            on the current machine.
+            </param>
+            <returns>
+                Plaintext
+            </returns>
+        </member>
+        <member name="T:Common.IHttpHandler">
+            <summary>
+            Represents an interface for a custom Http Handler.
+            </summary>
+        </member>
+        <member name="P:Common.IHttpHandler.BaseAddress">
+            <summary>
+            Base/Root Address
+            </summary>
+        </member>
+        <member name="M:Common.IHttpHandler.AddHeader(System.String,System.String)">
+            <summary>
+            Adds a header item to the default request headers.
+            </summary>
+            <param name="key">Header name</param>
+            <param name="value">Header value</param>
+        </member>
+        <member name="M:Common.IHttpHandler.GetAsync(System.Uri)">
+            <summary>
+            Runs a Http GET request.
+            </summary>
+            <param name="uri">Uri resource/route</param>
+            <returns></returns>
+        </member>
+        <member name="M:Common.IHttpHandler.PostAsync(System.Uri,System.Net.Http.HttpContent)">
+            <summary>
+            Runs a Http POST request
+            </summary>
+            <param name="uri">Uri resource/route</param>
+            <param name="content">Body content to post.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Common.IO.FileExts">
+            <summary>
+            Extension methods for file related jobs.
+            </summary>
+        </member>
+        <member name="M:Common.IO.FileExts.ToSafeFileName(System.String)">
+            <summary>
+            Re-formats a filename to one that is valid and considered safe and 
+            won't fail when trying to save.
+            </summary>
+            <param name="filepath">File path</param>
+            <returns>Safe file path.</returns>
+        </member>
+        <member name="T:Common.IO.StreamExts">
+            <summary>
+            Extension methods for all Streams.
+            </summary>
+        </member>
+        <member name="M:Common.IO.StreamExts.ToArray(System.IO.Stream)">
+            <summary>
+            Converts any object that inherits from <see cref="T:System.IO.Stream"/> to a 
+            byte[]
+            </summary>
+            <param name="input">Input stream.</param>
+            <returns>Byte Array</returns>
+        </member>
+        <member name="T:Common.Language.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Common.Language.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Common.Language.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Common.Language.Resources.Days">
+            <summary>
+              Looks up a localized string similar to days.
+            </summary>
+        </member>
+        <member name="P:Common.Language.Resources.DaysAgo">
+            <summary>
+              Looks up a localized string similar to days ago.
+            </summary>
+        </member>
+        <member name="P:Common.Language.Resources.Hours">
+            <summary>
+              Looks up a localized string similar to hrs.
+            </summary>
+        </member>
+        <member name="P:Common.Language.Resources.HoursAgo">
+            <summary>
+              Looks up a localized string similar to hours ago.
+            </summary>
+        </member>
+        <member name="P:Common.Language.Resources.In">
+            <summary>
+              Looks up a localized string similar to in.
+            </summary>
+        </member>
+        <member name="P:Common.Language.Resources.InOneHr">
+            <summary>
+              Looks up a localized string similar to in 1 hour.
+            </summary>
+        </member>
+        <member name="P:Common.Language.Resources.InOneMin">
+            <summary>
+              Looks up a localized string similar to in 1 min.
+            </summary>
+        </member>
+        <member name="P:Common.Language.Resources.InOneSec">
+            <summary>
+              Looks up a localized string similar to in 1 sec.
+            </summary>
+        </member>
+        <member name="P:Common.Language.Resources.JustNow">
+            <summary>
+              Looks up a localized string similar to just now.
+            </summary>
+        </member>
+        <member name="P:Common.Language.Resources.Mins">
+            <summary>
+              Looks up a localized string similar to mins.
+            </summary>
+        </member>
+        <member name="P:Common.Language.Resources.MinsAgo">
+            <summary>
+              Looks up a localized string similar to mins ago.
+            </summary>
+        </member>
+        <member name="P:Common.Language.Resources.Months">
+            <summary>
+              Looks up a localized string similar to months.
+            </summary>
+        </member>
+        <member name="P:Common.Language.Resources.MonthsAgo">
+            <summary>
+              Looks up a localized string similar to months ago.
+            </summary>
+        </member>
+        <member name="P:Common.Language.Resources.Ms">
+            <summary>
+              Looks up a localized string similar to ms.
+            </summary>
+        </member>
+        <member name="P:Common.Language.Resources.OneHrAgo">
+            <summary>
+              Looks up a localized string similar to 1 hour ago.
+            </summary>
+        </member>
+        <member name="P:Common.Language.Resources.OneMinAgo">
+            <summary>
+              Looks up a localized string similar to 1 min ago.
+            </summary>
+        </member>
+        <member name="P:Common.Language.Resources.OneSecAgo">
+            <summary>
+              Looks up a localized string similar to 1 sec ago.
+            </summary>
+        </member>
+        <member name="P:Common.Language.Resources.Secs">
+            <summary>
+              Looks up a localized string similar to secs.
+            </summary>
+        </member>
+        <member name="P:Common.Language.Resources.SecsAgo">
+            <summary>
+              Looks up a localized string similar to secs ago.
+            </summary>
+        </member>
+        <member name="P:Common.Language.Resources.Tomorrow">
+            <summary>
+              Looks up a localized string similar to tomorrow.
+            </summary>
+        </member>
+        <member name="P:Common.Language.Resources.Years">
+            <summary>
+              Looks up a localized string similar to yrs.
+            </summary>
+        </member>
+        <member name="P:Common.Language.Resources.YearsAgo">
+            <summary>
+              Looks up a localized string similar to yrs ago.
+            </summary>
+        </member>
+        <member name="P:Common.Language.Resources.Yesterday">
+            <summary>
+              Looks up a localized string similar to yesterday.
+            </summary>
+        </member>
+        <member name="T:Common.Models.Result`1">
+            <summary>
+            Represents a boxed object to safely return the end result of a function 
+            execution and carries a generic type.
+            </summary>
+            <typeparam name="T">Type of data it holds.</typeparam>
+        </member>
+        <member name="M:Common.Models.Result`1.#ctor">
+            <summary>
+            Parameterless constructor.
+            </summary>
+        </member>
+        <member name="P:Common.Models.Result`1.IsSuccess">
+            <summary>
+            Checks if the result was returned with any errors or not.
+            </summary>
+        </member>
+        <member name="P:Common.Models.Result`1.Message">
+            <summary>
+            Additional message to pass back in case execution succeeded. This can also 
+            hold an error message.
+            </summary>
+        </member>
+        <member name="P:Common.Models.Result`1.Model">
+            <summary>
+            Data object
+            </summary>
+        </member>
+        <member name="P:Common.Models.Result`1.Errors">
+            <summary>
+            List of exceptions caught during execution.
+            </summary>
+        </member>
+        <member name="T:Common.Primitives.CurrencyExts">
+            <summary>
+            Represents extension methods for currency formatting.
+            </summary>
+        </member>
+        <member name="M:Common.Primitives.CurrencyExts.ToMoney(System.Decimal,Common.Enums.CurrencyType,System.Boolean)">
+            <summary>
+            Formats a <see cref="T:System.Decimal"/> number to Kenyan currency with precision
+            set by default to 2 decimal places.
+            </summary>
+            <param name="d">Decimal amount to format.</param>
+            <param name="currency">Currency Type to format the result to. Defaults to USD if not set.</param>
+            <param name="useFormat">Specify whether to use decimal place checker that formats the results 
+            independently. Default is True to perform formatting. Choosing False
+            will retain all the decimals places in a <see cref="T:System.Decimal"/> if it has any.
+            </param>
+            <returns>Formatted Kenyan money.</returns>
+        </member>
+        <member name="M:Common.Primitives.CurrencyExts.ToMoney(System.Double,Common.Enums.CurrencyType,System.Boolean)">
+            <summary>
+            Formats a <see cref="T:System.Double"/> number to Kenyan currency with precision
+            set by default to 2 decimal places.
+            </summary>
+            <param name="d">Decimal amount to format.</param>
+            <param name="currency">Currency Type to format the result to. Defaults to USD if not set.</param>
+            <param name="useFormat">Specify whether to use decimal place checker that formats the results 
+            independently. Default is True to perform formatting. Choosing False
+            will retain all the decimals places in a <see cref="T:System.Double"/> if it has any.
+            </param>
+            <returns>Formatted Kenyan money.</returns>
+        </member>
+        <member name="M:Common.Primitives.CurrencyExts.ToMoney(System.Int32,Common.Enums.CurrencyType)">
+            <summary>
+            Formats a <see cref="T:System.Decimal"/> number to Kenyan currency.
+            </summary>
+            <param name="n">Integer amount to format.</param>
+            <param name="currency">Currency Type to format the result to. Defaults to USD if not set.</param>
+            <returns>Formatted Kenyan money.</returns>
+        </member>
+        <member name="T:Common.Primitives.MathExts">
+            <summary>
+            Represents extension methods that are mathematically related.
+            </summary>
+        </member>
+        <member name="M:Common.Primitives.MathExts.IsPositive(System.Int32)">
+            <summary>
+            Validates if an <see cref="T:System.Int32"/> has a value greater than 0.
+            </summary>
+            <param name="i">Value to check.</param>
+            <returns>true or false</returns>
+        </member>
+        <member name="M:Common.Primitives.MathExts.IsPositive(System.Decimal)">
+            <summary>
+            Validates if a <see cref="T:System.Decimal"/> has a value greater than 0.
+            </summary>
+            <param name="i">Value to check.</param>
+            <returns>true or false</returns>
+        </member>
+        <member name="M:Common.Primitives.MathExts.IsPositive(System.Double)">
+            <summary>
+            Validates if an <see cref="T:System.Double"/> has a value greater than 0.
+            </summary>
+            <param name="i">Value to check.</param>
+            <returns>true or false</returns>
+        </member>
+        <member name="M:Common.Primitives.MathExts.Negate(System.Int32)">
+            <summary>
+            Negates an <see cref="T:System.Int32"/> number by multiplying it by -1.
+            </summary>
+            <param name="i">Number to negate</param>
+            <returns>
+                Equivalent value on the other side of 0 in a cartesian plane.
+            </returns>
+        </member>
+        <member name="M:Common.Primitives.MathExts.Negate(System.Decimal)">
+            <summary>
+            Negates a <see cref="T:System.Decimal"/> number by multiplying it by -1.
+            </summary>
+            <param name="d">Number to negate</param>
+            <returns>
+                Equivalent value on the other side of 0 in a cartesian plane.
+            </returns>
+        </member>
+        <member name="M:Common.Primitives.MathExts.Negate(System.Double)">
+            <summary>
+            Negates a <see cref="T:System.Double"/> number by multiplying it by -1.
+            </summary>
+            <param name="d">Number to negate</param>
+            <returns>
+                Equivalent value on the other side of 0 in a cartesian plane.
+            </returns>
+        </member>
+        <member name="T:Common.ReflectionExts">
+            <summary>
+            Collection of extension methods that require Reflection to access class
+            properties dynamically at runtime.
+            </summary>
+        </member>
+        <member name="M:Common.ReflectionExts.GetPropertyDescriptors``1(``0)">
+            <summary>
+            Gets all <see cref="T:System.ComponentModel.PropertyDescriptor"/> of a certain model class for 
+            all its properties.
+            </summary>
+            <typeparam name="TClass"></typeparam>
+            <param name="class">Model class</param>
+            <returns>Array</returns>
+        </member>
+        <member name="M:Common.ReflectionExts.GetPropertyValue``2(``0,System.String)">
+            <summary>
+            Returns the value of a specific class property using a delegate
+            to access class properties by Reflection.
+            </summary>
+            <typeparam name="TClass"></typeparam>
+            <typeparam name="TProperty"></typeparam>
+            <param name="class">Object value of type TClass</param>
+            <param name="propertyName">Property name to return value of.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Common.ReflectionExts.SetPropertyValue``2(``0,System.String,``1)">
+            <summary>
+            Sets the value of a specific class property using an <see cref="T:System.Action"/> to access
+            and assign class properties by Reflection.
+            </summary>
+            <typeparam name="TClass"></typeparam>
+            <typeparam name="TValue"></typeparam>
+            <param name="class"></param>
+            <param name="propertyName">Property name to assign value to.</param>
+            <param name="newValue">Value to assign the specified property.</param>
+        </member>
+        <member name="M:Common.ReflectionExts.SetPropertyValue``1(``0,System.String,System.Type,System.Object)">
+            <summary>
+            Sets the value of a specific class property using an <see cref="T:System.Action"/> to access
+            and assign class properties by Reflection.
+            </summary>
+            <typeparam name="TClass"></typeparam>
+            <param name="class"></param>
+            <param name="propertyName">Property name to assign value to.</param>
+            <param name="propType"><see cref="T:System.Type"/> of target property</param>
+            <param name="newValue">Value to assign the specified property.</param>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Common.ReflectionExts.GetDescriptor``1(``0,System.String)">
+            <summary>
+            Gets the <see cref="T:System.ComponentModel.PropertyDescriptor"/> of a specified property in a class.
+            </summary>
+            <typeparam name="TClass"></typeparam>
+            <param name="class">Model class</param>
+            <param name="prop">Property Name</param>
+            <returns><see cref="T:System.ComponentModel.PropertyDescriptor"/></returns>
+        </member>
+        <member name="M:Common.ReflectionExts.GetAttributes``2(``0,System.String)">
+            <summary>
+            Gets all attributes of a certain class property.
+            </summary>
+            <typeparam name="TClass"></typeparam>
+            <typeparam name="TAttribute"></typeparam>
+            <param name="class"></param>
+            <param name="prop"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Common.StringExts">
+            <summary>
+            Contains extensions methods on <see cref="T:System.Type"/> <see cref="T:System.String"/>
+            </summary>
+        </member>
+        <member name="M:Common.StringExts.IsValid(System.String)">
+            <summary>
+            Checks if a <see cref="T:System.String"/> is valid by whether it's empty, null 
+            or whitespace.
+            </summary>
+            <param name="s">Text to evaluate.</param>
+            <returns>
+            True or False
+            </returns>
+        </member>
+        <member name="M:Common.StringExts.Has(System.String,System.String)">
+            <summary>
+            Checks if a <see cref="T:System.String"/> contains the specified query text
+            as a substring.
+            </summary>
+            <param name="s">String text to check</param>
+            <param name="q">Substring to check.</param>
+            <returns>
+                True if it contains or
+                False if it doesn't.
+            </returns>
+        </member>
+        <member name="M:Common.StringExts.ToInt(System.String)">
+            <summary>
+            Converts a text <see cref="T:System.String"/> to an <see cref="T:System.Int32"/>
+            </summary>
+            <param name="intAsString">Text to convert</param>
+            <returns>
+            An <see cref="T:System.Int32"/> number
+            </returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:Common.StringExts.ToDouble(System.String)">
+            <summary>
+            Converts a text <see cref="T:System.String"/> to a <see cref="T:System.Double"/>
+            </summary>
+            <param name="doubleAsString">Text to convert</param>
+            <returns>
+            A <see cref="T:System.Double"/> number
+            </returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:Common.StringExts.ToDecimal(System.String)">
+            <summary>
+            Converts a text <see cref="T:System.String"/> to a <see cref="T:System.Decimal"/>
+            </summary>
+            <param name="doubleAsString">Text to convert</param>
+            <returns>
+            A <see cref="T:System.Decimal"/> number
+            </returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:Common.StringExts.Matches(System.String,System.String)">
+            <summary>
+            Compares and evaluates if a specific query <see cref="T:System.String"/> matches
+            another one using Regular Expressions.
+            </summary>
+            <param name="s">The <see cref="T:System.String"/> to check</param>
+            <param name="q">The query <see cref="T:System.String"/></param>
+            <returns>true or false.</returns>
+        </member>
+        <member name="M:Common.StringExts.HasDigit(System.String)">
+            <summary>
+            Checks if a string of text contains a digit or number.
+            </summary>
+            <param name="s">Text to check</param>
+            <returns>True or False</returns>
+        </member>
+        <member name="M:Common.StringExts.Is(System.String,System.String,System.Boolean)">
+            <summary>
+            Checks if two strings match.
+            </summary>
+            <param name="s">Original/base/string1 to match against.</param>
+            <param name="query">Text to match.</param>
+            <param name="ignoreCase">Whether to ignore case or not.</param>
+            <returns>True or False</returns>
+        </member>
+        <member name="M:Common.StringExts.Shorten(System.String,System.Int32)">
+            <summary>
+            Shortens a <see cref="T:System.String"/> of text to a certain number of characters and
+            appends trailing dots(...) at the end to show continuation.
+            </summary>
+            <param name="s">Text to shorten</param>
+            <param name="count">Number of characters to take from the first index/start/zero</param>
+            <returns>
+            Shortened version of the supplied <see cref="T:System.String"/>
+            </returns>
+        </member>
+        <member name="M:Common.StringExts.IsValidJson(System.String)">
+            <summary>
+            Checks if a <see cref="T:System.String"/> or text is valid json in terms of formatting.
+            </summary>
+            <param name="json">Text <see cref="T:System.String"/> to validate.</param>
+            <returns>True if valid and False if invalid.</returns>
+            <exception cref="T:Newtonsoft.Json.JsonReaderException"></exception>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Common.StringExts.ToByteArray(System.String)">
+            <summary>
+            Converts a <see cref="T:System.String"/> of text to a byte[]
+            </summary>
+            <param name="s">Text to convert</param>
+            <returns>
+            Byte Array.
+            </returns>
+        </member>
+        <member name="M:Common.StringExts.ToBase64String(System.String)">
+            <summary>
+            Converts a <see cref="T:System.String"/> to a byte[] and returns
+            the result as a Base64 encoded <see cref="T:System.String"/> of text.
+            </summary>
+            <param name="s">Text to convert</param>
+            <returns>Base64 encoded <see cref="T:System.String"/></returns>
+        </member>
+        <member name="M:Common.StringExts.FromBase64ToArray(System.String)">
+            <summary>
+            Converts a Base64 encoded string to an equivalent byte[]
+            </summary>
+            <param name="s">base64 encoded string</param>
+            <returns>byte array</returns>
+        </member>
+        <member name="M:Common.StringExts.GetStringAfter(System.String,System.String)">
+            <summary>
+            Trims a piece of <see cref="T:System.String"/> text from the location/index of where start
+            is and returns all text after that.
+            </summary>
+            <param name="text">
+            <see cref="T:System.String"/> to truncate
+            </param>
+            <param name="start">
+            Text to find in this block and begin from.
+            </param>
+            <returns>
+            Truncated block <see cref="T:System.String"/> having removed all text that behind the start location.
+            </returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:Common.StringExts.GetStringBefore(System.String,System.String)">
+            <summary>
+            Trims a piece of <see cref="T:System.String"/> text from the location/index of where end
+            is and returns all text before that.
+            </summary>
+            <param name="text">
+            <see cref="T:System.String"/> to truncate.
+            </param>
+            <param name="end">
+            Text to find in this block and end at.
+            </param>
+            <returns>
+            Truncated block <see cref="T:System.String"/> having removed all text after end location
+            </returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:Common.StringExts.ToStream(System.String)">
+            <summary>
+            Converts a <see cref="T:System.String"/> of text to a <see cref="T:System.IO.Stream"/>
+            </summary>
+            <param name="s">Text to convert</param>
+            <returns>
+            A <see cref="T:System.IO.Stream"/> or <see cref="T:System.IO.MemoryStream"/>
+            </returns>
+        </member>
+        <member name="M:Common.StringExts.IsEmailValid(System.String)">
+            <summary>
+            Verify that Strings Are in Valid Email Format.
+            </summary>
+            <param name="email">Email string</param>
+            <returns>
+            Returns True if the <see cref="T:System.String"/> contains a valid email address and 
+            False if it does not
+            </returns>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.Text.RegularExpressions.RegexMatchTimeoutException"/>
+        </member>
+        <member name="T:Common.Structs.BytesExts">
+            <summary>
+            Represents extension methods on byte arrays.
+            </summary>
+        </member>
+        <member name="M:Common.Structs.BytesExts.ConvertToString(System.Byte[])">
+            <summary>
+            Converts a byte[] to its equivalent <see cref="T:System.String"/> of
+            text using UTF encoding.
+            </summary>
+            <param name="bytes">byte array</param>
+            <returns>
+            <see cref="T:System.String"/> of text
+            </returns>
+        </member>
+        <member name="M:Common.Structs.BytesExts.ToBase64String(System.Byte[])">
+            <summary>
+            Converts a stream of byte[] to a Base64 encoded
+            <see cref="T:System.String"/> of text.
+            </summary>
+            <param name="bytes">Byte array</param>
+            <returns>Base64 encoded <see cref="T:System.String"/></returns>
+        </member>
+        <member name="M:Common.Structs.BytesExts.ToStream(System.Byte[])">
+            <summary>
+            Converts a byte[] to a <see cref="T:System.IO.Stream"/>
+            </summary>
+            <param name="bytes">Array of bytes to convert</param>
+            <returns>A stream</returns>
+        </member>
+        <member name="T:Common.Structs.DateTimeExts">
+            <summary>
+            Represents extension methods on <see cref="T:System.DateTime"/> instances.
+            </summary>
+        </member>
+        <member name="M:Common.Structs.DateTimeExts.ToMoment(System.DateTime,System.Nullable{System.DateTime},System.Boolean)">
+            <summary>
+            Returns a human readable and comprehensible time format to know the exact
+            relative time in the past.
+            </summary>
+            <param name="pastDate">This DateTime instance that should represent a time in the past
+            <param name="currentTime">Current datetime instance to compare to. If not specified
+            <see cref="P:System.DateTime.Now"/> will be used by default.
+            </param>
+            <param name="includeTime">Should the timestamp be included for differences of more than
+            two days. If unset, timestamp is included by default.
+            </param>
+            or the future.
+            </param>
+            <returns>Human readable time</returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:Common.Structs.DateTimeExts.ToMoment(System.TimeSpan)">
+            <summary>
+            Converts a <see cref="T:System.TimeSpan"/> to human-readable format.
+            </summary>
+            <param name="span">Timespan instance.</param>
+            <returns>Moment time.</returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+    </members>
+</doc>

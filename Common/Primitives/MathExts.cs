@@ -1,8 +1,10 @@
 ﻿namespace Common.Primitives
 {
+    /// <summary>
+    /// Represents extension methods that are mathematically related.
+    /// </summary>
     public static class MathExts
     {
-        
         /// <summary>
         /// Validates if an <see cref="int"/> has a value greater than 0.
         /// </summary>

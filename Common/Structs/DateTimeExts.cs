@@ -3,6 +3,9 @@ using System;
 
 namespace Common.Structs
 {
+    /// <summary>
+    /// Represents extension methods on <see cref="DateTime"/> instances.
+    /// </summary>
     public static class DateTimeExts
     {
         /// <summary>
@@ -10,15 +13,16 @@ namespace Common.Structs
         /// relative time in the past.
         /// </summary>
         /// <param name="pastDate">This DateTime instance that should represent a time in the past
-        /// <paramref name="currentTime">Current datetime instance to compare to. If not specified
+        /// <param name="currentTime">Current datetime instance to compare to. If not specified
         /// <see cref="DateTime.Now"/> will be used by default.
-        /// </paramref>
-        /// <paramref name="includeTime">Should the timestamp be included for differences of more than
+        /// </param>
+        /// <param name="includeTime">Should the timestamp be included for differences of more than
         /// two days. If unset, timestamp is included by default.
-        /// </paramref>
+        /// </param>
         /// or the future.
         /// </param>
         /// <returns>Human readable time</returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public static string ToMoment(this DateTime pastDate, DateTime? currentTime = null, bool includeTime = true)
         {
             if (pastDate == null)
@@ -58,6 +62,12 @@ namespace Common.Structs
             int yrs = Math.Floor((decimal)months / (decimal)12).ToInt().Value;
             return is_past ? $"{yrs} {Resources.YearsAgo}" : $"{Resources.In} {yrs} {Resources.Years}";
         }
+        /// <summary>
+        /// Converts a <see cref="TimeSpan"/> to human-readable format.
+        /// </summary>
+        /// <param name="span">Timespan instance.</param>
+        /// <returns>Moment time.</returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public static string ToMoment(this TimeSpan span)
         {
             if (span == null)

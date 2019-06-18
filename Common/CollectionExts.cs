@@ -4,6 +4,10 @@ using System.Linq;
 
 namespace Common
 {
+    /// <summary>
+    /// Represents extension methods for elements that are considered as collections and 
+    /// mostly inherit from <see cref="IEnumerable{T}"/>
+    /// </summary>
     public static class CollectionExts
     {
         /// <summary>
@@ -16,7 +20,7 @@ namespace Common
         public static bool Contains<T>(this IEnumerable<T> enumerable, Func<T, bool> predicate)
                 => enumerable.IsNotNull() ? enumerable.Any(predicate) : false;
         /// <summary>
-        /// Steps through the collection subjecting each item to the <see cref="Action delegate"/>
+        /// Steps through the collection subjecting each item to the <see cref="Action"/>
         /// specified.
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -30,6 +34,13 @@ namespace Common
                 action(enumerable.ElementAt(i));
             }
         }
+        /// <summary>
+        /// Remove all items in a collection that matches a specified predicate.
+        /// </summary>
+        /// <typeparam name="T">Item <see cref="Type"/></typeparam>
+        /// <param name="enumerable">Collection to filter</param>
+        /// <param name="predicate">Predicate of items to remove.</param>
+        /// <returns>Filtered collection</returns>
         public static IEnumerable<T> RemoveWhere<T>(this IEnumerable<T> enumerable, Func<T, bool> predicate)
                 => enumerable.IsNotNull() ? enumerable.Any(predicate) ?
                    enumerable.SkipWhile(predicate) : enumerable : null;
