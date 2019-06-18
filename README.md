@@ -1,4 +1,9 @@
-# Shared.Common
+<p align="center">
+  <img height="100" src="https://raw.githubusercontent.com/tmacharia/Shared.Common/update-patch-1/Docs/logo.png" 
+			 alt="Shared.Common logo" title="Shared.Common logo">
+</p>
+
+# Introduction
 
 [![Build status](https://ci.appveyor.com/api/projects/status/cj2wsayj5l7nea8e?svg=true)](https://ci.appveyor.com/project/tmacharia/shared-common)
 ![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/Shared.Common.svg?logo=nuget&link=https://www.nuget.org/packages/Shared.Common//left)
