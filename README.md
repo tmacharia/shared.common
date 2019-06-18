@@ -3,7 +3,7 @@
 			 alt="Shared.Common logo" title="Shared.Common logo">
 </p>
 
-# Shared.Common
+# Introduction
 
 [![Build status](https://ci.appveyor.com/api/projects/status/cj2wsayj5l7nea8e?svg=true)](https://ci.appveyor.com/project/tmacharia/shared-common)
 ![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/Shared.Common.svg?logo=nuget&link=https://www.nuget.org/packages/Shared.Common//left)
