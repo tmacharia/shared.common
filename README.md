@@ -1,3 +1,8 @@
+<p align="center">
+  <img height="100" src="https://raw.githubusercontent.com/tmacharia/Shared.Common/update-patch-1/Docs/logo.png" 
+			 alt="Shared.Common logo" title="Shared.Common logo">
+</p>
+
 # Shared.Common
 
 [![Build status](https://ci.appveyor.com/api/projects/status/cj2wsayj5l7nea8e?svg=true)](https://ci.appveyor.com/project/tmacharia/shared-common)
