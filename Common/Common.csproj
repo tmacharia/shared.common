@@ -21,6 +21,7 @@
     <Copyright>© Neon Clouds, 2017</Copyright>
     <PackageLicense>https://github.com/tmacharia/Shared.Common/blob/master/LICENSE</PackageLicense>
     <PackageProjectUrl>https://github.com/tmacharia/Shared.Common</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/tmacharia/Shared.Common/update-patch-1/Docs/logo.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/tmacharia/Shared.Common</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>common, shared, productivity, reuse, helpers, extensions, methods</PackageTags>
