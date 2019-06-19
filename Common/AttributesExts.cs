@@ -17,7 +17,12 @@ namespace Common
         /// <returns>Value of symbol.</returns>
         public static string GetSymbolAttribute<T>(this T source)
         {
-            FieldInfo fi = source.GetType().GetField(source.ToString());
+            FieldInfo fi = null;
+#if NETSTANDARD1_5 || NETSTANDARD1_6
+            fi = source.GetType().GetRuntimeField(source.ToString());
+#else
+            fi = source.GetType().GetField(source.ToString());
+#endif
 
             SymbolAttribute[] attributes = (SymbolAttribute[])fi.GetCustomAttributes(
                 typeof(SymbolAttribute), false);
@@ -33,8 +38,12 @@ namespace Common
         /// <returns>Value of Description</returns>
         public static string DescriptionAttr<T>(this T source)
         {
-            FieldInfo fi = source.GetType().GetField(source.ToString());
-
+            FieldInfo fi = null;
+#if NETSTANDARD1_5 || NETSTANDARD1_6
+            fi = source.GetType().GetRuntimeField(source.ToString());
+#else
+            fi = source.GetType().GetField(source.ToString());
+#endif
             DescriptionAttribute[] attributes = (DescriptionAttribute[])fi.GetCustomAttributes(
                 typeof(DescriptionAttribute), false);
 
