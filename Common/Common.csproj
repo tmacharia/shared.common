@@ -26,19 +26,9 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
-    <DocumentationFile>C:\Users\george\Source\Repos\Re-Usable Resources\Common\github\Common\XmlDocumentation.xml</DocumentationFile>
-    <OutputPath></OutputPath>
+    <DocumentationFile>C:\Users\george\Source\Repos\Re-Usable Resources\Common\github\Common\bin\XmlDocumentation.xml</DocumentationFile>
+    <OutputPath>bin\</OutputPath>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="XmlDocumentation.xml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="XmlDocumentation.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
