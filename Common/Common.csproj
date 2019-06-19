@@ -13,7 +13,6 @@
     <Authors>Timothy Macharia</Authors>
     <Company>Neon Clouds</Company>
     <Description>**Alpha Release** A lightweight .NET library with re-usable resources/software components and extension methods to increase developer productivity</Description>
-    <Version>1.0.1</Version>
     <PackageReleaseNotes>
       - Removes crypto methods. 
       - Adds support for netstandard 1.6,1.5, netcoreapp1.1,1.0, netframework462,461,46,452,451,45, monoandroid90,xamarin.ios.10
