@@ -1,0 +1,6 @@
+language: csharp
+solution: Re-Usable Resources.sln
+script:
+ - msbuild -t:restore
+ - msbuild -t:build
+ - msbuild -t:pack
