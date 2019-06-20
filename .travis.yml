@@ -1,5 +1,18 @@
 language: csharp
 solution: Re-Usable Resources.sln
+install:
+ - sudo apt-get install mono-complete
+ - export ANDROID_HOME=/opt/android-sdk-linux && sudo mkdir -p $ANDROID_HOME
+ - sudo apt-get install openjdk-8-jdk
+ - cd $ANDROID_HOME
+ - sudo wget https://dl.google.com/android/repository/tools_r25.2.3-linux.zip
+ - sudo unzip tools_r25.2.3-linux.zip
+ - cd tools
+ - sudo ./android update sdk --no-ui
+ - export PATH=${PATH}:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$ANDROID_HOME/build-tools/25.0.2/
+ - source /etc/profile
+ - cd ~
+ 
 script:
  - msbuild -t:restore
  - msbuild -t:build
