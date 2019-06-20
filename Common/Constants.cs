@@ -22,7 +22,7 @@ namespace Common
         /// <summary>
         /// Current UI Thread <see cref="CultureInfo"/>
         /// </summary>
-        public static CultureInfo Culture { get; } = Thread.CurrentThread.CurrentUICulture;
+        public static CultureInfo Culture { get; } = CultureInfo.CurrentUICulture;
         /// <summary>
         /// Base UTF8 Encoding to re-use.
         /// </summary>

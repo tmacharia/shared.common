@@ -6,6 +6,7 @@
 # Introduction
 
 [![Build status](https://ci.appveyor.com/api/projects/status/cj2wsayj5l7nea8e?svg=true)](https://ci.appveyor.com/project/tmacharia/shared-common)
+[![Coverage Status](https://coveralls.io/repos/github/tmacharia/Shared.Common/badge.svg?branch=master)](https://coveralls.io/github/tmacharia/Shared.Common?branch=master)
 ![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/Shared.Common.svg?logo=nuget&link=https://www.nuget.org/packages/Shared.Common//left)
 ![SDK Downloads on Nuget](https://img.shields.io/nuget/dt/Shared.Common.svg?label=downloads&logo=nuget&link=https://www.nuget.org/packages/Shared.Common//left)
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 
 namespace Common
 {
@@ -40,7 +41,12 @@ namespace Common
         /// <param name="item">Item to dispose.</param>
         public void DisposeItem<TItem>(ref TItem item) {
             if(item != null) {
-                var method = item.GetType().GetMethod("Dispose");
+                MethodInfo method = null;
+#if NETSTANDARD1_5 || NETSTANDARD1_6
+                method = item.GetType().GetRuntimeMethod("Dispose",null);
+#else
+                method = item.GetType().GetMethod("Dispose");
+#endif
                 if (method.IsNotNull()) {
                     method.Invoke(item, null);
                     item = default(TItem);

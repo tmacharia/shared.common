@@ -1,19 +1,22 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="MSBuild.Sdk.Extras">
 
   <PropertyGroup>
     <TargetFrameworks>
-      netstandard2.0;
-      netcoreapp2.1;netcoreapp2.0;
+      netstandard2.0;netstandard1.6;netstandard1.5;
+      netcoreapp2.1;netcoreapp2.0;netcoreapp1.1;netcoreapp1.0;
+      net462;net461;net452;net451;net45;
+      MonoAndroid90;
+      Xamarin.iOS10;
     </TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>Shared.Common</PackageId>
     <Authors>Timothy Macharia</Authors>
     <Company>Neon Clouds</Company>
-    <Description>A lightweight .NET library with re-usable resources/software components and extension methods to increase developer productivity</Description>
-    <Version>1.0.1</Version>
-    <PackageReleaseNotes>- Adds Email Verification function.
-- Minor changes, renamings, and documentation updates
-</PackageReleaseNotes>
+    <Description>**Alpha Release** A lightweight .NET library with re-usable resources/software components and extension methods to increase developer productivity</Description>
+    <PackageReleaseNotes>
+      - Removes crypto methods. 
+      - Adds support for netstandard 1.6,1.5, netcoreapp1.1,1.0, netframework462,461,46,452,451,45, monoandroid90,xamarin.ios.10
+    </PackageReleaseNotes>
     <Copyright>© Neon Clouds, 2017</Copyright>
     <PackageLicense>https://github.com/tmacharia/Shared.Common/blob/master/LICENSE</PackageLicense>
     <PackageProjectUrl>https://github.com/tmacharia/Shared.Common</PackageProjectUrl>
@@ -24,33 +27,31 @@
     <NeutralLanguage>en-US</NeutralLanguage>
     <SignAssembly>false</SignAssembly>
     <DelaySign>false</DelaySign>
+    <DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageVersion>1.1.0-alpha-1</PackageVersion>
+    <AssemblyVersion>1.0.24</AssemblyVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
-    <DocumentationFile>C:\Users\george\Source\Repos\Re-Usable Resources\Common\github\Common\XmlDocumentation.xml</DocumentationFile>
-    <OutputPath></OutputPath>
+    <DocumentationFile>C:\Users\george\Source\Repos\Re-Usable Resources\Common\github\Common\bin\XmlDocumentation.xml</DocumentationFile>
+    <OutputPath>bin\</OutputPath>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="XmlDocumentation.xml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="XmlDocumentation.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Update="Language\Resources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
+  <ItemGroup Condition="&#xD;&#xA;&#xD;&#xA;    '$(TargetFramework)' == 'net45' or &#xD;&#xA;&#xD;&#xA;    &#xD;&#xA;    '$(TargetFramework)' == 'net451' or &#xD;&#xA;&#xD;&#xA;    &#xD;&#xA;    '$(TargetFramework)' == 'net452' or &#xD;&#xA;&#xD;&#xA;&#xD;&#xA;    '$(TargetFramework)' == 'net46' or &#xD;&#xA;&#xD;&#xA;    &#xD;&#xA;    '$(TargetFramework)' == 'net461' or &#xD;&#xA; &#xD;&#xA;    &#xD;&#xA;    '$(TargetFramework)' == 'net462'">
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+
+  <ItemGroup Condition="&#xD;&#xA;&#xD;&#xA;    &#xD;&#xA;    '$(TargetFramework)' == 'netstandard1.6' or &#xD;&#xA;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    '$(TargetFramework)' == 'netstandard1.5'">
+    <PackageReference Include="System.Globalization.Extensions">
+      <Version>4.3.0</Version>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
@@ -61,9 +62,7 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Language\Resources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <Generator></Generator>
     </EmbeddedResource>
   </ItemGroup>
-
 </Project>
