@@ -1,6 +1,8 @@
 language: csharp
 solution: Re-Usable Resources.sln
+install:
+  - nuget restore Re-Usable Resources.sln
+  - nuget install NUnit.Console -Version 3.9.0 -OutputDirectory testrunner
 script:
- - msbuild -t:restore
- - msbuild -t:build
- - msbuild -t:pack
+ - msbuild /p:Configuration=Release Re-Usable Resources.sln
+ - mono ./testrunner/NUnit.ConsoleRunner.3.9.0/tools/nunit3-console.exe ./MyProject.Tests/bin/Release/MyProject.Tests.dll
