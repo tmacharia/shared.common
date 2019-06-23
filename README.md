@@ -6,9 +6,12 @@
 # Introduction
 
 [![Build status](https://ci.appveyor.com/api/projects/status/cj2wsayj5l7nea8e?svg=true)](https://ci.appveyor.com/project/tmacharia/shared-common)
-[![Coverage Status](https://coveralls.io/repos/github/tmacharia/Shared.Common/badge.svg?branch=master)](https://coveralls.io/github/tmacharia/Shared.Common?branch=master)
 ![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/Shared.Common.svg?logo=nuget&link=https://www.nuget.org/packages/Shared.Common//left)
 ![SDK Downloads on Nuget](https://img.shields.io/nuget/dt/Shared.Common.svg?label=downloads&logo=nuget&link=https://www.nuget.org/packages/Shared.Common//left)
+
+#### Tests
+
+[![Test status](http://teststatusbadge.azurewebsites.net/api/status/tmacharia/shared-common)](https://ci.appveyor.com/project/tmacharia/shared-common/builds/25472791/tests)
 
 A lightweight .NET library with re-usable resources/software components that can be shared among multiple application blocks or programs. It has a rich set of commonly used functions and methods with most of which are [Extension Methods](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/extension-methods) to assist software developers avoid re-writing code blocks and only focus on writing new features.
 
@@ -22,19 +25,19 @@ Below is a list of methods that you can re-use in your code.
 
 + `.IsPositive()`
 + `.Negate()`
-+ `.ToMoney(CurrencyType type)`  `// CurrencyTypes: USD,EUR,KES,JPY`
++ `.ToMoney(Country country)`  `// e.g US, GB, FR, KE, NG e.t.c`
 
 #### Decimals
 
 + `.IsPositive()`
 + `.Negate()`
-+ `.ToMoney(CurrencyType type)`  `// CurrencyTypes: USD,EUR,KES,JPY`
++ `.ToMoney(Country country)`  `// e.g US, GB, FR, KE, NG e.t.c`
   
 #### Doubles
 
 + `.IsPositive()`
 + `.Negate()`
-+ `.ToMoney(CurrencyType type)`  `// CurrencyTypes: USD,EUR,KES,JPY`
++ `.ToMoney(Country country)`  `// e.g US, GB, FR, KE, NG e.t.c`
 
 ### Structs
 

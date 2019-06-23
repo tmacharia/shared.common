@@ -8,11 +8,18 @@ namespace Common.UnitTests
     public class CurrencyExtsTests
     {
         [Theory]
-        [TestCase(arg1: 3500, arg2: CurrencyType.USD, arg3: "$")]
-        [TestCase(arg1: 3500, arg2: CurrencyType.EUR, arg3: "€")]
-        [TestCase(arg1: 3500, arg2: CurrencyType.JPY, arg3: "¥")]
-        [TestCase(arg1: 3500, arg2: CurrencyType.KES, arg3: "Kshs")]
-        public void FormatCurrency(double d, CurrencyType type, string symbol)
+        [TestCase(arg1: 3500, arg2: Enums.Country.US, arg3: "$")]
+        [TestCase(arg1: 3500, arg2: Enums.Country.NG, arg3: "₦")]
+        [TestCase(arg1: 3500, arg2: Enums.Country.JP, arg3: "¥")]
+
+        [TestCase(arg1: 3500, arg2: Enums.Country.GB, arg3: "£")]
+        [TestCase(arg1: 3500, arg2: Enums.Country.UG, arg3: "USh")]
+        [TestCase(arg1: 3500, arg2: Enums.Country.LS, arg3: "R")]
+        [TestCase(arg1: 3500, arg2: Enums.Country.ZA, arg3: "R")]
+        [TestCase(arg1: 3500, arg2: Enums.Country.FR, arg3: "€")]
+
+        [TestCase(arg1: 3500, arg2: Enums.Country.KE, arg3: "Ksh")]
+        public void FormatCurrency(double d, Enums.Country type, string symbol)
         {
             // Act
             string res = d.ToMoney(type);
