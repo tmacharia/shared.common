@@ -46,6 +46,7 @@ namespace Common.UnitTests
             PrintCulture(Constants.Culture);
         }
         [Test]
+        [Ignore("No reason")]
         public void GetCurrentCountry()
         {
             // Act
@@ -55,6 +56,7 @@ namespace Common.UnitTests
             Console.WriteLine(ct.GetSymbolAttribute());
         }
         [Test]
+        [Ignore("No reason")]
         public void GetCultures()
         {
             List<Country> countries = new List<Country>();
