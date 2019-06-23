@@ -6,7 +6,7 @@
 # Introduction
 
 [![Build status](https://ci.appveyor.com/api/projects/status/cj2wsayj5l7nea8e?svg=true)](https://ci.appveyor.com/project/tmacharia/shared-common)
-![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/Shared.Common.svg?logo=nuget&link=https://www.nuget.org/packages/Shared.Common//left)
+[![Nuget](https://img.shields.io/nuget/vpre/Shared.Common.svg?logo=nuget&link=https://www.nuget.org/packages/Shared.Common//left)](https://www.nuget.org/packages/Shared.Common)
 ![SDK Downloads on Nuget](https://img.shields.io/nuget/dt/Shared.Common.svg?label=downloads&logo=nuget&link=https://www.nuget.org/packages/Shared.Common//left)
 
 #### Tests
