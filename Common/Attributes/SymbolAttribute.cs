@@ -1,5 +1,4 @@
-﻿using Common.Primitives;
-using System;
+﻿using System;
 
 namespace Common.Attributes
 {

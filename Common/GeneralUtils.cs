@@ -34,7 +34,7 @@ namespace Common
         /// <param name="value">Object/Model/Item to serialize</param>
         /// <returns>JSON text</returns>
         public static string ToJson<T>(this T value) where T : class
-                => JsonConvert.SerializeObject(value);
+                => JsonConvert.SerializeObject(value, Formatting.Indented);
         /// <summary>
         /// Deserializes JSON formatted <see cref="string"/> of text to a strongly typed
         /// generic of 

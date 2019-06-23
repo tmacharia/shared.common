@@ -30,9 +30,10 @@ namespace Common
                 return _cache[typeof(TClass)].ToArray();
             else
                 collection = TypeDescriptor.GetProperties(typeof(TClass));
-            
+
             List<PropertyDescriptor> properties = new List<PropertyDescriptor>();
-            for (int i = 0; i < collection.Count; i++) {
+            for (int i = 0; i < collection.Count; i++)
+            {
                 properties.Add(collection[i]);
             }
             _cache.Add(typeof(TClass), properties);
@@ -91,12 +92,15 @@ namespace Common
             where TClass : class
         {
             PropertyDescriptor prop = GetDescriptor(@class, propertyName);
-            try {
-                if (prop != null) {
+            try
+            {
+                if (prop != null)
+                {
                     prop.SetValue(@class, Convert.ChangeType(newValue, Nullable.GetUnderlyingType(propType) ?? propType));
                 }
             }
-            catch (Exception e) {
+            catch (Exception e)
+            {
                 throw e;
             }
         }
@@ -126,7 +130,7 @@ namespace Common
         {
             List<TAttribute> attributes = new List<TAttribute>();
             var enumerator = @class.GetDescriptor(prop).Attributes.GetEnumerator();
-            
+
             while (enumerator.MoveNext())
             {
                 if (enumerator.Current.GetType() == typeof(TAttribute))

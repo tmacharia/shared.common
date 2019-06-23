@@ -22,8 +22,10 @@ namespace Common
         /// <returns>
         /// True or False
         /// </returns>
-        public static bool IsValid(this string s) {
-            if (!string.IsNullOrWhiteSpace(s)) {
+        public static bool IsValid(this string s)
+        {
+            if (!string.IsNullOrWhiteSpace(s))
+            {
                 return s.Length > 0;
             }
             return false;
@@ -46,6 +48,13 @@ namespace Common
             }
             return false;
         }
+        /// <summary>
+        /// Checks if a string a valid integer number.
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static bool IsValidNumber(this string s)
+            => int.TryParse(s, out int n);
         /// <summary>
         /// Converts a text <see cref="string"/> to an <see cref="int"/>
         /// </summary>
@@ -267,17 +276,20 @@ namespace Common
         /// </returns>
         /// <exception cref="ArgumentException"/>
         /// <exception cref="RegexMatchTimeoutException"/>
-        public static bool IsEmailValid(this string email) {
+        public static bool IsEmailValid(this string email)
+        {
             if (!email.IsValid())
                 return false;
-            try {
+            try
+            {
                 // Derived from Microsoft Documentation. Use the link to get further explanation.
                 // https://docs.microsoft.com/en-us/dotnet/standard/base-types/how-to-verify-that-strings-are-in-valid-email-format
                 // Normalize the domain
                 email = Regex.Replace(email, @"(@)(.+)$", DomainMapper, RegexOptions.None, TimeSpan.FromMilliseconds(200));
 
                 // Examines the domain part of the email and normalizes it.
-                string DomainMapper(Match match) {
+                string DomainMapper(Match match)
+                {
                     // Use IdnMapping class to convert Unicode domain names.
                     // Pull out and process domain name (throws ArgumentException on invalid)
                     var domainName = new IdnMapping().GetAscii(match.Groups[2].Value);
@@ -285,7 +297,8 @@ namespace Common
                 }
                 return Regex.IsMatch(email, Constants.EmailRegex, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
             }
-            catch (Exception) {
+            catch (Exception)
+            {
                 return false;
             }
         }

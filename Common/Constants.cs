@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Common.Enums;
+using Microsoft.Win32;
+using System;
 using System.Globalization;
 using System.Text;
-using System.Threading;
 
 namespace Common
 {
@@ -11,6 +12,8 @@ namespace Common
     /// </summary>
     public static class Constants
     {
+        private static string _currentGeoName = string.Empty;
+        private static RegionInfo _region = null;
         /// <summary>
         /// String Comparison Ordinal.
         /// </summary>
@@ -22,16 +25,58 @@ namespace Common
         /// <summary>
         /// Current UI Thread <see cref="CultureInfo"/>
         /// </summary>
-        public static CultureInfo Culture { get; } = CultureInfo.CurrentUICulture;
+        public static CultureInfo Culture => CultureInfo.CurrentUICulture;
+        /// <summary>
+        /// Gets the current <see cref="RegionInfo"/>
+        /// </summary>
+        public static RegionInfo Region
+        {
+            get
+            {
+                if (_region == null)
+                    _region = new RegionInfo(CurrentGeoName);
+                return _region;
+            }
+        }
+        /// <summary>
+        /// Current Country
+        /// </summary>
+        public static Country CurrentCountry
+            => (Country)Enum.Parse(typeof(Country), CurrentGeoName);
         /// <summary>
         /// Base UTF8 Encoding to re-use.
         /// </summary>
         public static Encoding Encoding { get; } = new UTF8Encoding();
+        /// <summary>
+        /// Current International Geographical Name
+        /// </summary>
+        private static string CurrentGeoName
+        {
+            get
+            {
+                lock (_currentGeoName)
+                {
+                    if (!_currentGeoName.IsValid())
+                        _currentGeoName = GetCurrentGeoName();
+                    return _currentGeoName;
+                }
+            }
+        }
+        /// <summary>
+        /// Gets the Current International Geographical Name
+        /// </summary>
+        /// <returns></returns>
+        private static string GetCurrentGeoName()
+        {
+            var regKeyGeoId = Registry.CurrentUser.OpenSubKey(@"Control Panel\International\Geo");
+            string x = (string)regKeyGeoId.GetValue("Name");
+            return x;
+        }
 
         /// <summary>
         /// Regex expression to verify valid email addresses.
         /// </summary>
-        public static string EmailRegex = 
+        public static string EmailRegex =
             @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))"
           + @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-0-9a-z]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$";
     }

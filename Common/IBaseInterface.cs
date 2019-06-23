@@ -39,15 +39,18 @@ namespace Common
         /// Calls the default dispose method on a object
         /// </summary>
         /// <param name="item">Item to dispose.</param>
-        public void DisposeItem<TItem>(ref TItem item) {
-            if(item != null) {
+        public void DisposeItem<TItem>(ref TItem item)
+        {
+            if (item != null)
+            {
                 MethodInfo method = null;
 #if NETSTANDARD1_5 || NETSTANDARD1_6
                 method = item.GetType().GetRuntimeMethod("Dispose",null);
 #else
                 method = item.GetType().GetMethod("Dispose");
 #endif
-                if (method.IsNotNull()) {
+                if (method.IsNotNull())
+                {
                     method.Invoke(item, null);
                     item = default(TItem);
                 }
