@@ -9,6 +9,10 @@
 ![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/Shared.Common.svg?logo=nuget&link=https://www.nuget.org/packages/Shared.Common//left)
 ![SDK Downloads on Nuget](https://img.shields.io/nuget/dt/Shared.Common.svg?label=downloads&logo=nuget&link=https://www.nuget.org/packages/Shared.Common//left)
 
+#### Tests
+
+[![Test status](http://teststatusbadge.azurewebsites.net/api/status/tmacharia/shared-common)](https://ci.appveyor.com/project/tmacharia/shared-common/builds/25472791/tests)
+
 A lightweight .NET library with re-usable resources/software components that can be shared among multiple application blocks or programs. It has a rich set of commonly used functions and methods with most of which are [Extension Methods](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/extension-methods) to assist software developers avoid re-writing code blocks and only focus on writing new features.
 
 ## Extension Methods
