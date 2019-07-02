@@ -18,6 +18,18 @@ namespace Common
             _client = new HttpClient();
         }
         /// <summary>
+        /// Get or access the current <see cref="HttpClient"/> instance.
+        /// </summary>
+        public HttpClient Client
+        {
+            get
+            {
+                if (_client == null)
+                    _client = new HttpClient();
+                return _client;
+            }
+        }
+        /// <summary>
         /// Constructor that instaciates the internal <see cref="HttpClient"/> with a custom
         /// <see cref="HttpClientHandler"/>
         /// </summary>
@@ -37,11 +49,11 @@ namespace Common
         {
             get
             {
-                return _client.BaseAddress;
+                return Client.BaseAddress;
             }
             set
             {
-                _client.BaseAddress = value;
+                Client.BaseAddress = value;
             }
         }
         /// <summary>
@@ -51,7 +63,7 @@ namespace Common
         /// <param name="value">Header value</param>
         public void AddHeader(string key, string value)
         {
-            _client.DefaultRequestHeaders.Add(key, value);
+            Client.DefaultRequestHeaders.Add(key, value);
         }
         /// <summary>
         /// Runs a Http GET request.
@@ -60,7 +72,7 @@ namespace Common
         /// <returns></returns>
         public Task<HttpResponseMessage> GetAsync(Uri uri)
         {
-            return _client.GetAsync(uri);
+            return Client.GetAsync(uri);
         }
         /// <summary>
         /// Runs a Http POST request
@@ -70,7 +82,7 @@ namespace Common
         /// <returns></returns>
         public Task<HttpResponseMessage> PostAsync(Uri uri, HttpContent content)
         {
-            return _client.PostAsync(uri, content);
+            return Client.PostAsync(uri, content);
         }
         /// <summary>
         /// Dispose the current instance.
