@@ -112,6 +112,14 @@ namespace Common
         /// <returns>true or false.</returns>
         public static bool Matches(this string s, string q) => Regex.IsMatch(s, $"({q})", RegexOptions.IgnoreCase);
         /// <summary>
+        /// Compares and evaluates if a specific query <see cref="string"/> matches
+        /// another one using Regular Expressions.
+        /// </summary>
+        /// <param name="s">The <see cref="string"/> to check</param>
+        /// <param name="args">Collection/Array of strings to check if any of them matches.</param>
+        /// <returns>true or false.</returns>
+        public static bool MatchesAny(this string s, params string[] args) => args.Any(x => s.Matches(x));
+        /// <summary>
         /// Checks if a string of text contains a digit or number.
         /// </summary>
         /// <param name="s">Text to check</param>
