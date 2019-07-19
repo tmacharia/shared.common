@@ -6,7 +6,7 @@
       netcoreapp2.2;netcoreapp2.1;netcoreapp2.0;netcoreapp1.1;netcoreapp1.0;
       net48;net472;net471;net47;net462;net461;net452;net451;net45;
       <!--MonoAndroid90;-->
-      Xamarin.iOS10;
+      Xamarin.iOS10;uap10.0.17763;
     </TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>Shared.Common</PackageId>
