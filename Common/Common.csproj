@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>
       netstandard2.0;netstandard1.6;netstandard1.5;
-      netcoreapp2.2;netcoreapp2.1;netcoreapp2.0;netcoreapp1.1;netcoreapp1.0;
+      netcoreapp2.2;netcoreapp2.1;netcoreapp2.0;<!--netcoreapp1.1;--><!--netcoreapp1.0;-->
       net48;net472;net471;net47;net462;net461;net452;net451;net45;
       <!--MonoAndroid90;-->
       Xamarin.iOS10;
@@ -46,6 +46,30 @@
     <OutputPath>bin\</OutputPath>
   </PropertyGroup>
 
+  <ItemGroup Condition="'$(TargetFramework)' == 'uap10.0.16299'">
+    <PackageReference Include="Microsoft.Win32.Registry">
+      <Version>4.5.0</Version>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'uap10.0.17134'">
+    <PackageReference Include="Microsoft.Win32.Registry">
+      <Version>4.5.0</Version>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'uap10.0.17763'">
+    <PackageReference Include="Microsoft.Win32.Registry">
+      <Version>4.5.0</Version>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'uap10.0.18362'">
+    <PackageReference Include="Microsoft.Win32.Registry">
+      <Version>4.5.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
   </ItemGroup>
