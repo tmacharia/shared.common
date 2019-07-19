@@ -14,6 +14,10 @@ namespace Common
         /// </summary>
         Uri BaseAddress { get; set; }
         /// <summary>
+        /// Get or access the current <see cref="HttpClient"/> instance.
+        /// </summary>
+        HttpClient Client { get; }
+        /// <summary>
         /// Adds a header item to the default request headers.
         /// </summary>
         /// <param name="key">Header name</param>

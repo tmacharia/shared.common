@@ -3,10 +3,11 @@
   <PropertyGroup>
     <TargetFrameworks>
       netstandard2.0;netstandard1.6;netstandard1.5;
-      netcoreapp2.1;netcoreapp2.0;netcoreapp1.1;netcoreapp1.0;
-      net462;net461;net452;net451;net45;
+      netcoreapp2.2;netcoreapp2.1;netcoreapp2.0;netcoreapp1.1;netcoreapp1.0;
+      net48;net472;net471;net47;net462;net461;net452;net451;net45;
       <!--MonoAndroid90;-->
       Xamarin.iOS10;
+      uap10.0.16299;uap10.0.17134;uap10.0.17763;uap10.0.18362;
     </TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>Shared.Common</PackageId>
@@ -14,7 +15,8 @@
     <Company>Neon Clouds</Company>
     <Description>A lightweight .NET library with re-usable resources/software components and extension methods to increase developer productivity</Description>
     <PackageReleaseNotes>
-      - Changes CurrentType to Country.
+      - Adds support for .Net 47,471,472,48
+      - Adds support for .Net Core 2.2
     </PackageReleaseNotes>
     <Copyright>© Neon Clouds, 2017</Copyright>
     <PackageLicense>https://github.com/tmacharia/Shared.Common/blob/master/LICENSE</PackageLicense>
@@ -34,8 +36,8 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageVersion>1.1.0</PackageVersion>
-    <AssemblyVersion>1.0.24</AssemblyVersion>
+    <PackageVersion>1.2.0</PackageVersion>
+    <AssemblyVersion>1.0.68</AssemblyVersion>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
@@ -48,7 +50,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
   </ItemGroup>
 
-  <ItemGroup Condition="&#xD;&#xA;&#xD;&#xA;    '$(TargetFramework)' == 'net45' or &#xD;&#xA;&#xD;&#xA;    &#xD;&#xA;    '$(TargetFramework)' == 'net451' or &#xD;&#xA;&#xD;&#xA;    &#xD;&#xA;    '$(TargetFramework)' == 'net452' or &#xD;&#xA;&#xD;&#xA;&#xD;&#xA;    '$(TargetFramework)' == 'net46' or &#xD;&#xA;&#xD;&#xA;    &#xD;&#xA;    '$(TargetFramework)' == 'net461' or &#xD;&#xA; &#xD;&#xA;    &#xD;&#xA;    '$(TargetFramework)' == 'net462'">
+  <ItemGroup Condition="&#xD;&#xA;&#xD;&#xA;    '$(TargetFramework)' == 'net45' or &#xD;&#xA;&#xD;&#xA;    &#xD;&#xA;    '$(TargetFramework)' == 'net451' or &#xD;&#xA;&#xD;&#xA;    &#xD;&#xA;    '$(TargetFramework)' == 'net452' or &#xD;&#xA;&#xD;&#xA;&#xD;&#xA;    '$(TargetFramework)' == 'net46' or &#xD;&#xA;&#xD;&#xA;    &#xD;&#xA;    '$(TargetFramework)' == 'net461' or &#xD;&#xA; &#xD;&#xA;    &#xD;&#xA;    '$(TargetFramework)' == 'net462' or &#xD;&#xA; &#xD;&#xA;    &#xD;&#xA;    '$(TargetFramework)' == 'net47' or &#xD;&#xA; &#xD;&#xA;    &#xD;&#xA;    '$(TargetFramework)' == 'net471' or &#xD;&#xA; &#xD;&#xA;    &#xD;&#xA;    '$(TargetFramework)' == 'net472' or &#xD;&#xA; &#xD;&#xA;    &#xD;&#xA;    '$(TargetFramework)' == 'net48'">
     <Reference Include="System.Net.Http" />
   </ItemGroup>
 
@@ -69,7 +71,13 @@
       <Generator></Generator>
     </EmbeddedResource>
   </ItemGroup>
-
+  
+  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.2'">
+    <PackageReference Include="Microsoft.Win32.Registry">
+      <Version>4.5.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
     <PackageReference Include="Microsoft.Win32.Registry">
       <Version>4.5.0</Version>
