@@ -5,7 +5,7 @@
       netstandard2.0;netstandard1.6;netstandard1.5;
       netcoreapp2.2;netcoreapp2.1;netcoreapp2.0;
       net472;net471;net47;net462;net461;net452;net451;net45;
-      uap10.0.16299;uap10.0.17134;uap10.0.17763;uap10.0.18362;
+      <!--uap10.0.16299;uap10.0.17134;uap10.0.17763;uap10.0.18362;-->
       Xamarin.iOS10;
     </TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
