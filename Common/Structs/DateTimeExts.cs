@@ -1,5 +1,6 @@
 ﻿using Common.Language;
 using System;
+using System.Text;
 
 namespace Common.Structs
 {

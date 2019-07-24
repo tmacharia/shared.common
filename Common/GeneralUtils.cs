@@ -103,5 +103,6 @@ namespace Common
             double num = Math.Round(bytes / Math.Pow(1024, place), 1);
             return (Math.Sign(byteCount) * num).ToString() + suf[place];
         }
+        
     }
 }

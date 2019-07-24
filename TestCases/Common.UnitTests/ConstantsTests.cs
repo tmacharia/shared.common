@@ -20,25 +20,17 @@ namespace Common.UnitTests
         {
             var rg = Constants.Region;
             Console.WriteLine(
-                "Currency English Name: {0}\n" +
-                "Currency Native Name: {1}\n" +
                 "Currency Symbol: {2}\n" +
                 "ISOCurrencySymbol: {3}\n" +
                 "Display Name: {4}\n" +
                 "English Name: {5}\n" +
                 "Name: {6}\n" +
-                "3-Letter-ISO-Region Name: {7}\n" +
-                "3-Letter-Windows-Region Name: {8}\n" +
                 "2-Letter-ISO-Region Name: {9}",
-                rg.CurrencyEnglishName,
-                rg.CurrencyNativeName,
                 rg.CurrencySymbol,
                 rg.ISOCurrencySymbol,
                 rg.DisplayName,
                 rg.EnglishName,
                 rg.Name,
-                rg.ThreeLetterISORegionName,
-                rg.ThreeLetterWindowsRegionName,
                 rg.TwoLetterISORegionName);
         }
         [Test]
@@ -60,25 +52,24 @@ namespace Common.UnitTests
         [Ignore("fails in appveyor but works locally")]
         public void GetCultures()
         {
-            List<Country> countries = new List<Country>();
-            Country selector(CultureInfo x)
-            {
-                PrintCulture(x);
-                RegionInfo ri = new RegionInfo(x.Name);
-                return new Country()
-                {
-                    Name = ri.EnglishName,
-                    IsoCode = ri.TwoLetterISORegionName,
-                    Currency = ri.CurrencySymbol,
-                    CurrencyName = ri.CurrencyEnglishName
-                };
-            }
-            countries = CultureInfo.GetCultures(CultureTypes.SpecificCultures)
-                .Select(selector)
-                .Where(x => !x.IsoCode.IsValidNumber())
-                .Distinct(new CountryEquality())
-                .OrderBy(x => x.Name)
-                .ToList();
+            //List<Country> countries = new List<Country>();
+            //Country selector(CultureInfo x)
+            //{
+            //    PrintCulture(x);
+            //    RegionInfo ri = new RegionInfo(x.Name);
+            //    return new Country()
+            //    {
+            //        Name = ri.EnglishName,
+            //        IsoCode = ri.TwoLetterISORegionName,
+            //        Currency = ri.CurrencySymbol,
+            //    };
+            //}
+            //countries = CultureInfo.GetCultures(CultureTypes.SpecificCultures)
+            //    .Select(selector)
+            //    .Where(x => !x.IsoCode.IsValidNumber())
+            //    .Distinct(new CountryEquality())
+            //    .OrderBy(x => x.Name)
+            //    .ToList();
 
             //SaveJson(countries);
             //SaveEnumClass(countries);
@@ -96,10 +87,7 @@ namespace Common.UnitTests
                 "Display Name: {3}\n" +
                 "English Name: {4}\n" +
                 "Name: {5}\n" +
-                "LCID: {6}\n" +
-                "ThreeLetterISOLanguageName: {7}\n" +
-                "ThreeLetterWindowsLanguageName: {8}\n" +
-                "TwoLetterISOLanguageName: {9}\n" +
+                "TwoLetterISOLanguageName: {6}\n" +
                 "================================\n",
                 ct.EnglishName,
                 ct.NativeName,
@@ -107,9 +95,6 @@ namespace Common.UnitTests
                 ct.DisplayName,
                 ct.EnglishName,
                 ct.Name,
-                ct.LCID,
-                ct.ThreeLetterISOLanguageName,
-                ct.ThreeLetterWindowsLanguageName,
                 ct.TwoLetterISOLanguageName.Split(':').Last());
         }
         private void PrintFormats(string country, params string[] args)

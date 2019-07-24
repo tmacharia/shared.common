@@ -35,6 +35,21 @@ namespace Common
             }
         }
         /// <summary>
+        /// Steps through the collection subjecting each item to the <see cref="Action"/>
+        /// specified.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="enumerable"></param>
+        /// <param name="action">Delegate method that receives both the index and current item in the collection.</param>
+        public static void ForEach<T>(this IEnumerable<T> enumerable, Action<int,T> action)
+        {
+            int total = enumerable.Count();
+            for (int i = 0; i < total; i++)
+            {
+                action(i,enumerable.ElementAt(i));
+            }
+        }
+        /// <summary>
         /// Remove all items in a collection that matches a specified predicate.
         /// </summary>
         /// <typeparam name="T">Item <see cref="Type"/></typeparam>
