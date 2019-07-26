@@ -146,16 +146,38 @@ namespace Common
         /// </summary>
         /// <param name="s">Text to shorten</param>
         /// <param name="count">Number of characters to take from the first index/start/zero</param>
+        /// <param name="trailingText">Text to append to the tail of a truncated text</param>
         /// <returns>
         /// Shortened version of the supplied <see cref="string"/>
         /// </returns>
-        public static string Shorten(this string s, int count)
+        public static string Shorten(this string s, int count, string trailingText="...")
         {
             if (s.IsValid())
             {
                 if (count > 0 && s.Length > count)
                 {
-                    return s.Substring(0, count) + "...";
+                    return s.Substring(0, count) + trailingText;
+                }
+            }
+            return string.Empty;
+        }
+        /// <summary>
+        /// Truncates a <see cref="string"/> of text to a certain number of characters and
+        /// appends trailing text e.g(...) at the end to show continuation.
+        /// </summary>
+        /// <param name="s">Text to shorten</param>
+        /// <param name="count">Number of characters to take from the first index/start/zero</param>
+        /// <param name="trailingText">Text to append to the tail of a truncated text</param>
+        /// <returns>
+        /// Shortened version of the supplied <see cref="string"/>
+        /// </returns>
+        public static string Truncate(this string s, int count, string trailingText = "...")
+        {
+            if (s.IsValid())
+            {
+                if (count > 0 && s.Length > count)
+                {
+                    return s.Substring(0, count) + trailingText;
                 }
             }
             return string.Empty;
