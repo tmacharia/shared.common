@@ -93,6 +93,7 @@ namespace Common
         /// </summary>
         /// <param name="byteCount"></param>
         /// <returns></returns>
+        [Obsolete("Use the data formatting methods in Common.Primitives; .ConvertData() or .HumanizeData()")]
         public static string BytesToString(this long byteCount)
         {
             string[] suf = { "B", "KB", "MB", "GB", "TB", "PB", "EB" }; //Longs run out around EB
@@ -103,6 +104,5 @@ namespace Common
             double num = Math.Round(bytes / Math.Pow(1024, place), 1);
             return (Math.Sign(byteCount) * num).ToString() + suf[place];
         }
-        
     }
 }

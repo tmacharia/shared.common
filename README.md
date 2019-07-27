@@ -39,7 +39,12 @@ Below is a list of methods that you can re-use in your code.
 + `.Negate()`
 + `.ToMoney(Country country)`  `// e.g US, GB, FR, KE, NG e.t.c`
 
-### Structs
+#### Long
+
++ `.ConvertData(this long value, DataFormat format = DataFormat.MB, int precision = 2)` `// e.g 1024 bytes --> 1.00 for KB`
++ `.HumanizeData(this long value, DataFormat? format, int precision = 2)` `// `// e.g 5400000 bytes --> 5.4 MB`
+
+### Non-Primitive Structs
 
 #### Bytes
 
@@ -60,7 +65,8 @@ Below is a list of methods that you can re-use in your code.
 + `.ToDecimal()`
 + `.Matches(string q)` `// regex matching`
 + `.Is(string q, bool ignoreCase=true)`
-+ `.Shorten(int count)` `// shorten then append trailing dots(...)`
++ `.Shorten(int count, string trailingText="...")` `// shorten then append trailing dots(...)`
++ `.Truncate(this string s, int count, string trailingText = "...")`
 + `.IsValidJson()`
 + `.ToByteArray()`
 + `.ToBase64String()`
@@ -69,6 +75,15 @@ Below is a list of methods that you can re-use in your code.
 + `.GetStringBefore(string end)`
 + `.ToStream()`
 + `.IsEmailValid()`
++ `.DeserializeTo<T>()`
+
+#### Objects/General
+
++ `.IsOfType<T>(this object obj)`
++ `.ToDictionary<T>(this T model)` `// returns IDictionary<string, string>`
++ `.ToJson<T>(this T value)`
++ `.IsNull(this object value)`
++ `.IsNotNull(this object value)`
 
 ### Collections
 
@@ -84,13 +99,21 @@ Reflection in c# is said to be slow, the following methods use delegates, TypeDe
 
 + `.GetPropertyValue<TClass, TProperty>(string propertyName)`
 + `.SetPropertyValue<TClass, TValue>(string propertyName, TValue newValue)`
-+ `SetPropertyValue<TClass>(string propertyName, Type propType, object newValue)`
++ `.SetPropertyValue<TClass>(string propertyName, Type propType, object newValue)`
 
 <br/>
 
 + `PropertyDescriptor[] GetPropertyDescriptors<TClass>(this TClass @class)`
 + `PropertyDescriptor GetDescriptor<TClass>(this TClass @class, string prop)`
 + `IEnumerable<TAttribute> GetAttributes<TClass, TAttribute>(this TClass @class, string prop)`
+
+<br/>
+
+Use when you are processing updates or patches on a model. This method allows you to specify which properties to update 
+only without affecting the other properties.
+
++ `TModel UpdateWith<TModel>(this TModel baseModel, TModel updatedModel, params Expression<Func<TModel,object>>[] propertySelectors)`
++ `UpdateResult<TModel> GetPropertyUpdates<TModel>(this TModel baseModel, TModel updatedModel, params Expression<Func<TModel, object>>[] propertySelectors)`
 
 ### IO
 
