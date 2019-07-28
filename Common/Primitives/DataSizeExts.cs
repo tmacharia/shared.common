@@ -9,10 +9,23 @@ namespace Common.Primitives
     /// </summary>
     public static class DataSizeExts
     {
-        private const long OneKb = 1024;
-        private const long OneMb = OneKb * 1024;
-        private const long OneGb = OneMb * 1024;
-        private const long OneTb = OneGb * 1024;
+        /// <summary>
+        /// Size of 1 KB in Bytes.
+        /// </summary>
+        public const long OneKb = 1024;
+        /// <summary>
+        /// Size of 1 MB in Bytes.
+        /// </summary>
+        public const long OneMb = OneKb * 1024;
+        /// <summary>
+        /// Size of 1 GB in Bytes.
+        /// </summary>
+        public const long OneGb = OneMb * 1024;
+        /// <summary>
+        /// Size of 1 TB in Bytes.
+        /// </summary>
+        public const long OneTb = OneGb * 1024;
+
         /// <summary>
         /// Convert the specified data byte(s) to the specified <see cref="DataFormat"/> with 
         /// <see cref="DataFormat.MB"/> being the default.
