@@ -68,7 +68,7 @@ namespace Common
             if (obj != null) {
                 return (TProperty)obj;
             }
-            return default;
+            return default(TProperty);
         }
         /// <summary>
         /// Returns the value of a specific class property using a delegate
