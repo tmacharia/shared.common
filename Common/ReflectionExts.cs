@@ -116,7 +116,7 @@ namespace Common
             PropertyDescriptor prop = GetDescriptor(@class, propertyName);
             try {
                 if (prop != null) {
-                    prop.SetValue(@class, Convert.ChangeType(newValue, Nullable.GetUnderlyingType(propType) ?? propType));
+                    prop.SetValue(@class, ChangeType(newValue, propType));
                 }
             }
             catch (Exception e) {
@@ -139,12 +139,36 @@ namespace Common
             try {
                 if(prop != null) {
                     Type propType = prop.PropertyType;
-                    prop.SetValue(@class, Convert.ChangeType(newValue, Nullable.GetUnderlyingType(propType) ?? propType));
+                    prop.SetValue(@class, ChangeType(newValue,propType));
                 }
             }
             catch (Exception ex) {
                 throw ex;
             }
+        }
+        private static object ChangeType(object value, Type type)
+        {
+            if (value == null && type.IsGenericType) return Activator.CreateInstance(type);
+            if (value == null) return null;
+            if (type == value.GetType()) return value;
+            if (type.IsEnum)
+            {
+                if (value is string)
+                    return Enum.Parse(type, value as string);
+                else
+                    return Enum.ToObject(type, value);
+            }
+            if (!type.IsInterface && type.IsGenericType)
+            {
+                Type innerType = type.GetGenericArguments()[0];
+                object innerValue = ChangeType(value, innerType);
+                return Activator.CreateInstance(type, new object[] { innerValue });
+            }
+            if (value is string && type == typeof(Guid)) return new Guid(value as string);
+            if (value is string && type == typeof(Version)) return new Version(value as string);
+            if (!(value is IConvertible)) return value;
+            
+            return Convert.ChangeType(value, Nullable.GetUnderlyingType(type) ?? type);
         }
         /// <summary>
         /// Gets the <see cref="PropertyDescriptor"/> of a specified property in a class.

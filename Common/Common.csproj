@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>
-      netstandard2.0;netstandard1.6;netstandard1.5;
+      netstandard2.0;
       netcoreapp2.2;netcoreapp2.1;netcoreapp2.0;
       net472;net471;net47;net462;net461;net452;net451;net45;
       <!--uap10.0.16299;uap10.0.17134;uap10.0.17763;uap10.0.18362;-->
@@ -14,9 +14,7 @@
     <Company>Neon Clouds</Company>
     <Description>A lightweight .NET library with re-usable resources/software components and extension methods to increase developer productivity</Description>
     <PackageReleaseNotes>
-      - Targets UWP apps.
-      - Removes .NET Framework 4.8 Target
-      - Adds a few functions.
+      - Updates Reflection &amp; Strings Exts
     </PackageReleaseNotes>
     <Copyright>© Neon Clouds, 2017</Copyright>
     <PackageLicense>https://github.com/tmacharia/Shared.Common/blob/master/LICENSE</PackageLicense>
@@ -37,7 +35,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageVersion>1.1.3</PackageVersion>
+    <PackageVersion>1.1.4</PackageVersion>
     <AssemblyVersion>1.0.68</AssemblyVersion>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>

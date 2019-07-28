@@ -43,13 +43,16 @@ namespace Common.UnitTests
             // Arrange
             Car car = new Car(TestData.CarNames[0]);
             DateTime time = DateTime.Now;
+            int newId = 11;
 
             // Act
+            car.SetPropertyValue("Id", newId);
             car.SetPropertyValue("Name", TestData.CarNames[1]);
             car.SetPropertyValue("Color", TestData.Color2);
-            car.SetPropertyValue("Timestamp", time);
+            car.SetPropertyValue("Timestamp", (object)time);
 
             // Assert
+            Assert.AreEqual(newId, car.Id);
             Assert.AreEqual(TestData.CarNames[1], car.Name);
             Assert.AreEqual(TestData.Color2, car.Color);
             Assert.IsTrue(car.Timestamp.HasValue);
