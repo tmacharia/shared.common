@@ -1,6 +1,5 @@
 ﻿using Common.Language;
 using System;
-using System.Text;
 
 namespace Common.Structs
 {
@@ -30,7 +29,7 @@ namespace Common.Structs
                 throw new ArgumentNullException(nameof(pastDate));
 
             TimeSpan ts;
-            bool is_past = true;
+            bool is_past;
 
             // check if datetime is in the past or the future
             if (currentTime.HasValue)
@@ -57,10 +56,10 @@ namespace Common.Structs
             if (days == 1) return is_past ? Resources.Yesterday : Resources.Tomorrow;
             if (days < 30) return is_past ? $"{days} {Resources.DaysAgo}" : $"{Resources.In} {days} {Resources.Days}";
 
-            int months = Math.Ceiling((decimal)days / (decimal)30).ToInt().Value;
+            int months = Math.Ceiling(days / (decimal)30).ToInt().Value;
             if (months < 12) return is_past ? $"{months} {Resources.MonthsAgo}" : $"{Resources.In} {months} {Resources.Months}";
 
-            int yrs = Math.Floor((decimal)months / (decimal)12).ToInt().Value;
+            int yrs = Math.Floor(months / (decimal)12).ToInt().Value;
             return is_past ? $"{yrs} {Resources.YearsAgo}" : $"{Resources.In} {yrs} {Resources.Years}";
         }
         /// <summary>

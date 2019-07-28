@@ -1,5 +1,4 @@
-﻿using NUnit.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -8,14 +7,13 @@ using System.Text;
 
 namespace Common.UnitTests
 {
-    public class ConstantsTests
+    public class ConstantValueCheckers
     {
         private static readonly string Local = Directory.GetCurrentDirectory() + Path.DirectorySeparatorChar.ToString();
         private readonly string JsonFile = $"{Local}countries.json";
         private readonly string EnumFile = $"{Local}Country.cs";
 
-        [Test]
-        [Ignore("fails in appveyor but works locally")]
+        // This is not a test
         public void GetCurrentRegion()
         {
             var rg = Constants.Region;
@@ -33,13 +31,12 @@ namespace Common.UnitTests
                 rg.Name,
                 rg.TwoLetterISORegionName);
         }
-        [Test]
+        // This is not a test
         public void GetCurrentCulture()
         {
             PrintCulture(Constants.Culture);
         }
-        [Test]
-        [Ignore("fails in appveyor but works locally")]
+        // This is not a test
         public void GetCurrentCountry()
         {
             // Act
@@ -48,8 +45,7 @@ namespace Common.UnitTests
             Console.WriteLine(ct.ToString());
             Console.WriteLine(ct.GetSymbolAttribute());
         }
-        [Test]
-        [Ignore("fails in appveyor but works locally")]
+        // This is not a test
         public void GetCultures()
         {
             //List<Country> countries = new List<Country>();
@@ -137,25 +133,6 @@ namespace Common.UnitTests
             }
 
             File.WriteAllText(EnumFile, sb.ToString());
-        }
-    }
-    public class Country
-    {
-        public string Name { get; set; }
-        public string IsoCode { get; set; }
-        public string Currency { get; set; }
-        public string CurrencyName { get; set; }
-    }
-    public class CountryEquality : IEqualityComparer<Country>
-    {
-        public bool Equals(Country x, Country y)
-        {
-            return x.IsoCode == y.IsoCode;
-        }
-
-        public int GetHashCode(Country obj)
-        {
-            return obj.IsoCode.GetHashCode();
         }
     }
 }

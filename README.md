@@ -55,11 +55,14 @@ Below is a list of methods that you can re-use in your code.
 #### DateTime
 
 + `.ToMoment(DateTime? currentTime=null)` `// converts to human readable time`
++ `.ToMoment(this TimeSpan span)`
 
 #### Strings
 
 + `.IsValid()`
 + `.Has(string q)`
++ `.ContainsAnyOf(this string s, params string[] args)`
++ `.ContainsAll(this string s, params string[] args)`
 + `.ToInt()`
 + `.ToDouble()`
 + `.ToDecimal()`
@@ -97,9 +100,12 @@ Below is a list of methods that you can re-use in your code.
 
 Reflection in c# is said to be slow, the following methods use delegates, TypeDescriptors & PropertyDescriptors to improved on perfomance.
 
++ `.GetPropertyType<TClass>(this TClass @class, string propertyName)`
++ `.GetPropertyValue<TClass>(this TClass @class, string propertyName)`
 + `.GetPropertyValue<TClass, TProperty>(string propertyName)`
 + `.SetPropertyValue<TClass, TValue>(string propertyName, TValue newValue)`
 + `.SetPropertyValue<TClass>(string propertyName, Type propType, object newValue)`
++ `.SetPropertyValue<TClass>(this TClass @class, string propertyName, object newValue)`
 
 <br/>
 
@@ -123,5 +129,6 @@ only without affecting the other properties.
   
 #### Files
 
++ `bool IsFileNameValid(string fileName)`
 + `string ToSafeFileName(string filename)`
   

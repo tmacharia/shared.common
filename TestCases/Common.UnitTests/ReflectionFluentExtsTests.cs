@@ -44,15 +44,4 @@ namespace Common.UnitTests
             Console.WriteLine(string.Join("\n",result.GetChangesAsString()));
         }
     }
-    public class Car
-    {
-        public int Id { get; set; } = 10;
-        public Car(string name, string color="black")
-        {
-            Name = name;
-            Color = color;
-        }
-        public string Name { get; set; }
-        public string Color { get; set; }
-    }
 }

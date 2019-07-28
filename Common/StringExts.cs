@@ -22,10 +22,8 @@ namespace Common
         /// <returns>
         /// True or False
         /// </returns>
-        public static bool IsValid(this string s)
-        {
-            if (!string.IsNullOrWhiteSpace(s))
-            {
+        public static bool IsValid(this string s) {
+            if (!string.IsNullOrWhiteSpace(s)) {
                 return s.Length > 0;
             }
             return false;
@@ -40,11 +38,41 @@ namespace Common
         ///     True if it contains or
         ///     False if it doesn't.
         /// </returns>
-        public static bool Has(this string s, string q)
-        {
-            if (s.IsValid() && q.IsValid())
-            {
+        public static bool Has(this string s, string q) {
+            if (s.IsValid() && q.IsValid()) {
                 return s.Contains(q);
+            }
+            return false;
+        }
+        /// <summary>
+        /// Checks if a string contains/has any of the specified strings.
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="args">Array of string items to check.</param>
+        /// <returns>True or false.</returns>
+        public static bool ContainsAnyOf(this string s, params string[] args) {
+            if(s.IsValid() && args.Length > 0) {
+                for (int i = 0; i < args.Length; i++) {
+                    if (s.Contains(args[i]))
+                        return true;
+                }
+            }
+            return false;
+        }
+        /// <summary>
+        /// Checks if a string contains/has all of the strings specified.
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="args">Array of string items to lookup.</param>
+        /// <returns>True or false.</returns>
+        public static bool ContainsAll(this string s, params string[] args) {
+            if(s.IsValid() && args.Length > 0) {
+                int index = 0;
+                args.ForEach(x => {
+                    if (s.Contains(x))
+                        index++;
+                });
+                return index == args.Length;
             }
             return false;
         }
@@ -63,10 +91,8 @@ namespace Common
         /// An <see cref="int"/> number
         /// </returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public static int ToInt(this string intAsString)
-        {
-            if (intAsString.IsValid())
-            {
+        public static int ToInt(this string intAsString) {
+            if (intAsString.IsValid()) {
                 return Convert.ToInt32(intAsString, Constants.Culture);
             }
             throw new ArgumentNullException(nameof(intAsString));
@@ -79,10 +105,8 @@ namespace Common
         /// A <see cref="double"/> number
         /// </returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public static double ToDouble(this string doubleAsString)
-        {
-            if (doubleAsString.IsValid())
-            {
+        public static double ToDouble(this string doubleAsString) {
+            if (doubleAsString.IsValid()) {
                 return Convert.ToDouble(doubleAsString, Constants.Culture);
             }
             throw new ArgumentNullException(nameof(doubleAsString));
@@ -95,10 +119,8 @@ namespace Common
         /// A <see cref="decimal"/> number
         /// </returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public static decimal ToDecimal(this string doubleAsString)
-        {
-            if (doubleAsString.IsValid())
-            {
+        public static decimal ToDecimal(this string doubleAsString) {
+            if (doubleAsString.IsValid()) {
                 return Convert.ToDecimal(doubleAsString, Constants.Culture);
             }
             throw new ArgumentNullException(nameof(doubleAsString));
@@ -132,10 +154,8 @@ namespace Common
         /// <param name="query">Text to match.</param>
         /// <param name="ignoreCase">Whether to ignore case or not.</param>
         /// <returns>True or False</returns>
-        public static bool Is(this string s, string query, bool ignoreCase = true)
-        {
-            if (s.IsValid())
-            {
+        public static bool Is(this string s, string query, bool ignoreCase = true) {
+            if (s.IsValid()) {
                 return s.Equals(query, ignoreCase ? Constants.StringComparisonIgnoreCase : Constants.StringComparison);
             }
             return false;
@@ -146,17 +166,14 @@ namespace Common
         /// </summary>
         /// <param name="s">Text to shorten</param>
         /// <param name="count">Number of characters to take from the first index/start/zero</param>
-        /// <param name="trailingText">Text to append to the tail of a truncated text</param>
+        /// <param name="trailingTextToAppend">Text to append to the tail of a truncated text</param>
         /// <returns>
         /// Shortened version of the supplied <see cref="string"/>
         /// </returns>
-        public static string Shorten(this string s, int count, string trailingText="...")
-        {
-            if (s.IsValid())
-            {
-                if (count > 0 && s.Length > count)
-                {
-                    return s.Substring(0, count) + trailingText;
+        public static string Shorten(this string s, int count, string trailingTextToAppend="...") {
+            if (s.IsValid()) {
+                if (count > 0 && s.Length > count) {
+                    return s.Substring(0, count) + trailingTextToAppend;
                 }
             }
             return string.Empty;
@@ -171,12 +188,9 @@ namespace Common
         /// <returns>
         /// Shortened version of the supplied <see cref="string"/>
         /// </returns>
-        public static string Truncate(this string s, int count, string trailingText = "...")
-        {
-            if (s.IsValid())
-            {
-                if (count > 0 && s.Length > count)
-                {
+        public static string Truncate(this string s, int count, string trailingText = "...") {
+            if (s.IsValid()) {
+                if (count > 0 && s.Length > count) {
                     return s.Substring(0, count) + trailingText;
                 }
             }
