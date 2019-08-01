@@ -80,6 +80,13 @@ Below is a list of methods that you can re-use in your code.
 + `.IsEmailValid()`
 + `.DeserializeTo<T>()`
 
+#### Enums
+
++ `.GetName<TEnum>(this TEnum @enum)` `// Returns the name of current/selected enum`
++ `Dictionary<string, int> GetEnumPairs<TEnum>(this TEnum @enum)`
++ `Dictionary<string, int> GetEnumPairs<TEnum>()`
++ `Dictionary<string,int> GetEnumPairs(Type enumType)`
+
 #### Objects/General
 
 + `.IsOfType<T>(this object obj)`
