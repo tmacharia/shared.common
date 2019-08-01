@@ -14,12 +14,12 @@
     <Company>Neon Clouds</Company>
     <Description>A lightweight .NET library with re-usable resources/software components and extension methods to increase developer productivity</Description>
     <PackageReleaseNotes>
-      - Updates Reflection &amp; Strings Exts
+      - Adds Enum related extension methods.
     </PackageReleaseNotes>
     <Copyright>© Neon Clouds, 2017</Copyright>
     <PackageLicense>https://github.com/tmacharia/Shared.Common/blob/master/LICENSE</PackageLicense>
     <PackageProjectUrl>https://github.com/tmacharia/Shared.Common</PackageProjectUrl>
-    <PackageIconUrl>https://raw.githubusercontent.com/tmacharia/Shared.Common/update-patch-1/Docs/logo.png</PackageIconUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/tmacharia/Shared.Common/master/Docs/logo.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/tmacharia/Shared.Common</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>common, shared, productivity, reuse, helpers, extensions, methods</PackageTags>
@@ -35,9 +35,13 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageVersion>1.1.4</PackageVersion>
-    <AssemblyVersion>1.0.68</AssemblyVersion>
+    <PackageVersion>1.1.5</PackageVersion>
+    <AssemblyVersion>1.0.89</AssemblyVersion>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <LangVersion>7.3</LangVersion>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Product>Shared.Common</Product>
+    <Version>1.1.5</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
@@ -180,7 +184,7 @@
   </ItemGroup>
 
   <Target Name="FixAL1703Warning" BeforeTargets="GenerateSatelliteAssemblies" Condition="'$(PlatformTarget)' == 'x64'">
-    <Message Text="Adjusting SDK tools directory to use x64 version of AL.EXE"/>
+    <Message Text="Adjusting SDK tools directory to use x64 version of AL.EXE" />
     <PropertyGroup>
       <TargetFrameworkSDKToolsDirectory>$(TargetFrameworkSDKToolsDirectory)\$(PlatformTarget)\</TargetFrameworkSDKToolsDirectory>
     </PropertyGroup>
