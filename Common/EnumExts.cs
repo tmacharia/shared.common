@@ -9,13 +9,13 @@ namespace Common
     public static class EnumExts
     {
         /// <summary>
-        /// Returns the name of current/selected enum
+        /// Returns the name of Current/Selected enum
         /// </summary>
         /// <typeparam name="TEnum"></typeparam>
         /// <param name="enum">Current/Selected enum</param>
         /// <returns>Name of enum</returns>
-        public static string GetName<TEnum>(this TEnum @enum) where TEnum : Enum
-        {
+        public static string GetName<TEnum>(this TEnum @enum) 
+            where TEnum : Enum {
             if (@enum == null)
                 throw new ArgumentNullException(nameof(@enum));
             

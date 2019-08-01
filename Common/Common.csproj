@@ -38,6 +38,10 @@
     <PackageVersion>1.1.5</PackageVersion>
     <AssemblyVersion>1.0.89</AssemblyVersion>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <LangVersion>7.3</LangVersion>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Product>Shared.Common</Product>
+    <Version>1.1.5</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
@@ -180,7 +184,7 @@
   </ItemGroup>
 
   <Target Name="FixAL1703Warning" BeforeTargets="GenerateSatelliteAssemblies" Condition="'$(PlatformTarget)' == 'x64'">
-    <Message Text="Adjusting SDK tools directory to use x64 version of AL.EXE"/>
+    <Message Text="Adjusting SDK tools directory to use x64 version of AL.EXE" />
     <PropertyGroup>
       <TargetFrameworkSDKToolsDirectory>$(TargetFrameworkSDKToolsDirectory)\$(PlatformTarget)\</TargetFrameworkSDKToolsDirectory>
     </PropertyGroup>
