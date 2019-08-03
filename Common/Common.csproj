@@ -14,7 +14,9 @@
     <Company>Neon Clouds</Company>
     <Description>A lightweight .NET library with re-usable resources/software components and extension methods to increase developer productivity</Description>
     <PackageReleaseNotes>
-      - Adds Enum related extension methods.
+      - Updates DataSize extension methods.
+      - Get Enum Name from given one of its values.
+      - Format numbers as comma separated string.
     </PackageReleaseNotes>
     <Copyright>© Neon Clouds, 2017</Copyright>
     <PackageLicense>https://github.com/tmacharia/Shared.Common/blob/master/LICENSE</PackageLicense>
@@ -35,13 +37,13 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageVersion>1.1.5</PackageVersion>
+    <PackageVersion>1.1.6</PackageVersion>
     <AssemblyVersion>1.0.89</AssemblyVersion>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <LangVersion>7.3</LangVersion>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Product>Shared.Common</Product>
-    <Version>1.1.5</Version>
+    <Version>1.1.6</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
