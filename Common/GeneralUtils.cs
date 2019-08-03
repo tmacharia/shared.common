@@ -51,7 +51,50 @@ namespace Common
         /// <param name="value">Value to convert</param>
         /// <returns>Integral equivalent</returns>
         public static int? ToInt(this object value) =>
-            value.IsNotNull() ? (int?)Convert.ToInt32(value, Constants.Culture) : 0;
+            value.IsNotNull() ? Convert.ToInt32(value, Constants.Culture) : 0;
+
+        /// <summary>
+        /// Checks if an object is of the specified <see cref="Type"/>
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static bool IsOfType<T>(this object obj) where T : class
+            => obj.GetType() == typeof(T);
+
+        /// <summary>
+        /// Formats an <see cref="int"/> to a comma separated string.
+        /// </summary>
+        /// <param name="i">Integer value to format</param>
+        /// <returns>Formatted <see cref="string"/></returns>
+        public static string ToCommaSeparated(this int i)
+            => ToCommaSeparated(i);
+
+        /// <summary>
+        /// Formats an <see cref="long"/> to a comma separated string.
+        /// </summary>
+        /// <param name="l">Long value to format</param>
+        /// <returns>Formatted <see cref="string"/></returns>
+        public static string ToCommaSeparated(this long l)
+            => l.ToString("N0", Constants.Culture);
+
+        /// <summary>
+        /// Formats an <see cref="double"/> to a comma separated string.
+        /// </summary>
+        /// <param name="d">Double value to format</param>
+        /// <param name="precision">Number of decimal places to keep</param>
+        /// <returns>Formatted <see cref="string"/></returns>
+        public static string ToCommaSeparated(this double d, int precision = 2)
+            => d.ToString($"N{precision}", Constants.Culture);
+
+        /// <summary>
+        /// Formats an <see cref="decimal"/> to a comma separated string.
+        /// </summary>
+        /// <param name="d">Decimal value to format</param>
+        /// <param name="precision">Number of decimal places to keep</param>
+        /// <returns>Formatted <see cref="string"/></returns>
+        public static string ToCommaSeparated(this decimal d, int precision = 2)
+            => d.ToString($"N{precision}", Constants.Culture);
 
         /// <summary>
         /// Reflects all the properties in a model of generic <see cref="Type"/> that must be
@@ -80,14 +123,6 @@ namespace Common
             }
             return pairs;
         }
-        /// <summary>
-        /// Checks if an object is of the specified <see cref="Type"/>
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="obj"></param>
-        /// <returns></returns>
-        public static bool IsOfType<T>(this object obj) where T : class
-            => obj.GetType() == typeof(T);
         /// <summary>
         /// Converts a series of bytes to human readable notation. e.g 45KB, 3.5GB
         /// </summary>
