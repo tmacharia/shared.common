@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 namespace Common.UnitTests
 {
-    public class EnumExtsTests
+    public class EnumExtsTests : TestData
     {
         [Test]
         public void GetNameOf_SelectedEnum()
@@ -18,7 +18,7 @@ namespace Common.UnitTests
 
             // Assert
             Assert.IsNotNull(name);
-            Console.WriteLine(name);
+            Log(name);
         }
         [Test]
         public void ForNonEnumType_GetEnumPairs_ThrowsException()
@@ -26,6 +26,20 @@ namespace Common.UnitTests
             // Assert
             Assert.Throws<ArgumentException>(() => EnumExts.GetEnumPairs(typeof(Country)));
         }
+        [Theory]
+        [TestCase(arg1: "KB", arg2: 3, arg3: typeof(DataFormat))]
+        [TestCase(arg1: "MB", arg2: 6, arg3: typeof(DataFormat))]
+        [TestCase(arg1: "GB", arg2: 9, arg3: typeof(DataFormat))]
+        [TestCase(arg1: "TB", arg2: 12, arg3: typeof(DataFormat))]
+        public void GetEnumName_ProvidedItsValue(string enumName, long value, Type enumType)
+        {
+            // Act
+            string result = EnumExts.GetName(enumType, value);
+
+            // Assert
+            Assert.AreEqual(enumName, result);
+        }
+
         [Theory]
         [TestCase(typeof(DataFormat))]
         [TestCase(typeof(HttpVerb))]
@@ -37,8 +51,9 @@ namespace Common.UnitTests
 
             // Assert
             Assert.Greater(pairs.Count, 0);
-            pairs.ForEach(x => {
-                Console.WriteLine("{0}: {1}", x.Key, x.Value);
+            pairs.ForEach(x =>
+            {
+                Log("{0}: {1}", x.Key, x.Value);
             });
         }
     }

@@ -26,23 +26,27 @@ Below is a list of methods that you can re-use in your code.
 + `.IsPositive()`
 + `.Negate()`
 + `.ToMoney(Country country)`  `// e.g US, GB, FR, KE, NG e.t.c`
++ `.ToCommaSeparated(this int i)`
 
 #### Decimals
 
 + `.IsPositive()`
 + `.Negate()`
 + `.ToMoney(Country country)`  `// e.g US, GB, FR, KE, NG e.t.c`
++ `.ToCommaSeparated(this decimal d, int precision = 2)`
   
 #### Doubles
 
 + `.IsPositive()`
 + `.Negate()`
 + `.ToMoney(Country country)`  `// e.g US, GB, FR, KE, NG e.t.c`
++ `.ToCommaSeparated(this double d, int precision = 2)`
 
 #### Long
 
 + `.ConvertData(this long value, DataFormat format = DataFormat.MB, int precision = 2)` `// e.g 1024 bytes --> 1.00 for KB`
 + `.HumanizeData(this long value, DataFormat? format, int precision = 2)` `// `// e.g 5400000 bytes --> 5.4 MB`
++ `.ToCommaSeparated(this long l)`
 
 ### Non-Primitive Structs
 
@@ -83,6 +87,8 @@ Below is a list of methods that you can re-use in your code.
 #### Enums
 
 + `.GetName<TEnum>(this TEnum @enum)` `// Returns the name of current/selected enum`
++ `.GetName<TEnum>(int valueToCheck)`
++ `.GetName(Type enumType, object valueToCheck)`
 + `Dictionary<string, int> GetEnumPairs<TEnum>(this TEnum @enum)`
 + `Dictionary<string, int> GetEnumPairs<TEnum>()`
 + `Dictionary<string,int> GetEnumPairs(Type enumType)`

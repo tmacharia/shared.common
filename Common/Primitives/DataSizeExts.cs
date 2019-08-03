@@ -10,21 +10,26 @@ namespace Common.Primitives
     public static class DataSizeExts
     {
         /// <summary>
+        /// Base 10.
+        /// </summary>
+        public const int Ten = 10;
+
+        /// <summary>
         /// Size of 1 KB in Bytes.
         /// </summary>
-        public const long OneKb = 1024;
+        public static double OneKb = Math.Pow(Ten,(int)DataFormat.KB);
         /// <summary>
         /// Size of 1 MB in Bytes.
         /// </summary>
-        public const long OneMb = OneKb * 1024;
+        public static double OneMb = Math.Pow(Ten, (int)DataFormat.MB);
         /// <summary>
         /// Size of 1 GB in Bytes.
         /// </summary>
-        public const long OneGb = OneMb * 1024;
+        public static double OneGb = Math.Pow(Ten, (int)DataFormat.GB);
         /// <summary>
         /// Size of 1 TB in Bytes.
         /// </summary>
-        public const long OneTb = OneGb * 1024;
+        public static double OneTb = Math.Pow(Ten, (int)DataFormat.TB);
 
         /// <summary>
         /// Convert the specified data byte(s) to the specified <see cref="DataFormat"/> with 
@@ -40,13 +45,13 @@ namespace Common.Primitives
             switch (format)
             {
                 case DataFormat.TB:
-                    return Math.Round((double)value / OneTb, precision);
+                    return Math.Round(value / OneTb, precision);
                 case DataFormat.GB:
-                    return Math.Round((double)value / OneGb, precision);
+                    return Math.Round(value / OneGb, precision);
                 case DataFormat.MB:
-                    return Math.Round((double)value / OneMb, precision);
+                    return Math.Round(value / OneMb, precision);
                 case DataFormat.KB:
-                    return Math.Round((double)value / OneKb, precision);
+                    return Math.Round(value / OneKb, precision);
                 case DataFormat.Bytes:
                     return value;
                 default:
@@ -69,8 +74,8 @@ namespace Common.Primitives
                 : value >= OneMb ? DataFormat.MB : DataFormat.KB;
             }
             return string.Format("{0} {1}",
-                value.ConvertData(format.Value, precision),
-                format.ToString());
+                value.ConvertData(format.Value, precision).ToCommaSeparated(precision),
+                format.Value.GetName());
         }
     }
 }

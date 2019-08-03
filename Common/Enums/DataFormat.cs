@@ -8,22 +8,22 @@
         /// <summary>
         /// Terabyte
         /// </summary>
-        TB,
+        TB=12,
         /// <summary>
         /// Gigabyte
         /// </summary>
-        GB,
+        GB=9,
         /// <summary>
         /// Megabyte
         /// </summary>
-        MB,
+        MB=6,
         /// <summary>
         /// Kilobyte
         /// </summary>
-        KB,
+        KB=3,
         /// <summary>
         /// Bytes
         /// </summary>
-        Bytes
+        Bytes=0
     }
 }
