@@ -6,7 +6,7 @@ using NUnit.Framework;
 
 namespace Common.UnitTests
 {
-    public class DataSizeExtsTests
+    public class DataSizeExtsTests : TestData
     {
         [Test]
         public void TestDataSizeConstants()
@@ -35,7 +35,7 @@ namespace Common.UnitTests
 
             // Assert
             Assert.IsNotNull(res);
-            Console.WriteLine(res);
+            Log(res);
             Assert.AreEqual((int)format, res.Count(c => c == '0'));
         }
         [Theory]
@@ -54,7 +54,7 @@ namespace Common.UnitTests
 
             // Assert
             Assert.IsNotNull(result);
-            Console.WriteLine(result);
+            Log(result);
             Assert.IsTrue(result.EndsWith(format.ToString()));
         }
     }

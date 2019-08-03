@@ -5,7 +5,7 @@ using System;
 
 namespace Common.UnitTests
 {
-    public class CurrencyExtsTests
+    public class CurrencyExtsTests : TestData
     {
         [Theory]
         [TestCase(arg1: 3500, arg2: Enums.Country.US, arg3: "$")]
@@ -25,7 +25,7 @@ namespace Common.UnitTests
             string res = d.ToMoney(type);
 
             // Assert
-            Console.WriteLine(res);
+            Log(res);
             Assert.IsNotNull(res);
             Assert.IsTrue(res.StartsWith(symbol));
         }

@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 namespace Common.UnitTests
 {
-    public class ReflectionFluentExtsTests
+    public class ReflectionFluentExtsTests : TestData
     {
         [Test]
         public void UpdateOldModel_With_UpdatedModel()
@@ -41,7 +41,7 @@ namespace Common.UnitTests
             Assert.AreEqual(old, result.BaseModel);
             Assert.AreEqual(newCar, result.UpdatedModel);
             Assert.AreEqual(2, result.PropertyUpdates.Count);
-            Console.WriteLine(string.Join("\n",result.GetChangesAsString()));
+            Log(string.Join("\n", result.GetChangesAsString()));
         }
     }
 }

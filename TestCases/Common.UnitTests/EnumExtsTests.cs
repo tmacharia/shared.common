@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 namespace Common.UnitTests
 {
-    public class EnumExtsTests
+    public class EnumExtsTests : TestData
     {
         [Test]
         public void GetNameOf_SelectedEnum()
@@ -18,7 +18,7 @@ namespace Common.UnitTests
 
             // Assert
             Assert.IsNotNull(name);
-            Console.WriteLine(name);
+            Log(name);
         }
         [Test]
         public void ForNonEnumType_GetEnumPairs_ThrowsException()
@@ -51,9 +51,10 @@ namespace Common.UnitTests
 
             // Assert
             Assert.Greater(pairs.Count, 0);
-            //pairs.ForEach(x => {
-            //    Console.WriteLine("{0}: {1}", x.Key, x.Value);
-            //});
+            pairs.ForEach(x =>
+            {
+                Log("{0}: {1}", x.Key, x.Value);
+            });
         }
     }
 }
