@@ -14,12 +14,34 @@ namespace Common
         /// <typeparam name="TEnum"></typeparam>
         /// <param name="enum">Current/Selected enum</param>
         /// <returns>Name of enum</returns>
-        public static string GetName<TEnum>(this TEnum @enum) 
-            where TEnum : Enum {
-            if (@enum == null)
-                throw new ArgumentNullException(nameof(@enum));
+        /// <exception cref="ArgumentNullException"></exception>
+        public static string GetName<TEnum>(this TEnum @enum)
+            where TEnum : Enum 
+            => GetName(typeof(TEnum), @enum);
+
+        /// <summary>
+        /// Returns the enum name with the specified corresponding <paramref name="valueToCheck"/>
+        /// </summary>
+        /// <typeparam name="TEnum"></typeparam>
+        /// <param name="valueToCheck">Value to check.</param>
+        /// <returns>Enum Value Name.</returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static string GetName<TEnum>(int valueToCheck)
+            where TEnum : Enum 
+            => GetName(typeof(TEnum), valueToCheck);
+
+        /// <summary>
+        /// Returns the enum name with the specified corresponding <paramref name="valueToCheck"/>
+        /// </summary>
+        /// <param name="enumType"><see cref="Type"/> of <see cref="Enum"/></param>
+        /// <param name="valueToCheck">Value to check.</param>
+        /// <returns>Enum Value Name.</returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static string GetName(Type enumType, object valueToCheck) {
+            if (enumType == null)
+                throw new ArgumentNullException(nameof(enumType));
             
-            return Enum.GetName(typeof(TEnum), @enum);
+            return Enum.GetName(enumType, valueToCheck);
         }
         /// <summary>
         /// Returns all the items defined in an <see cref="Enum"/> as a 
@@ -29,9 +51,9 @@ namespace Common
         /// <param name="enum">Current enum value</param>
         /// <returns>Dictionary of enumeration.</returns>
         public static Dictionary<string, int> GetEnumPairs<TEnum>(this TEnum @enum)
-            where TEnum : Enum {
-            return GetEnumPairs<TEnum>();
-        }
+            where TEnum : Enum 
+            => GetEnumPairs<TEnum>();
+
         /// <summary>
         /// Returns all the items defined in an <see cref="Enum"/> as a 
         /// dictionary collection of key value pairs.
@@ -39,9 +61,9 @@ namespace Common
         /// <typeparam name="TEnum"></typeparam>
         /// <returns>Dictionary of enumeration.</returns>
         public static Dictionary<string, int> GetEnumPairs<TEnum>()
-            where TEnum : Enum {
-            return GetEnumPairs(typeof(TEnum));
-        }
+            where TEnum : Enum 
+            => GetEnumPairs(typeof(TEnum));
+
         /// <summary>
         /// Returns all the items defined in an <see cref="Enum"/> as a 
         /// dictionary collection of key value pairs.
