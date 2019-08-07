@@ -66,7 +66,7 @@ namespace Common.Primitives
         /// <param name="format">Data format type to convert to.</param>
         /// <param name="precision">Number of decimal places.</param>
         /// <returns>Formatted data string.</returns>
-        public static string HumanizeData(this long value, DataFormat? format, int precision = 2)
+        public static string HumanizeData(this long value, DataFormat? format=null, int precision = 2)
         {
             if (!format.HasValue) {
                 format = value >= OneTb ? DataFormat.TB
