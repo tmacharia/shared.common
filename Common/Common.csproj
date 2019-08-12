@@ -37,7 +37,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageVersion>1.1.6</PackageVersion>
+    <PackageVersion>1.1.7</PackageVersion>
     <AssemblyVersion>1.0.89</AssemblyVersion>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <LangVersion>7.3</LangVersion>

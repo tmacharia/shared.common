@@ -5,6 +5,7 @@ using System;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Common
@@ -309,6 +310,21 @@ namespace Common
         /// A <see cref="Stream"/> or <see cref="MemoryStream"/>
         /// </returns>
         public static Stream ToStream(this string s) => new MemoryStream(s.ToByteArray());
+        /// <summary>
+        /// Tries to parse a <see cref="string"/> to <see cref="Guid"/>
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static Guid? ToGuid(this string s)
+        {
+            if (s.IsValid())
+            {
+                bool isValid = Guid.TryParse(s, out Guid uuid);
+                if (isValid)
+                    return uuid;
+            }
+            return null;
+        }
 
         /// <summary>
         /// Verify that Strings Are in Valid Email Format.
@@ -345,6 +361,40 @@ namespace Common
             {
                 return false;
             }
+        }
+        /// <summary>
+        /// Converts any text/string to a url slug that is safe for use
+        /// on the web and 
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static string GenerateUrlSlug(this string s)
+        {
+            if (s.IsValid())
+            {
+                //First to lower case 
+                s = s.ToLowerInvariant();
+
+                //Remove all accents
+                var bytes = Encoding.GetEncoding("Cyrillic").GetBytes(s);
+
+                s = Encoding.ASCII.GetString(bytes);
+
+                //Replace spaces 
+                s = Regex.Replace(s, @"\s", "-", RegexOptions.Compiled);
+
+                //Remove invalid chars 
+                s = Regex.Replace(s, @"[^\w\s\p{Pd}]", "", RegexOptions.Compiled);
+
+                //Trim dashes from end 
+                s = s.Trim('-', '_');
+
+                //Replace double occurences of - or \_ 
+                s = Regex.Replace(s, @"([-_]){2,}", "$1", RegexOptions.Compiled);
+
+                return $"{s}";
+            }
+            return string.Empty;
         }
     }
 }
