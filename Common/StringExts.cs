@@ -166,36 +166,99 @@ namespace Common
         /// appends trailing dots(...) at the end to show continuation.
         /// </summary>
         /// <param name="s">Text to shorten</param>
-        /// <param name="count">Number of characters to take from the first index/start/zero</param>
+        /// <param name="maxCharactersLength">Number of characters to take from the first index/start/zero</param>
         /// <param name="trailingTextToAppend">Text to append to the tail of a truncated text</param>
         /// <returns>
         /// Shortened version of the supplied <see cref="string"/>
         /// </returns>
-        public static string Shorten(this string s, int count, string trailingTextToAppend="...") {
-            if (s.IsValid()) {
-                if (count > 0 && s.Length > count) {
-                    return s.Substring(0, count) + trailingTextToAppend;
-                }
-            }
-            return string.Empty;
-        }
+        public static string Shorten(this string s, int maxCharactersLength, string trailingTextToAppend = Constants.TrailingText)
+            => Truncate(s, maxCharactersLength, trailingTextToAppend);
         /// <summary>
         /// Truncates a <see cref="string"/> of text to a certain number of characters and
         /// appends trailing text e.g(...) at the end to show continuation.
         /// </summary>
         /// <param name="s">Text to shorten</param>
-        /// <param name="count">Number of characters to take from the first index/start/zero</param>
+        /// <param name="maxCharactersLength">Number of characters to take from the first index/start/zero</param>
         /// <param name="trailingText">Text to append to the tail of a truncated text</param>
         /// <returns>
         /// Shortened version of the supplied <see cref="string"/>
         /// </returns>
-        public static string Truncate(this string s, int count, string trailingText = "...") {
+        public static string Truncate(this string s, int maxCharactersLength, string trailingText = Constants.TrailingText) {
             if (s.IsValid()) {
-                if (count > 0 && s.Length > count) {
-                    return s.Substring(0, count) + trailingText;
+                if(maxCharactersLength > 0){
+                    if(s.Length > maxCharactersLength) {
+                        return s.Substring(0, maxCharactersLength).Trim() + trailingText;
+                    }
                 }
+                return s;
             }
-            return string.Empty;
+            return s;
+        }
+        /// <summary>
+        /// Returns the total number of full words in the current <see cref="string"/> of text.
+        /// </summary>
+        /// <param name="s">Text to analyse.</param>
+        /// <returns>Total number of full words.</returns>
+        public static int WordCount(this string s)
+        {
+            int count = 0;
+            if (s.IsValid())
+            {
+                string[] words = s.Split(' ');
+                count = words.Length;
+                if (!words.First().IsValid())
+                    count--;
+                if (!words.Last().IsValid())
+                    count--;
+            }
+            return count;
+        }
+        /// <summary>
+        /// Returns all full words from the current <see cref="string"/> of text as an array
+        /// skipping whitespaces.
+        /// </summary>
+        /// <param name="s">Text to analyze.</param>
+        /// <returns>Array of words.</returns>
+        public static string[] GetFullWords(this string s) {
+            if (s.IsValid()) {
+                return s.Split(' ').Where(x => x.IsValid()).ToArray();
+            }
+            return new string[0];
+        }
+        /// <summary>
+        /// Truncates a <see cref="string"/> of text to a certain number of words and
+        /// appends trailing text e.g(...) at the end to show continuation.
+        /// </summary>
+        /// <param name="s">Text to shorten</param>
+        /// <param name="maxWords">Number of characters to take from the first index/start/zero</param>
+        /// <param name="trailingText">Text to append to the tail of a truncated text</param>
+        /// <returns>
+        /// Shortened version of the supplied <see cref="string"/>
+        /// </returns>
+        public static string TruncateWords(this string s, int maxWords, string trailingText = Constants.TrailingText)
+            => TruncateByWords(s, maxWords, trailingText);
+        /// <summary>
+        /// Truncates a <see cref="string"/> of text to a certain number of words and
+        /// appends trailing text e.g(...) at the end to show continuation.
+        /// </summary>
+        /// <param name="s">Text to shorten</param>
+        /// <param name="maxWords">Number of characters to take from the first index/start/zero</param>
+        /// <param name="trailingText">Text to append to the tail of a truncated text</param>
+        /// <returns>
+        /// Shortened version of the supplied <see cref="string"/>
+        /// </returns>
+        public static string TruncateByWords(this string s, int maxWords, string trailingText = Constants.TrailingText)
+        {
+            if (s.IsValid()) {
+                if(maxWords > 0) {
+                    string[] words = s.GetFullWords();
+                    if(words.Length > maxWords) {
+                        return string.Join(" ", words.Take(maxWords)).Trim() + trailingText;
+                    }
+                }
+                return s;
+            }
+            return s;
         }
         /// <summary>
         /// Checks if a <see cref="string"/> or text is valid json in terms of formatting.
@@ -262,7 +325,7 @@ namespace Common
                 int index = text.IndexOf(start, Constants.StringComparison);
                 if (index > -1)
                 {
-                    return text.Substring(index, text.Length - index).Trim(' ');
+                    return text.Substring(index, text.Length - index).Trim();
                 }
                 else
                 {
@@ -293,7 +356,7 @@ namespace Common
                 int index = text.IndexOf(end, Constants.StringComparison);
                 if (index > -1)
                 {
-                    return text.Substring(0, index).Trim(' ');
+                    return text.Substring(0, index).Trim();
                 }
                 else
                 {
@@ -363,21 +426,70 @@ namespace Common
             }
         }
         /// <summary>
+        /// Evaluates if a <see cref="string"/> of text is a valid Sluggish text for
+        /// url purposes usage.
+        /// </summary>
+        /// <param name="s">Text to analyze</param>
+        /// <returns>True or False.</returns>
+        public static bool IsValidUrlSlug(this string s)
+        {
+            if (s.IsValid())
+            {
+                // check dashes at the end.
+                if (s.EndsWith("-") || s.EndsWith("_"))
+                    return false;
+
+                // check whitespaces
+                if (Regex.IsMatch(s, @"\s"))
+                    return false;
+
+                // check for invalid chars
+                if (Regex.IsMatch(s, @"[^\w\s\p{Pd}]"))
+                    return false;
+
+                return true;
+            }
+            return false;
+        }
+        /// <summary>
         /// Converts any text/string to a url slug that is safe for use
         /// on the web and 
         /// </summary>
-        /// <param name="s"></param>
-        /// <returns></returns>
+        /// <param name="s">Text to slugify</param>
+        /// <returns>Sluggified text</returns>
+        /// <exception cref="ArgumentException"></exception>
+        public static string Sluggify(this string s) => GenerateUrlSlug(s);
+        /// <summary>
+        /// Converts any text/string to a url slug that is safe for use
+        /// on the web and 
+        /// </summary>
+        /// <param name="s">Text to slugify</param>
+        /// <returns>Sluggified text</returns>
+        /// <exception cref="ArgumentException"></exception>
         public static string GenerateUrlSlug(this string s)
         {
             if (s.IsValid())
             {
                 //First to lower case 
                 s = s.ToLowerInvariant();
-
+                byte[] bytes = null;
+#if NET45 || NET451 || NET452
+                bytes = Encoding.Default.GetBytes(s);
+#else
+                /*---------------------------------------------------------------+
+                 | Before using/checking custom encodings, we must               |
+                 | register CodePagesEncodingProvider for extended encodings     |
+                 | otherwise this will throw an ArgumentException.               |
+                 |                                                               |
+                 | Github Issue: https://github.com/dotnet/corefx/issues/9158    |
+                 | Stackoverflow: http://bit.ly/2KHnXK0                          |
+                 |                                                               |
+                 |                                                               |
+                 +---------------------------------------------------------------+*/
+                Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
                 //Remove all accents
-                var bytes = Encoding.GetEncoding("Cyrillic").GetBytes(s);
-
+                bytes = Encoding.GetEncoding("Cyrillic").GetBytes(s);
+#endif
                 s = Encoding.ASCII.GetString(bytes);
 
                 //Replace spaces 
@@ -394,7 +506,7 @@ namespace Common
 
                 return $"{s}";
             }
-            return string.Empty;
+            return s;
         }
     }
 }
