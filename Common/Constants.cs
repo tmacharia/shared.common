@@ -14,6 +14,12 @@ namespace Common
     {
         private static string _currentGeoName = string.Empty;
         private static RegionInfo _region = null;
+
+        /// <summary>
+        /// Trailing text to append to shortened text.
+        /// </summary>
+        public const string TrailingText = "...";
+
         /// <summary>
         /// String Comparison Ordinal.
         /// </summary>
