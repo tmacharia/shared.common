@@ -72,17 +72,24 @@ Below is a list of methods that you can re-use in your code.
 + `.ToDecimal()`
 + `.Matches(string q)` `// regex matching`
 + `.Is(string q, bool ignoreCase=true)`
-+ `.Shorten(int count, string trailingText="...")` `// shorten then append trailing dots(...)`
-+ `.Truncate(this string s, int count, string trailingText = "...")`
++ `.Shorten(int maxCharactersLength, string trailingText="...")` `// shorten then append trailing dots(...)`
++ `.Truncate(int maxCharactersLength, string trailingText = "...")`
++ `.TruncateWords(int maxWords, string trailingText = "...")`
++ `.TruncateByWords(int maxWords, string trailingText = "...")`
++ `.WordCount(this string s)` `// returns total number of full words`
++ `.GetFullWords(this string s)` `// returns string[] with full words.`
 + `.IsValidJson()`
 + `.ToByteArray()`
 + `.ToBase64String()`
++ `.ToGuid()` `// returns Guid?`
 + `.FromBase64ToArray()`
 + `.GetStringAfter(string start)`
 + `.GetStringBefore(string end)`
 + `.ToStream()`
 + `.IsEmailValid()`
 + `.DeserializeTo<T>()`
++ `.IsValidUrlSlug()`
++ `.GenerateUrlSlug()`
 
 #### Enums
 
