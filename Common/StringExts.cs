@@ -127,6 +127,26 @@ namespace Common
             throw new ArgumentNullException(nameof(doubleAsString));
         }
         /// <summary>
+        /// Evaluates if the current <see cref="string"/> starts with any of 
+        /// the passed string arguments.
+        /// </summary>
+        /// <param name="s"><see cref="string"/> to evaluates</param>
+        /// <param name="args">Argument parameters to check.</param>
+        /// <returns>True or False.</returns>
+        public static bool StartsWithAnyOf(this string s, params string[] args) {
+            if (s.IsValid()) {
+                s = s.ToUpper();
+                int index = 0;
+
+                args.ForEach(x => {
+                    if (s.StartsWith(x.ToUpper()))
+                        index++;
+                });
+                return index > 0;
+            }
+            return false;
+        }
+        /// <summary>
         /// Compares and evaluates if a specific query <see cref="string"/> matches
         /// another one using Regular Expressions.
         /// </summary>

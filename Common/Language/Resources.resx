@@ -127,16 +127,19 @@
     <value>hrs</value>
   </data>
   <data name="HoursAgo" xml:space="preserve">
-    <value>hours ago</value>
+    <value>hrs ago</value>
   </data>
   <data name="In" xml:space="preserve">
     <value>in</value>
   </data>
   <data name="InOneHr" xml:space="preserve">
-    <value>in 1 hour</value>
+    <value>in 1 hr</value>
   </data>
   <data name="InOneMin" xml:space="preserve">
     <value>in 1 min</value>
+  </data>
+  <data name="InOneMonth" xml:space="preserve">
+    <value>in 1 month</value>
   </data>
   <data name="InOneSec" xml:space="preserve">
     <value>in 1 sec</value>
@@ -160,10 +163,13 @@
     <value>ms</value>
   </data>
   <data name="OneHrAgo" xml:space="preserve">
-    <value>1 hour ago</value>
+    <value>1 hr ago</value>
   </data>
   <data name="OneMinAgo" xml:space="preserve">
     <value>1 min ago</value>
+  </data>
+  <data name="OneMonthAgo" xml:space="preserve">
+    <value>1 month ago</value>
   </data>
   <data name="OneSecAgo" xml:space="preserve">
     <value>1 sec ago</value>

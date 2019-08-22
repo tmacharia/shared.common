@@ -29,8 +29,7 @@ namespace Common
         public static void ForEach<T>(this IEnumerable<T> enumerable, Action<T> action)
         {
             int total = enumerable.Count();
-            for (int i = 0; i < total; i++)
-            {
+            for (int i = 0; i < total; i++) {
                 action(enumerable.ElementAt(i));
             }
         }
@@ -44,8 +43,7 @@ namespace Common
         public static void ForEach<T>(this IEnumerable<T> enumerable, Action<int,T> action)
         {
             int total = enumerable.Count();
-            for (int i = 0; i < total; i++)
-            {
+            for (int i = 0; i < total; i++) {
                 action(i,enumerable.ElementAt(i));
             }
         }
