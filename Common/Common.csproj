@@ -14,10 +14,9 @@
     <Company>Neon Clouds</Company>
     <Description>A lightweight .NET library with re-usable resources/software components and extension methods to increase developer productivity</Description>
     <PackageReleaseNotes>
-      - Try convert/parse string to Guid.
-      - Fixes string shorten/truncate methods.
-      - Adds string shorten/truncate by words.
-      - Fixes bug: GenerateUrlSlug, adds method to check if string is sluggish.
+      - Updates Format/Humanize DataSize/Bytes methods.
+      - Updates &amp; fixes bug with .ToMoment; DataTime extension methods.
+      - Adds Resource language definitions for EN,FR,JP
     </PackageReleaseNotes>
     <Copyright>© Neon Clouds, 2017</Copyright>
     <PackageLicense>https://github.com/tmacharia/Shared.Common/blob/master/LICENSE</PackageLicense>

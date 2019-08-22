@@ -44,8 +44,15 @@ Below is a list of methods that you can re-use in your code.
 
 #### Long
 
-+ `.ConvertData(this long value, DataFormat format = DataFormat.MB, int precision = 2)` `// e.g 1024 bytes --> 1.00 for KB`
-+ `.HumanizeData(this long value, DataFormat? format, int precision = 2)` `// `// e.g 5400000 bytes --> 5.4 MB`
++ `.ConvertData(DataFormat format = DataFormat.MB, int precision = 2)` `// e.g 1024 bytes --> 1.00 for KB`
++ `.HumanizeData(DataFormat? format=null, int precision = 2)` `// `// e.g 5400000 bytes --> 5.4 MB`
++ `.HumanizeData(int precision = 2)`
++ `.FormatDataSize(int precision = 2)`
++ `.FormatDataSize(DataFormat? format = null, int precision = 2)`
++ `.FormatBytes(int precision = 2)`
++ `.FormatBytes(DataFormat? format = null, int precision = 2)`
++ `.HumanizeBytes(int precision = 2)`
++ `.HumanizeBytes(DataFormat? format = null, int precision = 2)`
 + `.ToCommaSeparated(this long l)`
 
 ### Non-Primitive Structs
@@ -67,6 +74,7 @@ Below is a list of methods that you can re-use in your code.
 + `.Has(string q)`
 + `.ContainsAnyOf(this string s, params string[] args)`
 + `.ContainsAll(this string s, params string[] args)`
++ `.StartsWithAnyOf(this string s, params string[] args)`
 + `.ToInt()`
 + `.ToDouble()`
 + `.ToDecimal()`
