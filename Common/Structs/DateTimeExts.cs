@@ -9,6 +9,36 @@ namespace Common.Structs
     public static class DateTimeExts
     {
         /// <summary>
+        /// Total number of seconds in One Second.
+        /// </summary>
+        public const double OneSec = 1;
+        /// <summary>
+        /// Total number of seconds in One Minute.
+        /// </summary>
+        public const double OneMin = OneSec * 60;
+        /// <summary>
+        /// Total number of seconds in One Hour.
+        /// </summary>
+        public const double OneHr = OneMin * 60;
+        /// <summary>
+        /// Total number of seconds in One Day.
+        /// </summary>
+        public const double OneDay = OneHr * 24;
+        /// <summary>
+        /// Total number of seconds in One Week.
+        /// </summary>
+        public const double OneWeek = OneDay * 7;
+        /// <summary>
+        /// Total number of seconds in One Month.
+        /// </summary>
+        public const double OneMonth = OneDay * 30;
+        /// <summary>
+        /// Total number of seconds in One Year.
+        /// </summary>
+        public const double OneYear = OneMonth * 12;
+
+
+        /// <summary>
         /// Returns a human readable and comprehensible time format to know the exact
         /// relative time in the past.
         /// </summary>
@@ -43,24 +73,7 @@ namespace Common.Structs
                 ts = is_past ? DateTime.Now.Subtract(pastDate) : pastDate.Subtract(DateTime.Now);
             }
 
-            if (ts.TotalSeconds < 1)
-                return Resources.JustNow;
-
-            double delta = ts.TotalSeconds;
-            if (delta == 1) return is_past ? Resources.OneSecAgo : Resources.InOneSec;
-            if (delta < 60) return is_past ? $"{ts.Seconds} {Resources.SecsAgo}" : $"{Resources.In} {ts.Seconds} {Resources.Secs}";
-            if (delta < 3600) return ts.Minutes == 1 ? is_past ? Resources.OneMinAgo : Resources.InOneMin : is_past ? $"{ts.Minutes} {Resources.MinsAgo}" : $"{Resources.In} {ts.Minutes} {Resources.Mins}";
-            if (delta < 86400) return ts.Hours == 1 ? is_past ? Resources.OneHrAgo : Resources.InOneHr : is_past ? $"{ts.Hours} {Resources.HoursAgo}" : $"{Resources.In} {ts.Hours} {Resources.Hours}";
-
-            int days = ts.Days;
-            if (days == 1) return is_past ? Resources.Yesterday : Resources.Tomorrow;
-            if (days < 30) return is_past ? $"{days} {Resources.DaysAgo}" : $"{Resources.In} {days} {Resources.Days}";
-
-            int months = Math.Ceiling(days / (decimal)30).ToInt().Value;
-            if (months < 12) return is_past ? $"{months} {Resources.MonthsAgo}" : $"{Resources.In} {months} {Resources.Months}";
-
-            int yrs = Math.Floor(months / (decimal)12).ToInt().Value;
-            return is_past ? $"{yrs} {Resources.YearsAgo}" : $"{Resources.In} {yrs} {Resources.Years}";
+            return ts.ToMoment(is_past);
         }
         /// <summary>
         /// Converts a <see cref="TimeSpan"/> to human-readable format.
@@ -68,18 +81,45 @@ namespace Common.Structs
         /// <param name="span">Timespan instance.</param>
         /// <returns>Moment time.</returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public static string ToMoment(this TimeSpan span)
+        public static string ToMoment(this TimeSpan span) => span.ToMoment(true);
+        /// <summary>
+        /// Converts a <see cref="TimeSpan"/> to human-readable format.
+        /// </summary>
+        /// <param name="span">Timespan instance.</param>
+        /// <returns>Moment time.</returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static string ToMoment(this TimeSpan span, bool isInThePast=true)
         {
             if (span == null)
                 throw new ArgumentNullException(nameof(span));
 
-            double delta = span.TotalMilliseconds;
-            if (delta < 1000) return $"{span.Milliseconds} {Resources.Ms}";
-            if (delta < (1000 * 60)) return $"{span.Seconds} {Resources.Secs}";
-            if (delta < (1000 * 3600)) return $"{span.Minutes} {Resources.Mins}";
-            if (delta < (1000 * 86400)) return $"{span.Hours} {Resources.Hours}";
+            double delta = span.TotalSeconds;
+            // Seconds
+            if (delta == 0 || (delta > 0 && delta < OneSec)) return Resources.JustNow;
+            if (delta == OneSec) return isInThePast ? Resources.OneSecAgo : Resources.InOneSec;
+            if (delta < OneMin) return isInThePast ? $"{span.Seconds} {Resources.SecsAgo}" : $"{Resources.In} {span.Seconds} {Resources.Secs}";
 
-            return $"{span.Days} {Resources.Days}";
+            // Minutes
+            if (delta == OneMin) return isInThePast ? Resources.OneMinAgo : Resources.InOneMin;
+            if (delta > OneMin && delta < OneHr) return isInThePast ? $"{span.Minutes} {Resources.MinsAgo}" : $"{Resources.In} {span.Minutes} {Resources.Mins}";
+
+            // Hours
+            if (delta == OneHr) return isInThePast ? Resources.OneHrAgo : Resources.InOneHr;
+            if (delta > OneHr && delta < OneDay) return isInThePast ? $"{span.Hours} {Resources.HoursAgo}" : $"{Resources.In} {span.Hours} {Resources.Hours}";
+
+            // Days
+            int days = span.Days;
+            if (days == 1) return isInThePast ? Resources.Yesterday : Resources.Tomorrow;
+            if (delta > OneDay && delta < OneMonth) return isInThePast ? $"{days} {Resources.DaysAgo}" : $"{Resources.In} {days} {Resources.Days}";
+
+            // Months
+            if (delta == OneMonth || (delta > OneMonth && delta < OneMonth * 2)) return isInThePast ? "1 month ago" : "In 1 month";
+            int months = (int)(delta / OneMonth);
+            if (delta > OneMonth && delta < OneYear) return isInThePast ? $"{months} {Resources.MonthsAgo}" : $"{Resources.In} {months} {Resources.Months}";
+
+            int yrs = (int)(delta / OneYear);
+            if (yrs == 1) return isInThePast ? "1 yr ago" : "In 1 yr";
+            return isInThePast ? $"{yrs} {Resources.YearsAgo}" : $"{Resources.In} {yrs} {Resources.Years}";
         }
     }
 }
