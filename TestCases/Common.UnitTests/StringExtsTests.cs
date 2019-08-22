@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 
 namespace Common.UnitTests
 {
@@ -93,12 +94,12 @@ namespace Common.UnitTests
         [TestCase("https://ionicons.com/")]
         [TestCase("https://radioapp.tk/stations/1/classic-105")]
         [TestCase("'Cyrillic' is not a supported encoding name.")]
-        public void Url_Slugify(string txt)
+        public void Slugify(string txt)
         {
             // Arrange
             bool isSlug = txt.IsValidUrlSlug();
             // Act
-            string slug = txt.GenerateUrlSlug();
+            string slug = txt.Sluggify();
             // Assert
             Log(slug);
             if (txt.IsValid())
@@ -110,6 +111,32 @@ namespace Common.UnitTests
             {
                 Assert.AreEqual(txt, slug);
             }
+        }
+        [Test]
+        public void StartsWithAnyOf_ForValidTxt_ReturnsTrue()
+        {
+            // Arrange
+            string txt = "/ke/controller/action";
+            string[] args = new string[] { "/tz", "/us", "/ke" };
+
+            // Act
+            bool res = txt.StartsWithAnyOf(args);
+
+            // Assert
+            Assert.IsTrue(res);
+        }
+        [Test]
+        public void StartsWithAnyOf_ForInvalidTxt_ReturnsFalse()
+        {
+            // Arrange
+            string txt = "/controller/action";
+            string[] args = new string[] { "/tz", "/us", "/ke" };
+
+            // Act
+            bool res = txt.StartsWithAnyOf(args);
+
+            // Assert
+            Assert.IsFalse(res);
         }
     }
 }
