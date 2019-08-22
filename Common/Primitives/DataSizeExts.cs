@@ -13,7 +13,6 @@ namespace Common.Primitives
         /// Base 10.
         /// </summary>
         public const int Ten = 10;
-
         /// <summary>
         /// Size of 1 KB in Bytes.
         /// </summary>
@@ -77,5 +76,61 @@ namespace Common.Primitives
                 value.ConvertData(format.Value, precision).ToCommaSeparated(precision),
                 format.Value.GetName());
         }
+        /// <summary>
+        /// Formats data byte(s) to human readable format appending the appropriate <see cref="DataFormat"/>
+        /// based on the bytes size.
+        /// </summary>
+        /// <param name="value">Bytes length/count.</param>
+        /// <param name="precision">Number of decimal places.</param>
+        /// <returns>Formatted data string.</returns>
+        public static string HumanizeData(this long value, int precision = 2) => value.HumanizeData(null, precision);
+        /// <summary>
+        /// Formats data byte(s) to human readable format appending the appropriate <see cref="DataFormat"/>
+        /// based on the bytes size.
+        /// </summary>
+        /// <param name="value">Bytes length/count.</param>
+        /// <param name="precision">Number of decimal places.</param>
+        /// <returns>Formatted data string.</returns>
+        public static string FormatDataSize(this long value, DataFormat? format = null, int precision = 2) => value.HumanizeData(format, precision);
+        /// <summary>
+        /// Formats data byte(s) to human readable format appending the appropriate <see cref="DataFormat"/>
+        /// based on the bytes size.
+        /// </summary>
+        /// <param name="value">Bytes length/count.</param>
+        /// <param name="precision">Number of decimal places.</param>
+        /// <returns>Formatted data string.</returns>
+        public static string FormatDataSize(this long value, int precision = 2) => value.HumanizeData(null, precision);
+        /// <summary>
+        /// Formats data byte(s) to human readable format appending the appropriate <see cref="DataFormat"/>
+        /// based on the bytes size.
+        /// </summary>
+        /// <param name="value">Bytes length/count.</param>
+        /// <param name="precision">Number of decimal places.</param>
+        /// <returns>Formatted data string.</returns>
+        public static string FormatBytes(this long value, DataFormat? format = null, int precision = 2) => value.HumanizeData(format, precision);
+        /// <summary>
+        /// Formats data byte(s) to human readable format appending the appropriate <see cref="DataFormat"/>
+        /// based on the bytes size.
+        /// </summary>
+        /// <param name="value">Bytes length/count.</param>
+        /// <param name="precision">Number of decimal places.</param>
+        /// <returns>Formatted data string.</returns>
+        public static string FormatBytes(this long value, int precision = 2) => value.HumanizeData(null, precision);
+        /// <summary>
+        /// Formats data byte(s) to human readable format appending the appropriate <see cref="DataFormat"/>
+        /// based on the bytes size.
+        /// </summary>
+        /// <param name="value">Bytes length/count.</param>
+        /// <param name="precision">Number of decimal places.</param>
+        /// <returns>Formatted data string.</returns>
+        public static string HumanizeBytes(this long value, DataFormat? format = null, int precision = 2) => value.HumanizeData(format, precision);
+        /// <summary>
+        /// Formats data byte(s) to human readable format appending the appropriate <see cref="DataFormat"/>
+        /// based on the bytes size.
+        /// </summary>
+        /// <param name="value">Bytes length/count.</param>
+        /// <param name="precision">Number of decimal places.</param>
+        /// <returns>Formatted data string.</returns>
+        public static string HumanizeBytes(this long value, int precision = 2) => value.HumanizeData(null, precision);
     }
 }
