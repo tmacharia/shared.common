@@ -71,6 +71,7 @@ Below is a list of methods that you can re-use in your code.
 #### Strings
 
 + `.IsValid()`
++ `.IsUpper()`
 + `.Has(string q)`
 + `.ContainsAnyOf(this string s, params string[] args)`
 + `.ContainsAll(this string s, params string[] args)`
@@ -95,6 +96,7 @@ Below is a list of methods that you can re-use in your code.
 + `.GetStringBefore(string end)`
 + `.ToStream()`
 + `.IsEmailValid()`
++ `.IsValidUrl()`
 + `.DeserializeTo<T>()`
 + `.IsValidUrlSlug()`
 + `.GenerateUrlSlug()`
