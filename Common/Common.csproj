@@ -12,7 +12,7 @@
     <PackageId>Shared.Common</PackageId>
     <Authors>Timothy Macharia</Authors>
     <Company>Neon Clouds</Company>
-    <Description>A lightweight .NET library with re-usable resources/software components and extension methods to increase developer productivity</Description>
+    <Description>A lightweight .NET library with re-usable resources/software components that can be shared among multiple application blocks or programs. It has a rich set of commonly used functions and methods with most of which are Extension Methods to assist software developers avoid re-writing code blocks and only focus on writing new features.</Description>
     <PackageReleaseNotes>
       - Updates Enum extenions.
       - Fixes bug in reflection extensions.
@@ -42,16 +42,18 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageVersion>1.1.10</PackageVersion>
+    <PackageVersion>1.2.1</PackageVersion>
     <AssemblyVersion>1.1.109</AssemblyVersion>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageLicenseFile></PackageLicenseFile>
+    <Language>en-US</Language>
     <LangVersion>7.3</LangVersion>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Product>Shared.Common</Product>
-    <Version>1.1.10</Version>
-    <ApplicationIcon></ApplicationIcon>
+    <Title>Common Shared Library</Title>
+    <Version>1.2.1</Version>
     <Win32Resource />
-    <AssemblyOriginatorKeyFile>SignKey.snk.pfx</AssemblyOriginatorKeyFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <AssemblyOriginatorKeyFile>PackageSigningKeyFile.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
@@ -197,13 +199,6 @@
     <PackageReference Include="System.Text.Encoding.CodePages">
       <Version>4.5.1</Version>
     </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="..\LICENSE">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net47'">
