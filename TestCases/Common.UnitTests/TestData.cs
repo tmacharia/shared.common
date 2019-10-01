@@ -20,6 +20,7 @@ namespace Common.UnitTests
 
         public static string[] CarNames = "Bmw,Audi,Golf".Split(',');
 
+        public static void Log(int n) => Log(n.ToString());
         public static void Log(string value) => Log("{0}", value);
         public static void Log(string format, params object[] args)
         {

@@ -24,15 +24,18 @@ namespace Common
         /// <returns>Array</returns>
         public static PropertyDescriptor[] GetPropertyDescriptors<TClass>(this TClass @class)
             where TClass : class {
-            PropertyDescriptorCollection collection;
+            PropertyDescriptorCollection props;
             if (_cache.ContainsKey(typeof(TClass)))
                 return _cache[typeof(TClass)].ToArray();
             else
-                collection = TypeDescriptor.GetProperties(typeof(TClass));
+                props = TypeDescriptor.GetProperties(typeof(TClass));
 
             List<PropertyDescriptor> properties = new List<PropertyDescriptor>();
-            for (int i = 0; i < collection.Count; i++) {
-                properties.Add(collection[i]);
+            for (int i = 0; i < props.Count; i++) {
+                Type prop = props[i].PropertyType;
+                if (prop.IsPublic && prop.IsSerializable) {
+                    properties.Add(props[i]);
+                }
             }
             _cache.Add(typeof(TClass), properties);
             return _cache[typeof(TClass)].ToArray();
@@ -177,7 +180,7 @@ namespace Common
         /// <param name="class">Model class</param>
         /// <param name="prop">Property Name</param>
         /// <returns><see cref="PropertyDescriptor"/></returns>
-        public static PropertyDescriptor GetDescriptor<TClass>(this TClass @class, string prop)
+        private static PropertyDescriptor GetDescriptor<TClass>(this TClass @class, string prop)
             where TClass : class => GetPropertyDescriptors(@class).FirstOrDefault(x => x.Name == prop);
 
         /// <summary>
@@ -188,7 +191,7 @@ namespace Common
         /// <param name="class"></param>
         /// <param name="prop"></param>
         /// <returns></returns>
-        public static IEnumerable<TAttribute> GetAttributes<TClass, TAttribute>(this TClass @class, string prop)
+        private static IEnumerable<TAttribute> GetAttributes<TClass, TAttribute>(this TClass @class, string prop)
             where TClass : class
             where TAttribute : Attribute {
             List<TAttribute> attributes = new List<TAttribute>();

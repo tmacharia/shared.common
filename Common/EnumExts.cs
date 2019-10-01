@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Common
 {
@@ -43,6 +44,7 @@ namespace Common
             
             return Enum.GetName(enumType, valueToCheck);
         }
+
         /// <summary>
         /// Returns all the items defined in an <see cref="Enum"/> as a 
         /// dictionary collection of key value pairs.

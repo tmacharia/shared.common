@@ -6,7 +6,7 @@
       netcoreapp2.2;netcoreapp2.1;netcoreapp2.0;
       net472;net471;net47;net462;net461;net452;net451;net45;
       <!--uap10.0.16299;uap10.0.17134;uap10.0.17763;uap10.0.18362;-->
-      Xamarin.iOS10;
+      <!--Xamarin.iOS10;-->
     </TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>Shared.Common</PackageId>
@@ -14,36 +14,44 @@
     <Company>Neon Clouds</Company>
     <Description>A lightweight .NET library with re-usable resources/software components and extension methods to increase developer productivity</Description>
     <PackageReleaseNotes>
-      - Updates Format/Humanize DataSize/Bytes methods.
+      - Updates Enum extenions.
+      - Fixes bug in reflection extensions.
       - Updates &amp; fixes bug with .ToMoment; DataTime extension methods.
-      - Adds Resource language definitions for EN,FR,JP
+      - Adds Resource language definitions for Spanish(es)
     </PackageReleaseNotes>
     <Copyright>© Neon Clouds, 2017</Copyright>
     <PackageLicense>https://github.com/tmacharia/Shared.Common/blob/master/LICENSE</PackageLicense>
     <PackageProjectUrl>https://github.com/tmacharia/Shared.Common</PackageProjectUrl>
-    <PackageIconUrl>https://raw.githubusercontent.com/tmacharia/Shared.Common/master/Docs/logo.png</PackageIconUrl>
+    <PackageIcon>logo.png</PackageIcon>
     <RepositoryUrl>https://github.com/tmacharia/Shared.Common</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>common, shared, productivity, reuse, helpers, extensions, methods</PackageTags>
+    <PackageTags>common, shared, productivity, reuse, helpers, extensions, methods, tools, library</PackageTags>
     <NeutralLanguage>en-US</NeutralLanguage>
     <SignAssembly>false</SignAssembly>
     <DelaySign>false</DelaySign>
     <DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
     <Platforms>AnyCPU;x64;x86</Platforms>
   </PropertyGroup>
-
+  <ItemGroup>
+    <Content Include="img\logo.png" Pack="true" PackagePath="\">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <PropertyGroup>
     <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageVersion>1.1.9</PackageVersion>
-    <AssemblyVersion>1.0.89</AssemblyVersion>
+    <PackageVersion>1.1.10</PackageVersion>
+    <AssemblyVersion>1.1.109</AssemblyVersion>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <LangVersion>7.3</LangVersion>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Product>Shared.Common</Product>
-    <Version>1.1.6</Version>
+    <Version>1.1.10</Version>
+    <ApplicationIcon></ApplicationIcon>
+    <Win32Resource />
+    <AssemblyOriginatorKeyFile>SignKey.snk.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
@@ -107,14 +115,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Language\Resources.fr.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Language\Resources.jp.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Language\Resources.resx">
-      <Generator></Generator>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   
@@ -225,6 +228,14 @@
     <PackageReference Include="System.Text.Encoding.CodePages">
       <Version>4.5.1</Version>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <Target Name="FixAL1703Warning" BeforeTargets="GenerateSatelliteAssemblies" Condition="'$(PlatformTarget)' == 'x64'">

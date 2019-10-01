@@ -89,6 +89,7 @@ namespace Common.Primitives
         /// based on the bytes size.
         /// </summary>
         /// <param name="value">Bytes length/count.</param>
+        /// <param name="format"></param>
         /// <param name="precision">Number of decimal places.</param>
         /// <returns>Formatted data string.</returns>
         public static string FormatDataSize(this long value, DataFormat? format = null, int precision = 2) => value.HumanizeData(format, precision);
@@ -105,6 +106,7 @@ namespace Common.Primitives
         /// based on the bytes size.
         /// </summary>
         /// <param name="value">Bytes length/count.</param>
+        /// <param name="format"></param>
         /// <param name="precision">Number of decimal places.</param>
         /// <returns>Formatted data string.</returns>
         public static string FormatBytes(this long value, DataFormat? format = null, int precision = 2) => value.HumanizeData(format, precision);
@@ -121,6 +123,7 @@ namespace Common.Primitives
         /// based on the bytes size.
         /// </summary>
         /// <param name="value">Bytes length/count.</param>
+        /// <param name="format"></param>
         /// <param name="precision">Number of decimal places.</param>
         /// <returns>Formatted data string.</returns>
         public static string HumanizeBytes(this long value, DataFormat? format = null, int precision = 2) => value.HumanizeData(format, precision);
