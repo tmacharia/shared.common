@@ -12,6 +12,6 @@ jobs:
     - name: Restoring nuget packages...
       run: dotnet restore
     - name: Build Solution.
-      run: dotnet build
+      run: dotnet build --framework netstandard2.0
     - name: Running Test Cases...
       run: dotnet test
