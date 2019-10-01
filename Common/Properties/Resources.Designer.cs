@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Common.Language {
+namespace Common.Properties {
     using System;
     
     
@@ -19,10 +19,10 @@ namespace Common.Language {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources {
+    internal class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,10 +36,10 @@ namespace Common.Language {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager(typeof(Resources));
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Common.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace Common.Language {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace Common.Language {
         /// <summary>
         ///   Looks up a localized string similar to days.
         /// </summary>
-        public static string Days {
+        internal static string Days {
             get {
                 return ResourceManager.GetString("Days", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace Common.Language {
         /// <summary>
         ///   Looks up a localized string similar to days ago.
         /// </summary>
-        public static string DaysAgo {
+        internal static string DaysAgo {
             get {
                 return ResourceManager.GetString("DaysAgo", resourceCulture);
             }
@@ -81,16 +81,16 @@ namespace Common.Language {
         /// <summary>
         ///   Looks up a localized string similar to hrs.
         /// </summary>
-        public static string Hours {
+        internal static string Hours {
             get {
                 return ResourceManager.GetString("Hours", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to hours ago.
+        ///   Looks up a localized string similar to hrs ago.
         /// </summary>
-        public static string HoursAgo {
+        internal static string HoursAgo {
             get {
                 return ResourceManager.GetString("HoursAgo", resourceCulture);
             }
@@ -99,16 +99,16 @@ namespace Common.Language {
         /// <summary>
         ///   Looks up a localized string similar to in.
         /// </summary>
-        public static string In {
+        internal static string In {
             get {
                 return ResourceManager.GetString("In", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to in 1 hour.
+        ///   Looks up a localized string similar to in 1 hr.
         /// </summary>
-        public static string InOneHr {
+        internal static string InOneHr {
             get {
                 return ResourceManager.GetString("InOneHr", resourceCulture);
             }
@@ -117,25 +117,43 @@ namespace Common.Language {
         /// <summary>
         ///   Looks up a localized string similar to in 1 min.
         /// </summary>
-        public static string InOneMin {
+        internal static string InOneMin {
             get {
                 return ResourceManager.GetString("InOneMin", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to in 1 month.
+        /// </summary>
+        internal static string InOneMonth {
+            get {
+                return ResourceManager.GetString("InOneMonth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to in 1 sec.
         /// </summary>
-        public static string InOneSec {
+        internal static string InOneSec {
             get {
                 return ResourceManager.GetString("InOneSec", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to In 1 yr.
+        /// </summary>
+        internal static string InOneYear {
+            get {
+                return ResourceManager.GetString("InOneYear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to just now.
         /// </summary>
-        public static string JustNow {
+        internal static string JustNow {
             get {
                 return ResourceManager.GetString("JustNow", resourceCulture);
             }
@@ -144,7 +162,7 @@ namespace Common.Language {
         /// <summary>
         ///   Looks up a localized string similar to mins.
         /// </summary>
-        public static string Mins {
+        internal static string Mins {
             get {
                 return ResourceManager.GetString("Mins", resourceCulture);
             }
@@ -153,7 +171,7 @@ namespace Common.Language {
         /// <summary>
         ///   Looks up a localized string similar to mins ago.
         /// </summary>
-        public static string MinsAgo {
+        internal static string MinsAgo {
             get {
                 return ResourceManager.GetString("MinsAgo", resourceCulture);
             }
@@ -162,7 +180,7 @@ namespace Common.Language {
         /// <summary>
         ///   Looks up a localized string similar to months.
         /// </summary>
-        public static string Months {
+        internal static string Months {
             get {
                 return ResourceManager.GetString("Months", resourceCulture);
             }
@@ -171,7 +189,7 @@ namespace Common.Language {
         /// <summary>
         ///   Looks up a localized string similar to months ago.
         /// </summary>
-        public static string MonthsAgo {
+        internal static string MonthsAgo {
             get {
                 return ResourceManager.GetString("MonthsAgo", resourceCulture);
             }
@@ -180,16 +198,16 @@ namespace Common.Language {
         /// <summary>
         ///   Looks up a localized string similar to ms.
         /// </summary>
-        public static string Ms {
+        internal static string Ms {
             get {
                 return ResourceManager.GetString("Ms", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1 hour ago.
+        ///   Looks up a localized string similar to 1 hr ago.
         /// </summary>
-        public static string OneHrAgo {
+        internal static string OneHrAgo {
             get {
                 return ResourceManager.GetString("OneHrAgo", resourceCulture);
             }
@@ -198,25 +216,43 @@ namespace Common.Language {
         /// <summary>
         ///   Looks up a localized string similar to 1 min ago.
         /// </summary>
-        public static string OneMinAgo {
+        internal static string OneMinAgo {
             get {
                 return ResourceManager.GetString("OneMinAgo", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 1 month ago.
+        /// </summary>
+        internal static string OneMonthAgo {
+            get {
+                return ResourceManager.GetString("OneMonthAgo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 1 sec ago.
         /// </summary>
-        public static string OneSecAgo {
+        internal static string OneSecAgo {
             get {
                 return ResourceManager.GetString("OneSecAgo", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 1 yr ago.
+        /// </summary>
+        internal static string OneYearAgo {
+            get {
+                return ResourceManager.GetString("OneYearAgo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to secs.
         /// </summary>
-        public static string Secs {
+        internal static string Secs {
             get {
                 return ResourceManager.GetString("Secs", resourceCulture);
             }
@@ -225,7 +261,7 @@ namespace Common.Language {
         /// <summary>
         ///   Looks up a localized string similar to secs ago.
         /// </summary>
-        public static string SecsAgo {
+        internal static string SecsAgo {
             get {
                 return ResourceManager.GetString("SecsAgo", resourceCulture);
             }
@@ -234,7 +270,7 @@ namespace Common.Language {
         /// <summary>
         ///   Looks up a localized string similar to tomorrow.
         /// </summary>
-        public static string Tomorrow {
+        internal static string Tomorrow {
             get {
                 return ResourceManager.GetString("Tomorrow", resourceCulture);
             }
@@ -243,7 +279,7 @@ namespace Common.Language {
         /// <summary>
         ///   Looks up a localized string similar to yrs.
         /// </summary>
-        public static string Years {
+        internal static string Years {
             get {
                 return ResourceManager.GetString("Years", resourceCulture);
             }
@@ -252,7 +288,7 @@ namespace Common.Language {
         /// <summary>
         ///   Looks up a localized string similar to yrs ago.
         /// </summary>
-        public static string YearsAgo {
+        internal static string YearsAgo {
             get {
                 return ResourceManager.GetString("YearsAgo", resourceCulture);
             }
@@ -261,7 +297,7 @@ namespace Common.Language {
         /// <summary>
         ///   Looks up a localized string similar to yesterday.
         /// </summary>
-        public static string Yesterday {
+        internal static string Yesterday {
             get {
                 return ResourceManager.GetString("Yesterday", resourceCulture);
             }

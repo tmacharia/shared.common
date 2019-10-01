@@ -144,6 +144,9 @@
   <data name="InOneSec" xml:space="preserve">
     <value>dans 1 sec</value>
   </data>
+  <data name="InOneYear" xml:space="preserve">
+    <value>Dans 1 an</value>
+  </data>
   <data name="JustNow" xml:space="preserve">
     <value>juste maintenant</value>
   </data>
@@ -173,6 +176,9 @@
   </data>
   <data name="OneSecAgo" xml:space="preserve">
     <value>Il y a 1 seconde</value>
+  </data>
+  <data name="OneYearAgo" xml:space="preserve">
+    <value>Il y a 1 an</value>
   </data>
   <data name="Secs" xml:space="preserve">
     <value>les secondes</value>

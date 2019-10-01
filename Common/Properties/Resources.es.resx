@@ -118,78 +118,84 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Days" xml:space="preserve">
-    <value>日々</value>
+    <value>dias</value>
   </data>
   <data name="DaysAgo" xml:space="preserve">
-    <value>数日前</value>
+    <value>hace días</value>
   </data>
   <data name="Hours" xml:space="preserve">
-    <value>時間</value>
+    <value>horas</value>
   </data>
   <data name="HoursAgo" xml:space="preserve">
-    <value>数時間前</value>
+    <value>hace horas</value>
   </data>
   <data name="In" xml:space="preserve">
-    <value>に</value>
+    <value>en</value>
   </data>
   <data name="InOneHr" xml:space="preserve">
-    <value>1時間で</value>
+    <value>en 1 hora</value>
   </data>
   <data name="InOneMin" xml:space="preserve">
-    <value>1分で</value>
+    <value>en 1 min</value>
   </data>
   <data name="InOneMonth" xml:space="preserve">
-    <value>1ヶ月で</value>
+    <value>en 1 mes</value>
   </data>
   <data name="InOneSec" xml:space="preserve">
-    <value>1秒で</value>
+    <value>en 1 seg</value>
+  </data>
+  <data name="InOneYear" xml:space="preserve">
+    <value>En 1 año</value>
   </data>
   <data name="JustNow" xml:space="preserve">
-    <value>ちょうど今</value>
+    <value>justo ahora</value>
   </data>
   <data name="Mins" xml:space="preserve">
-    <value>数分</value>
+    <value>minutos</value>
   </data>
   <data name="MinsAgo" xml:space="preserve">
-    <value>数分前</value>
+    <value>hace minutos</value>
   </data>
   <data name="Months" xml:space="preserve">
-    <value>ヶ月</value>
+    <value>meses</value>
   </data>
   <data name="MonthsAgo" xml:space="preserve">
-    <value>数か月前</value>
+    <value>Hace meses</value>
   </data>
   <data name="Ms" xml:space="preserve">
     <value>ms</value>
   </data>
   <data name="OneHrAgo" xml:space="preserve">
-    <value>1時間前</value>
+    <value>Hace 1 hora</value>
   </data>
   <data name="OneMinAgo" xml:space="preserve">
-    <value>1分前</value>
+    <value>Hace 1 minuto</value>
   </data>
   <data name="OneMonthAgo" xml:space="preserve">
-    <value>1ヶ月前</value>
+    <value>Hace 1 mes</value>
   </data>
   <data name="OneSecAgo" xml:space="preserve">
-    <value>1秒前</value>
+    <value>Hace 1 segundo</value>
+  </data>
+  <data name="OneYearAgo" xml:space="preserve">
+    <value>Hace 1 año</value>
   </data>
   <data name="Secs" xml:space="preserve">
-    <value>秒</value>
+    <value>segundos</value>
   </data>
   <data name="SecsAgo" xml:space="preserve">
-    <value>秒前</value>
+    <value>hace segundos</value>
   </data>
   <data name="Tomorrow" xml:space="preserve">
-    <value>明日</value>
+    <value>mañana</value>
   </data>
   <data name="Years" xml:space="preserve">
-    <value>年</value>
+    <value>años</value>
   </data>
   <data name="YearsAgo" xml:space="preserve">
-    <value>数年前</value>
+    <value>hace años que</value>
   </data>
   <data name="Yesterday" xml:space="preserve">
-    <value>昨日</value>
+    <value>ayer</value>
   </data>
 </root>
