@@ -22,7 +22,7 @@
     <Copyright>© Neon Clouds, 2017</Copyright>
     <PackageLicense>https://github.com/tmacharia/Shared.Common/blob/master/LICENSE</PackageLicense>
     <PackageProjectUrl>https://github.com/tmacharia/Shared.Common</PackageProjectUrl>
-    <PackageIconUrl>https://raw.githubusercontent.com/tmacharia/Shared.Common/master/Docs/logo.png</PackageIconUrl>
+    <PackageIcon>logo.png</PackageIcon>
     <RepositoryUrl>https://github.com/tmacharia/Shared.Common</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>common, shared, productivity, reuse, helpers, extensions, methods, tools, library</PackageTags>
@@ -32,7 +32,11 @@
     <DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
     <Platforms>AnyCPU;x64;x86</Platforms>
   </PropertyGroup>
-
+  <ItemGroup>
+    <Content Include="img\logo.png" Pack="true" PackagePath="\">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <PropertyGroup>
     <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
   </PropertyGroup>
@@ -45,6 +49,9 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Product>Shared.Common</Product>
     <Version>1.1.10</Version>
+    <ApplicationIcon></ApplicationIcon>
+    <Win32Resource />
+    <AssemblyOriginatorKeyFile>SignKey.snk.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
