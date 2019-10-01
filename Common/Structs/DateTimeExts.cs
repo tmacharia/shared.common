@@ -1,5 +1,5 @@
-﻿using Common.Language;
-using System;
+﻿using System;
+using Common.Properties;
 
 namespace Common.Structs
 {
@@ -86,6 +86,7 @@ namespace Common.Structs
         /// Converts a <see cref="TimeSpan"/> to human-readable format.
         /// </summary>
         /// <param name="span">Timespan instance.</param>
+        /// <param name="isInThePast"></param>
         /// <returns>Moment time.</returns>
         /// <exception cref="ArgumentNullException"></exception>
         public static string ToMoment(this TimeSpan span, bool isInThePast=true)
@@ -100,11 +101,11 @@ namespace Common.Structs
             if (delta < OneMin) return isInThePast ? $"{span.Seconds} {Resources.SecsAgo}" : $"{Resources.In} {span.Seconds} {Resources.Secs}";
 
             // Minutes
-            if (delta == OneMin) return isInThePast ? Resources.OneMinAgo : Resources.InOneMin;
+            if (delta > OneMin && delta < OneMin * 2) return isInThePast ? Resources.OneMinAgo : Resources.InOneMin;
             if (delta > OneMin && delta < OneHr) return isInThePast ? $"{span.Minutes} {Resources.MinsAgo}" : $"{Resources.In} {span.Minutes} {Resources.Mins}";
 
             // Hours
-            if (delta == OneHr) return isInThePast ? Resources.OneHrAgo : Resources.InOneHr;
+            if (delta > OneHr && delta < OneHr * 2) return isInThePast ? Resources.OneHrAgo : Resources.InOneHr;
             if (delta > OneHr && delta < OneDay) return isInThePast ? $"{span.Hours} {Resources.HoursAgo}" : $"{Resources.In} {span.Hours} {Resources.Hours}";
 
             // Days
@@ -113,12 +114,12 @@ namespace Common.Structs
             if (delta > OneDay && delta < OneMonth) return isInThePast ? $"{days} {Resources.DaysAgo}" : $"{Resources.In} {days} {Resources.Days}";
 
             // Months
-            if (delta == OneMonth || (delta > OneMonth && delta < OneMonth * 2)) return isInThePast ? "1 month ago" : "In 1 month";
+            if (delta == OneMonth || (delta > OneMonth && delta < OneMonth * 2)) return isInThePast ? Resources.OneMonthAgo : Resources.InOneMonth;
             int months = (int)(delta / OneMonth);
             if (delta > OneMonth && delta < OneYear) return isInThePast ? $"{months} {Resources.MonthsAgo}" : $"{Resources.In} {months} {Resources.Months}";
 
             int yrs = (int)(delta / OneYear);
-            if (yrs == 1) return isInThePast ? "1 yr ago" : "In 1 yr";
+            if (yrs == 1) return isInThePast ? Resources.OneYearAgo : Resources.InOneYear;
             return isInThePast ? $"{yrs} {Resources.YearsAgo}" : $"{Resources.In} {yrs} {Resources.Years}";
         }
     }
