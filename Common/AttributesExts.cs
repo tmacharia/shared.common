@@ -1,4 +1,5 @@
 ﻿using Common.Attributes;
+using System;
 using System.ComponentModel;
 using System.Reflection;
 
@@ -15,7 +16,7 @@ namespace Common
         /// <typeparam name="T"></typeparam>
         /// <param name="source">Property</param>
         /// <returns>Value of symbol.</returns>
-        public static string GetSymbolAttribute<T>(this T source)
+        public static string GetSymbolAttribute<T>(this T source) where T : Enum
         {
             FieldInfo fi = null;
 #if NETSTANDARD1_5 || NETSTANDARD1_6
@@ -36,7 +37,7 @@ namespace Common
         /// <typeparam name="T"></typeparam>
         /// <param name="source">Property</param>
         /// <returns>Value of Description</returns>
-        public static string DescriptionAttr<T>(this T source)
+        public static string DescriptionAttr<T>(this T source) where T : Enum
         {
             FieldInfo fi = null;
 #if NETSTANDARD1_5 || NETSTANDARD1_6
