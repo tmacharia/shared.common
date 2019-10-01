@@ -83,7 +83,27 @@ namespace Common
         /// <param name="s"></param>
         /// <returns></returns>
         public static bool IsValidNumber(this string s)
-            => int.TryParse(s, out int n);
+            => int.TryParse(s, out _);
+        /// <summary>
+        /// Checks if a <see cref="string"/> is all in uppercase
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static bool IsUpper(this string s)
+        {
+            if (s.IsValid())
+            {
+                int upperCount = 0;
+                char[] vs = s.ToCharArray().Where(c => !char.IsWhiteSpace(c)).ToArray();
+                vs.ForEach(c =>
+                {
+                    if (char.IsUpper(c))
+                        upperCount++;
+                });
+                return upperCount == vs.Length;
+            }
+            return false;
+        }
         /// <summary>
         /// Converts a text <see cref="string"/> to an <see cref="int"/>
         /// </summary>
@@ -444,6 +464,22 @@ namespace Common
             {
                 return false;
             }
+        }
+        /// <summary>
+        /// Evaluates if a <see cref="string"/> if a valid Url address.
+        /// </summary>
+        /// <param name="url">Text to analyze.</param>
+        /// <returns>True of false</returns>
+        public static bool IsValidUrl(string url)
+        {
+            if (url.IsValid())
+            {
+                bool valid_1 = Uri.IsWellFormedUriString(url, UriKind.Absolute);
+                bool valid_2 = Regex.IsMatch(url, Constants.UrlRegex);
+
+                return valid_1 || valid_2;
+            }
+            return false;
         }
         /// <summary>
         /// Evaluates if a <see cref="string"/> of text is a valid Sluggish text for
