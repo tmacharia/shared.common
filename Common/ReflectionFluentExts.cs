@@ -93,25 +93,22 @@ namespace Common
         {
             if (expression == null)
                 throw new ArgumentException("Expression cannot be null when getting object member name.");
+            // Reference type property or field
 
-            if (expression is MemberExpression)
+            if (expression is MemberExpression memberExpression)
             {
-                // Reference type property or field
-                var memberExpression = (MemberExpression)expression;
                 return memberExpression.Member.Name;
             }
+            // Reference type method
 
-            if (expression is MethodCallExpression)
+            if (expression is MethodCallExpression methodCallExpression)
             {
-                // Reference type method
-                var methodCallExpression = (MethodCallExpression)expression;
                 return methodCallExpression.Method.Name;
             }
+            // Property, field of method returning value type
 
-            if (expression is UnaryExpression)
+            if (expression is UnaryExpression unaryExpression)
             {
-                // Property, field of method returning value type
-                var unaryExpression = (UnaryExpression)expression;
                 return GetMemberName(unaryExpression);
             }
 
@@ -119,9 +116,8 @@ namespace Common
         }
         private static string GetMemberName(UnaryExpression unaryExpression)
         {
-            if (unaryExpression.Operand is MethodCallExpression)
+            if (unaryExpression.Operand is MethodCallExpression methodExpression)
             {
-                var methodExpression = (MethodCallExpression)unaryExpression.Operand;
                 return methodExpression.Method.Name;
             }
 
