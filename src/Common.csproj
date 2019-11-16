@@ -42,7 +42,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageVersion>1.3.0</PackageVersion>
+    <PackageVersion>1.3.1</PackageVersion>
     <AssemblyVersion>1.1.109</AssemblyVersion>
     <PackageLicenseFile></PackageLicenseFile>
     <Language>en-US</Language>
@@ -50,7 +50,7 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Product>Shared.Common</Product>
     <Title>Common Shared Library</Title>
-    <Version>1.3.0-rc</Version>
+    <Version>1.3.1</Version>
     <Win32Resource />
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <AssemblyOriginatorKeyFile>PackageSigningKeyFile.pfx</AssemblyOriginatorKeyFile>
