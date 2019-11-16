@@ -1,5 +1,4 @@
 ﻿using Common.Enums;
-using Microsoft.Win32;
 using System;
 using System.Globalization;
 using System.Text;
@@ -12,14 +11,10 @@ namespace Common
     /// </summary>
     public static class Constants
     {
-        private static string _currentGeoName = string.Empty;
-        private static RegionInfo _region = null;
-
         /// <summary>
         /// Trailing text to append to shortened text.
         /// </summary>
         public const string TrailingText = "...";
-
         /// <summary>
         /// String Comparison Ordinal.
         /// </summary>
@@ -31,54 +26,21 @@ namespace Common
         /// <summary>
         /// Current UI Thread <see cref="CultureInfo"/>
         /// </summary>
-        public static CultureInfo Culture => CultureInfo.CurrentUICulture;
+        public static CultureInfo Culture => Properties.Resources.Culture;
         /// <summary>
         /// Gets the current <see cref="RegionInfo"/>
         /// </summary>
-        public static RegionInfo Region
-        {
-            get
-            {
-                if (_region == null)
-                    _region = new RegionInfo(CurrentGeoName);
-                return _region;
-            }
-        }
+        [Obsolete("Consider migrating to 'ZoneExts.Region' as this properties will be removed from here soon")]
+        public static RegionInfo Region => ZoneExts.Region;
         /// <summary>
         /// Current Country
         /// </summary>
-        public static Country CurrentCountry
-            => (Country)Enum.Parse(typeof(Country), CurrentGeoName);
+        [Obsolete("Consider migrating to 'ZoneExts.CurrentCountry' as this properties will be removed from here soon")]
+        public static Country CurrentCountry => ZoneExts.CurrentCountry;
         /// <summary>
         /// Base UTF8 Encoding to re-use.
         /// </summary>
         public static Encoding Encoding { get; } = new UTF8Encoding();
-        /// <summary>
-        /// Current International Geographical Name
-        /// </summary>
-        private static string CurrentGeoName
-        {
-            get
-            {
-                lock (_currentGeoName)
-                {
-                    if (!_currentGeoName.IsValid())
-                        _currentGeoName = GetCurrentGeoName();
-                    return _currentGeoName;
-                }
-            }
-        }
-        /// <summary>
-        /// Gets the Current International Geographical Name
-        /// </summary>
-        /// <returns></returns>
-        private static string GetCurrentGeoName()
-        {
-            var regKeyGeoId = Registry.CurrentUser.OpenSubKey(@"Control Panel\International\Geo");
-            string x = (string)regKeyGeoId.GetValue("Name");
-            return x;
-        }
-
         /// <summary>
         /// Regex expression to verify valid email addresses.
         /// </summary>
