@@ -12,7 +12,7 @@
     <PackageId>Shared.Common</PackageId>
     <Authors>Timothy Macharia</Authors>
     <Company>Neon Clouds</Company>
-    <Description>A lightweight .NET library with re-usable resources/software components and extension methods to increase developer productivity</Description>
+    <Description>A lightweight .NET library with re-usable resources/software components that can be shared among multiple application blocks or programs. It has a rich set of commonly used functions and methods with most of which are Extension Methods to assist software developers avoid re-writing code blocks and only focus on writing new features.</Description>
     <PackageReleaseNotes>
       - Updates Enum extenions.
       - Fixes bug in reflection extensions.
@@ -42,32 +42,35 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageVersion>1.1.10</PackageVersion>
+    <!--<PackageVersion>1.3.0</PackageVersion>-->
     <AssemblyVersion>1.1.109</AssemblyVersion>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageLicenseFile></PackageLicenseFile>
+    <Language>en-US</Language>
     <LangVersion>7.3</LangVersion>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Product>Shared.Common</Product>
-    <Version>1.1.10</Version>
-    <ApplicationIcon></ApplicationIcon>
+    <Title>Common Shared Library</Title>
+    <Version>1.3.0-rc</Version>
     <Win32Resource />
-    <AssemblyOriginatorKeyFile>SignKey.snk.pfx</AssemblyOriginatorKeyFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <AssemblyOriginatorKeyFile>PackageSigningKeyFile.pfx</AssemblyOriginatorKeyFile>
+    <!--<FileVersion>1.3.0</FileVersion>-->
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
-    <DocumentationFile>F:\Repos\re-usable\Common\github\Common\bin\XmlDocumentation.xml</DocumentationFile>
+    <DocumentationFile></DocumentationFile>
     <OutputPath>bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|x86'">
-    <DocumentationFile>F:\Repos\re-usable\Common\github\Common\bin\XmlDocumentation.xml</DocumentationFile>
+    <DocumentationFile></DocumentationFile>
     <OutputPath>bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|x64'">
-    <DocumentationFile>F:\Repos\re-usable\Common\github\Common\bin\XmlDocumentation.xml</DocumentationFile>
+    <DocumentationFile></DocumentationFile>
     <OutputPath>bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
   </PropertyGroup>
@@ -76,157 +79,78 @@
     <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'uap10.0.16299'">
-    <PackageReference Include="Microsoft.Win32.Registry">
-      <Version>4.5.0</Version>
-    </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'uap10.0.17134'">
-    <PackageReference Include="Microsoft.Win32.Registry">
-      <Version>4.5.0</Version>
-    </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'uap10.0.17763'">
-    <PackageReference Include="Microsoft.Win32.Registry">
-      <Version>4.5.0</Version>
-    </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'uap10.0.18362'">
-    <PackageReference Include="Microsoft.Win32.Registry">
-      <Version>4.5.0</Version>
-    </PackageReference>
-  </ItemGroup>
-  
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
   <ItemGroup Condition="&#xD;&#xA;&#xD;&#xA;    '$(TargetFramework)' == 'net45' or &#xD;&#xA;&#xD;&#xA;    &#xD;&#xA;    '$(TargetFramework)' == 'net451' or &#xD;&#xA;&#xD;&#xA;    &#xD;&#xA;    '$(TargetFramework)' == 'net452' or &#xD;&#xA;&#xD;&#xA;&#xD;&#xA;    '$(TargetFramework)' == 'net46' or &#xD;&#xA;&#xD;&#xA;    &#xD;&#xA;    '$(TargetFramework)' == 'net461' or &#xD;&#xA; &#xD;&#xA;    &#xD;&#xA;    '$(TargetFramework)' == 'net462' or &#xD;&#xA; &#xD;&#xA;    &#xD;&#xA;    '$(TargetFramework)' == 'net47' or &#xD;&#xA; &#xD;&#xA;    &#xD;&#xA;    '$(TargetFramework)' == 'net471' or &#xD;&#xA; &#xD;&#xA;    &#xD;&#xA;    '$(TargetFramework)' == 'net472' or &#xD;&#xA; &#xD;&#xA;    &#xD;&#xA;    '$(TargetFramework)' == 'net48'">
     <Reference Include="System.Net.Http" />
   </ItemGroup>
 
-  <ItemGroup Condition="&#xD;&#xA;&#xD;&#xA;    &#xD;&#xA;    '$(TargetFramework)' == 'netstandard1.6' or &#xD;&#xA;&#xD;&#xA;    &#xD;&#xA;    &#xD;&#xA;    '$(TargetFramework)' == 'netstandard1.5'">
-    <PackageReference Include="System.Globalization.Extensions">
-      <Version>4.3.0</Version>
-    </PackageReference>
-  </ItemGroup>
-
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   
   <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.2'">
-    <PackageReference Include="Microsoft.Win32.Registry">
-      <Version>4.5.0</Version>
-    </PackageReference>
     <PackageReference Include="System.Text.Encoding.CodePages">
-      <Version>4.5.1</Version>
+      <Version>4.6.0</Version>
     </PackageReference>
   </ItemGroup>
   
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <PackageReference Include="Microsoft.Win32.Registry">
-      <Version>4.5.0</Version>
-    </PackageReference>
     <PackageReference Include="System.Text.Encoding.CodePages">
-      <Version>4.5.1</Version>
-    </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.6'">
-    <PackageReference Include="Microsoft.Win32.Registry">
-      <Version>4.5.0</Version>
-    </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.5'">
-    <PackageReference Include="Microsoft.Win32.Registry">
-      <Version>4.5.0</Version>
+      <Version>4.6.0</Version>
     </PackageReference>
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net461'">
-    <PackageReference Include="Microsoft.Win32.Registry">
-      <Version>4.5.0</Version>
-    </PackageReference>
     <PackageReference Include="System.Text.Encoding.CodePages">
-      <Version>4.5.1</Version>
+      <Version>4.6.0</Version>
     </PackageReference>
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net462'">
-    <PackageReference Include="Microsoft.Win32.Registry">
-      <Version>4.5.0</Version>
-    </PackageReference>
     <PackageReference Include="System.Text.Encoding.CodePages">
-      <Version>4.5.1</Version>
+      <Version>4.6.0</Version>
     </PackageReference>
   </ItemGroup>
   
-  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp1.0'">
-    <PackageReference Include="Microsoft.Win32.Registry">
-      <Version>4.5.0</Version>
-    </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp1.1'">
-    <PackageReference Include="Microsoft.Win32.Registry">
-      <Version>4.5.0</Version>
-    </PackageReference>
-  </ItemGroup>
-
   <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.1'">
-    <PackageReference Include="Microsoft.Win32.Registry">
-      <Version>4.5.0</Version>
-    </PackageReference>
     <PackageReference Include="System.Text.Encoding.CodePages">
-      <Version>4.5.1</Version>
+      <Version>4.6.0</Version>
     </PackageReference>
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.0'">
-    <PackageReference Include="Microsoft.Win32.Registry">
-      <Version>4.5.0</Version>
-    </PackageReference>
     <PackageReference Include="System.Text.Encoding.CodePages">
-      <Version>4.5.1</Version>
+      <Version>4.6.0</Version>
     </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="..\LICENSE">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net47'">
     <PackageReference Include="System.Text.Encoding.CodePages">
-      <Version>4.5.1</Version>
+      <Version>4.6.0</Version>
     </PackageReference>
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net471'">
     <PackageReference Include="System.Text.Encoding.CodePages">
-      <Version>4.5.1</Version>
+      <Version>4.6.0</Version>
     </PackageReference>
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net472'">
     <PackageReference Include="System.Text.Encoding.CodePages">
-      <Version>4.5.1</Version>
+      <Version>4.6.0</Version>
     </PackageReference>
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'Xamarin.iOS10'">
     <PackageReference Include="System.Text.Encoding.CodePages">
-      <Version>4.5.1</Version>
+      <Version>4.6.0</Version>
     </PackageReference>
   </ItemGroup>
 

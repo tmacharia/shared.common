@@ -7,7 +7,7 @@ namespace Common.Primitives
     /// </summary>
     public static class CurrencyExts
     {
-        private static readonly bool _useFormat = true;
+        private const bool _useFormat = true;
         #region Current Methods
         /// <summary>
         /// Formats a <see cref="decimal"/> number to Kenyan currency with precision
@@ -21,7 +21,7 @@ namespace Common.Primitives
         /// <returns>Formatted value as currency.</returns>
         public static string ToMoney(this decimal d, bool useFormat = true)
         {
-            return $"{Constants.CurrentCountry.GetSymbolAttribute()} " + (useFormat ? d.ToString(d % 1 == 0 ? "N0" : "N2", Constants.Culture) : d.ToString("N1", Constants.Culture));
+            return $"{ZoneExts.CurrentCountry.GetSymbolAttribute()} " + (useFormat ? d.ToString(d % 1 == 0 ? "N0" : "N2", Constants.Culture) : d.ToString("N1", Constants.Culture));
         }
         /// <summary>
         /// Formats a <see cref="decimal"/> number to Kenyan currency with precision
@@ -61,7 +61,7 @@ namespace Common.Primitives
         /// <returns>Formatted value as currency.</returns>
         public static string ToMoney(this double d, bool useFormat = true)
         {
-            return $"{Constants.CurrentCountry.GetSymbolAttribute()} " + (useFormat ? d.ToString(d % 1 == 0 ? "N0" : "N2", Constants.Culture) : d.ToString("N1", Constants.Culture));
+            return $"{ZoneExts.CurrentCountry.GetSymbolAttribute()} " + (useFormat ? d.ToString(d % 1 == 0 ? "N0" : "N2", Constants.Culture) : d.ToString("N1", Constants.Culture));
         }
         /// <summary>
         /// Formats a <see cref="double"/> number to Kenyan currency with precision
@@ -96,7 +96,7 @@ namespace Common.Primitives
         /// <returns>Formatted value as currency.</returns>
         public static string ToMoney(this int n)
         {
-            return $"{Constants.CurrentCountry.GetSymbolAttribute()} " + n.ToString(n % 1 == 0 ? "N0" : "N2", Constants.Culture);
+            return $"{ZoneExts.CurrentCountry.GetSymbolAttribute()} " + n.ToString(n % 1 == 0 ? "N0" : "N2", Constants.Culture);
         }
         /// <summary>
         /// Formats a <see cref="decimal"/> number to Kenyan currency.

@@ -6,7 +6,7 @@ namespace Common.Attributes
     /// Specifies a symbol for a property/field or event.
     /// </summary>
     [AttributeUsage(AttributeTargets.All)]
-    public class SymbolAttribute : Attribute
+    public sealed class SymbolAttribute : Attribute
     {
         /// <summary>
         /// Instanciates attributes with a symbol value.
@@ -14,7 +14,7 @@ namespace Common.Attributes
         /// <param name="symbolValue"></param>
         public SymbolAttribute(string symbolValue)
         {
-            if (symbolValue.IsValid())
+            if (!string.IsNullOrWhiteSpace(symbolValue))
                 Symbol = symbolValue;
         }
         /// <summary>

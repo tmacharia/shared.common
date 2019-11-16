@@ -42,18 +42,13 @@ namespace Common.Structs
         /// Returns a human readable and comprehensible time format to know the exact
         /// relative time in the past.
         /// </summary>
-        /// <param name="pastDate">This DateTime instance that should represent a time in the past
+        /// <param name="pastDate">This DateTime instance that should represent a time in the past</param>
         /// <param name="currentTime">Current datetime instance to compare to. If not specified
         /// <see cref="DateTime.Now"/> will be used by default.
         /// </param>
-        /// <param name="includeTime">Should the timestamp be included for differences of more than
-        /// two days. If unset, timestamp is included by default.
-        /// </param>
-        /// or the future.
-        /// </param>
         /// <returns>Human readable time</returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public static string ToMoment(this DateTime pastDate, DateTime? currentTime = null, bool includeTime = true)
+        public static string ToMoment(this DateTime pastDate, DateTime? currentTime = null)
         {
             if (pastDate == null)
                 throw new ArgumentNullException(nameof(pastDate));

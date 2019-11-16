@@ -14,9 +14,9 @@ namespace Common.UnitTests
         private readonly string EnumFile = $"{Local}Country.cs";
 
         // This is not a test
-        public void GetCurrentRegion()
+        public static void GetCurrentRegion()
         {
-            var rg = Constants.Region;
+            var rg = ZoneExts.Region;
             Console.WriteLine(
                 "Currency Symbol: {2}\n" +
                 "ISOCurrencySymbol: {3}\n" +
@@ -37,16 +37,16 @@ namespace Common.UnitTests
             PrintCulture(Constants.Culture);
         }
         // This is not a test
-        public void GetCurrentCountry()
+        public static void GetCurrentCountry()
         {
             // Act
-            var ct = Constants.CurrentCountry;
+            var ct = ZoneExts.CurrentCountry;
 
             Console.WriteLine(ct.ToString());
             Console.WriteLine(ct.GetSymbolAttribute());
         }
         // This is not a test
-        public void GetCultures()
+        public static void GetCultures()
         {
             //List<Country> countries = new List<Country>();
             //Country selector(CultureInfo x)

@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29006.145
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csproj", "{B7A6EC1B-C3D6-41CC-8B2B-27F6D6A18D7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "src\Common.csproj", "{B7A6EC1B-C3D6-41CC-8B2B-27F6D6A18D7E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestCases", "TestCases", "{B6341232-F724-44F9-8F8A-2D6650E00573}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.UnitTests", "TestCases\Common.UnitTests\Common.UnitTests.csproj", "{FC9926A0-5508-4C10-BA83-12795F895F33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.UnitTests", "tests\Common.UnitTests.csproj", "{FC9926A0-5508-4C10-BA83-12795F895F33}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2537A577-F0F0-4F9B-95B8-375415F8B782}"
 	ProjectSection(SolutionItems) = preProject
@@ -23,7 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{78329156-1769-4C9D-A983-95F7C95D766A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "docs", "{78329156-1769-4C9D-A983-95F7C95D766A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
