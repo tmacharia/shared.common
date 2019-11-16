@@ -13,6 +13,9 @@ jobs:
     - name: Setup MSBuild.exe
       uses: warrenbuckley/Setup-MSBuild@v1
       
-    - name: Restore Packages
+    - name: Restore Packages & Build
       working-directory: src
       run: msbuild -t:build -restore -verbosity:minimal
+
+    - name: Unit Testing
+      run: dotnet test tests/
