@@ -5,13 +5,14 @@ on: [push]
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     
     steps:
     - uses: actions/checkout@v1
-    - name: Restoring nuget packages...
-      run: dotnet restore
-    - name: Build Solution.
-      run: dotnet build --framework netcoreapp2.0
-    - name: Running Test Cases...
-      run: dotnet test
+      
+    - name: Setup MSBuild.exe
+      uses: warrenbuckley/Setup-MSBuild@v1
+      
+    - name: Restore Packages
+      working-directory: src
+      run: msbuild -t:build -restore -verbosity:minimal
