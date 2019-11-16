@@ -1,5 +1,5 @@
 <p align="center">
-  <img height="100" src="docs/logo.png" 
+  <img height="100" src="./docs/logo.png" 
 			 alt="Shared.Common logo" title="Shared.Common logo">
 </p>
 
