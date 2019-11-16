@@ -58,19 +58,19 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
-    <DocumentationFile>F:\Repos\re-usable\Common\github\Common\bin\XmlDocumentation.xml</DocumentationFile>
+    <DocumentationFile></DocumentationFile>
     <OutputPath>bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|x86'">
-    <DocumentationFile>F:\Repos\re-usable\Common\github\Common\bin\XmlDocumentation.xml</DocumentationFile>
+    <DocumentationFile></DocumentationFile>
     <OutputPath>bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|x64'">
-    <DocumentationFile>F:\Repos\re-usable\Common\github\Common\bin\XmlDocumentation.xml</DocumentationFile>
+    <DocumentationFile></DocumentationFile>
     <OutputPath>bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
   </PropertyGroup>
