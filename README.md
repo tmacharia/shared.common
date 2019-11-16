@@ -1,5 +1,5 @@
 <p align="center">
-  <img height="100" src="https://raw.githubusercontent.com/tmacharia/Shared.Common/master/docs/logo.png" 
+  <img height="100" src="https://raw.githubusercontent.com/tmacharia/Shared.Common/master/Docs/logo.png" 
 			 alt="Shared.Common logo" title="Shared.Common logo">
 </p>
 
