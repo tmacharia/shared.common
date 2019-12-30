@@ -1,8 +1,11 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace Common
 {
@@ -139,5 +142,97 @@ namespace Common
             double num = Math.Round(bytes / Math.Pow(1024, place), 1);
             return (Math.Sign(byteCount) * num).ToString() + suf[place];
         }
+
+        public static string ToHuman(this int n) => n.ToString("N0", Properties.Resources.Culture);
+        public static string ToHuman(this long n) => n.ToString("N0", Properties.Resources.Culture);
+        public static string ToHuman(this ulong n) => n.ToString("N0", Properties.Resources.Culture);
+        public static string ToHuman(this double d) => d.ToString("N0", Properties.Resources.Culture);
+        public static string ToHuman(this double d, int precision = 2) => d.ToString($"N{precision}", Properties.Resources.Culture);
+        public static string PadInt(this long? l) => l.HasValue ? PadInt((int)l.Value) : PadInt(0);
+        public static string PadInt(this long l) => PadInt((int)l);
+        public static string PadInt(this int n, bool padded = true) => padded ? n > 9 ? n.ToString("N0", Properties.Resources.Culture) : $"0{n}" : n.ToString(Properties.Resources.Culture);
+        public static string SecondsToMoment(this double d)
+        {
+            int hrs = (int)(d / (60 * 60));
+            if (hrs > 0)
+            {
+                return hrs == 1 ? "1 hr" : $"{hrs} hrs";
+            }
+            int mins = (int)(d / 60);
+            if (mins > 0)
+            {
+                return mins == 1 ? "1 min" : $"{mins} mins";
+            }
+            int secs = (int)d;
+            if (secs > 0)
+            {
+                return secs == 1 ? "1 sec" : $"{secs} secs";
+            }
+            return string.Empty;
+        }
+        public static string TimespanMoment(this TimeSpan span)
+        {
+            StringBuilder sb = new StringBuilder();
+            if (span.Hours > 0)
+            {
+                sb.Append(span.Hours);
+                sb.Append(" ");
+                sb.Append(span.Hours == 1 ? "hr" : "hrs");
+                sb.Append(" ");
+                sb.Append(span.Minutes);
+                sb.Append(" ");
+                sb.Append(span.Minutes == 1 ? "min" : "mins");
+            }
+            else if (span.Minutes > 0)
+            {
+                sb.Append(span.Minutes);
+                sb.Append(" ");
+                sb.Append(span.Minutes == 1 ? "min" : "mins");
+                sb.Append(" ");
+                sb.Append(span.Seconds);
+                sb.Append(" ");
+                sb.Append(span.Seconds == 1 ? "sec" : "secs");
+            }
+            else if (span.Seconds > 0)
+            {
+                sb.Append(span.Seconds);
+                sb.Append(" ");
+                sb.Append(span.Seconds == 1 ? "sec" : "secs");
+            }
+            return sb.ToString();
+        }
+        public static ObservableCollection<T> RemoveWherePredicate<T>(this ObservableCollection<T> ts, Func<T, bool> predicate)
+        {
+            int index = ts.GetIndexOf(predicate);
+            if (index > -1)
+            {
+                ts.RemoveAt(index);
+            }
+            return ts;
+        }
+        public static List<T> RemoveWherePredicate<T>(this List<T> ts, Func<T, bool> predicate)
+        {
+            int index = ts.GetIndexOf(predicate);
+            if (index > -1)
+            {
+                ts.RemoveAt(index);
+            }
+            return ts;
+        }
+        public static int GetIndexOf<T>(this IEnumerable<T> ts, Func<T, bool> predicate)
+        {
+            int total = ts.Count();
+            for (int i = 0; i < total - 1; i++)
+            {
+                var item = ts.ElementAt(i);
+                if (predicate(item))
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+        public static ObservableCollection<T> ToObservableCollection<T>(this IEnumerable<T> ts)
+            => new ObservableCollection<T>(ts);
     }
 }
