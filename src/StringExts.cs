@@ -100,6 +100,7 @@ namespace Common
             }
             return false;
         }
+        public static string ToTitleCase(this string s) => Properties.Resources.Culture.TextInfo.ToTitleCase(s);
         /// <summary>
         /// Converts a text <see cref="string"/> to an <see cref="int"/>
         /// </summary>
