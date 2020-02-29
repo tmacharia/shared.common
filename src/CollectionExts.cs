@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace Common
@@ -54,8 +55,28 @@ namespace Common
         /// <param name="enumerable">Collection to filter</param>
         /// <param name="predicate">Predicate of items to remove.</param>
         /// <returns>Filtered collection</returns>
+        public static IEnumerable<T> RemoveWherePredicate<T>(this IEnumerable<T> ts, Predicate<T> predicate)
+        {
+            int index = ts.GetIndexOf(predicate);
+            if (index > -1)
+            {
+                return ts.Where((item, i) => i != index);
+            }
+            return ts;
+        }
+        public static int GetIndexOf<T>(this IEnumerable<T> ts, Predicate<T> predicate)
+            => Array.FindIndex(ts.ToArray(), predicate);
+        /// <summary>
+        /// Remove all items in a collection that matches a specified predicate.
+        /// </summary>
+        /// <typeparam name="T">Item <see cref="Type"/></typeparam>
+        /// <param name="enumerable">Collection to filter</param>
+        /// <param name="predicate">Predicate of items to remove.</param>
+        /// <returns>Filtered collection</returns>
         public static IEnumerable<T> RemoveWhere<T>(this IEnumerable<T> enumerable, Func<T, bool> predicate)
                 => enumerable.IsNotNull() ? enumerable.Any(predicate) ?
                    enumerable.SkipWhile(predicate) : enumerable : null;
+        public static ObservableCollection<T> ToObservableCollection<T>(this IEnumerable<T> ts)
+            => new ObservableCollection<T>(ts);
     }
 }

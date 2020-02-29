@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Common
@@ -24,6 +25,22 @@ namespace Common
                 return s.Length > 0;
             }
             return false;
+        }
+        /// <summary>  
+        /// Removes all accents from the input string.  
+        /// </summary>  
+        /// <param name="text">The input string.</param>  
+        /// <returns></returns>  
+        public static string RemoveAccents(this string text)
+        {
+            if (!text.IsValid())
+                return text;
+
+            text = text.Normalize(NormalizationForm.FormD);
+            char[] chars = text.Where(c => CharUnicodeInfo.GetUnicodeCategory(c)
+                != UnicodeCategory.NonSpacingMark).ToArray();
+
+            return new string(chars).Normalize(NormalizationForm.FormC);
         }
         /// <summary>
         /// Checks if a <see cref="string"/> contains the specified query text
@@ -74,6 +91,18 @@ namespace Common
             return false;
         }
         /// <summary>
+        /// Checks if a string equals any of the strings specified.
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="args">Array of string items to lookup.</param>
+        /// <returns>True or false.</returns>
+        public static bool EqualsAnyOf(this string s, params string[] queries) {
+            if (queries != null && queries.Length > 0) {
+                return queries.Any(x => s.Equals(x));
+            }
+            return true;
+        }
+        /// <summary>
         /// Checks if a string a valid integer number.
         /// </summary>
         /// <param name="s"></param>
@@ -100,7 +129,15 @@ namespace Common
             }
             return false;
         }
-        public static string ToTitleCase(this string s) => Properties.Resources.Culture.TextInfo.ToTitleCase(s);
+        public static string ToTitleCase(this string s) => s.Capitalize();
+        public static string Capitalize(this string s)
+        {
+            if (s.IsValid())
+            {
+                return string.Join(" ", s.Split(' ').Select(x => $"{char.ToUpper(x[0])}{x.Substring(1, x.Length - 1)}")).TrimEnd();
+            }
+            return string.Empty;
+        }
         /// <summary>
         /// Converts a text <see cref="string"/> to an <see cref="int"/>
         /// </summary>

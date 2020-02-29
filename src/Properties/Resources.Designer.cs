@@ -79,6 +79,15 @@ namespace Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to hr.
+        /// </summary>
+        public static string Hour {
+            get {
+                return ResourceManager.GetString("Hour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to hrs.
         /// </summary>
         public static string Hours {
@@ -156,6 +165,15 @@ namespace Common.Properties {
         public static string JustNow {
             get {
                 return ResourceManager.GetString("JustNow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to min.
+        /// </summary>
+        public static string Min {
+            get {
+                return ResourceManager.GetString("Min", resourceCulture);
             }
         }
         
@@ -250,6 +268,15 @@ namespace Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to sec.
+        /// </summary>
+        public static string Sec {
+            get {
+                return ResourceManager.GetString("Sec", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to secs.
         /// </summary>
         public static string Secs {
@@ -264,6 +291,15 @@ namespace Common.Properties {
         public static string SecsAgo {
             get {
                 return ResourceManager.GetString("SecsAgo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to today.
+        /// </summary>
+        public static string Today {
+            get {
+                return ResourceManager.GetString("Today", resourceCulture);
             }
         }
         

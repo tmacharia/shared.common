@@ -123,6 +123,9 @@
   <data name="DaysAgo" xml:space="preserve">
     <value>days ago</value>
   </data>
+  <data name="Hour" xml:space="preserve">
+    <value>hr</value>
+  </data>
   <data name="Hours" xml:space="preserve">
     <value>hrs</value>
   </data>
@@ -149,6 +152,9 @@
   </data>
   <data name="JustNow" xml:space="preserve">
     <value>just now</value>
+  </data>
+  <data name="Min" xml:space="preserve">
+    <value>min</value>
   </data>
   <data name="Mins" xml:space="preserve">
     <value>mins</value>
@@ -180,11 +186,17 @@
   <data name="OneYearAgo" xml:space="preserve">
     <value>1 yr ago</value>
   </data>
+  <data name="Sec" xml:space="preserve">
+    <value>sec</value>
+  </data>
   <data name="Secs" xml:space="preserve">
     <value>secs</value>
   </data>
   <data name="SecsAgo" xml:space="preserve">
     <value>secs ago</value>
+  </data>
+  <data name="Today" xml:space="preserve">
+    <value>today</value>
   </data>
   <data name="Tomorrow" xml:space="preserve">
     <value>tomorrow</value>

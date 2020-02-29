@@ -73,7 +73,7 @@ namespace Common.Primitives
                 : value >= OneMb ? DataFormat.MB : DataFormat.KB;
             }
             return string.Format("{0} {1}",
-                value.ConvertData(format.Value, precision).ToCommaSeparated(precision),
+                value.ConvertData(format.Value, precision).ToHuman(precision),
                 format.Value.GetName());
         }
         /// <summary>
