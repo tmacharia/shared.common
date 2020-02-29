@@ -32,9 +32,7 @@ namespace Common
         /// </summary>
         /// <param name="isDisposing"></param>
         protected virtual void Dispose(bool isDisposing)
-        {
-
-        }
+        { }
         /// <summary>
         /// Calls the default dispose method on a object
         /// </summary>
@@ -52,7 +50,7 @@ namespace Common
                 if (method.IsNotNull())
                 {
                     method.Invoke(item, null);
-                    item = default(TItem);
+                    item = default;
                 }
             }
         }

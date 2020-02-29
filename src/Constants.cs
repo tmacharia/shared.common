@@ -1,6 +1,7 @@
 ﻿using Common.Enums;
 using System;
 using System.Globalization;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace Common
@@ -12,6 +13,10 @@ namespace Common
     public static class Constants
     {
         public static Random random = new Random();
+        /// <summary>
+        /// Instance of MD5 Hash Algorithm.
+        /// </summary>
+        public static MD5 md5 { get; } = MD5.Create();
         /// <summary>
         /// Trailing text to append to shortened text.
         /// </summary>

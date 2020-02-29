@@ -26,5 +26,11 @@ namespace Common.IO
         /// <param name="filepath">File path</param>
         /// <returns>Safe file path.</returns>
         public static string ToSafeFileName(string filepath) => FilenameRegex.Replace(filepath, "");
+        public static string CleanFileName(this string s)
+        {
+            Regex r = new Regex("[<>:|/\\?*\'\"]", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant | RegexOptions.Compiled);
+            string sanitized = r.Replace(s, "");
+            return sanitized;
+        }
     }
 }
