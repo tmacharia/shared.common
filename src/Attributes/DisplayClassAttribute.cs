@@ -8,10 +8,14 @@ namespace Common.Attributes
     [AttributeUsage(AttributeTargets.Class)]
     public sealed class DisplayClassAttribute : Attribute
     {
-        public DisplayClassAttribute(string name,string description)
+        public DisplayClassAttribute(string name)
         {
             if (name.IsValid())
                 Name = name;
+        }
+        public DisplayClassAttribute(string name,string description)
+            :this(name)
+        {
             if (description.IsValid())
                 Description = description;
         }
