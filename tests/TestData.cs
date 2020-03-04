@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using NUnit.Framework;
 
 namespace Common.UnitTests
 {
@@ -26,6 +28,13 @@ namespace Common.UnitTests
         {
             if (_printToConsole)
                 Console.WriteLine(format, args);
+        }
+        public static IEnumerable<string> GetTwoLetter_Strings()
+        {
+            yield return "aa";
+            yield return "bb";
+            yield return "cc";
+            yield return "dd";
         }
     }
     public class Country

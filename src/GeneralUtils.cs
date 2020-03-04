@@ -113,7 +113,7 @@ namespace Common
         /// </summary>
         /// <param name="byteCount"></param>
         /// <returns></returns>
-        [Obsolete("Use the data formatting methods in Common.Primitives; .ConvertData() or .HumanizeData()")]
+        [Obsolete("Use the data formatting methods in Common.Primitives; .ConvertData() or .HumanizeData()",true)]
         public static string BytesToString(this long byteCount)
         {
             string[] suf = { "B", "KB", "MB", "GB", "TB", "PB", "EB" }; //Longs run out around EB
@@ -177,60 +177,6 @@ namespace Common
         /// <param name="padded">Whether to pad or not.</param>
         /// <returns></returns>
         public static string PadInt(this int n, bool padded = true) => padded ? n > 9 ? n.ToString("N0", Resources.Culture) : $"0{n}" : n.ToString(Resources.Culture);
-        public static string SecondsToMoment(this double d)
-        {
-            int hrs = (int)(d / (60 * 60));
-            if (hrs > 0)
-            {
-                return hrs == 1 ? $"1 {Resources.Hour}" : $"{hrs} {Resources.Hours}";
-            }
-            int mins = (int)(d / 60);
-            if (mins > 0)
-            {
-                return mins == 1 ? $"1 {Resources.Min}" : $"{mins} {Resources.Mins}";
-            }
-            int secs = (int)d;
-            if (secs > 0)
-            {
-                return secs == 1 ? $"1 {Resources.Sec}" : $"{secs} {Resources.Secs}";
-            }
-            return string.Empty;
-        }
-        [Obsolete("",true)]
-        public static ObservableCollection<T> RemoveWherePredicate<T>(this ObservableCollection<T> ts, Func<T, bool> predicate)
-        {
-            int index = ts.GetIndexOf(predicate);
-            if (index > -1)
-            {
-                ts.RemoveAt(index);
-            }
-            return ts;
-        }
-        [Obsolete("", true)]
-        public static List<T> RemoveWherePredicate<T>(this List<T> ts, Func<T, bool> predicate)
-        {
-            int index = ts.GetIndexOf(predicate);
-            if (index > -1)
-            {
-                ts.RemoveAt(index);
-            }
-            return ts;
-        }
-        [Obsolete("", true)]
-        public static int GetIndexOf<T>(this IEnumerable<T> ts, Func<T, bool> predicate)
-        {
-            int total = ts.Count();
-            for (int i = 0; i < total - 1; i++)
-            {
-                var item = ts.ElementAt(i);
-                if (predicate(item))
-                {
-                    return i;
-                }
-            }
-            return -1;
-        }
-        public static ObservableCollection<T> ToObservableCollection<T>(this IEnumerable<T> ts)
-            => new ObservableCollection<T>(ts);
+        
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Globalization;
-using System.Linq;
-using System.Text;
+using System.Collections.Generic;
+using System.Net;
 using System.Text.RegularExpressions;
 
 namespace Common
@@ -11,6 +10,43 @@ namespace Common
     /// </summary>
     public static class UrlExts
     {
+        public static string UrlEncode(this string url)
+        {
+            return WebUtility.UrlEncode(url);
+        }
+
+        public static string UrlDecode(this string url)
+        {
+            return WebUtility.UrlDecode(url);
+        }
+        public static Dictionary<string, string> GetQueryStrings(Uri uri)
+        {
+            var dic = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            if (uri == null)
+                return dic;
+            string query = uri.OriginalString;
+            var paramsEncoded = query.TrimStart('?').Split('&');
+            foreach (var paramEncoded in paramsEncoded)
+            {
+                var param = paramEncoded.UrlDecode();
+
+                // Look for the equals sign
+                var equalsPos = param.IndexOf('=');
+                if (equalsPos <= 0)
+                    continue;
+
+                // Get the key and value
+                var key = param.Substring(0, equalsPos);
+                var value = equalsPos < param.Length
+                    ? param.Substring(equalsPos + 1)
+                    : string.Empty;
+
+                // Add to dictionary
+                dic[key] = value;
+            }
+
+            return dic;
+        }
         /// <summary>
         /// Evaluates if a <see cref="string"/> if a valid Url address.
         /// </summary>
@@ -93,43 +129,6 @@ namespace Common
 
                 //Replace double occurences of - or \_ 
                 value = Regex.Replace(value, @"([-_]){2,}", "$1", RegexOptions.Compiled);
-
-
-                //First to lower case 
-//                value = value.ToLowerInvariant();
-//                byte[] bytes = null;
-//#if NET45 || NET451 || NET452
-//                bytes = Encoding.Default.GetBytes(s);
-//#else
-//                /*---------------------------------------------------------------+
-//                 | Before using/checking custom encodings, we must               |
-//                 | register CodePagesEncodingProvider for extended encodings     |
-//                 | otherwise this will throw an ArgumentException.               |
-//                 |                                                               |
-//                 | Github Issue: https://github.com/dotnet/corefx/issues/9158    |
-//                 | Stackoverflow: http://bit.ly/2KHnXK0                          |
-//                 |                                                               |
-//                 |                                                               |
-//                 +---------------------------------------------------------------+*/
-//                Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-//                //Remove all accents
-//                bytes = Encoding.GetEncoding("Cyrillic").GetBytes(value);
-//#endif
-//                value = Encoding.ASCII.GetString(bytes);
-
-//                //Replace spaces 
-//                value = Regex.Replace(value, @"\s", "-", RegexOptions.Compiled);
-
-//                //Remove invalid chars 
-//                value = Regex.Replace(value, @"[^\w\s\p{Pd}]", "", RegexOptions.Compiled);
-
-//                //Trim dashes from end 
-//                value = value.Trim('-', '_');
-
-//                //Replace double occurences of - or \_ 
-//                value = Regex.Replace(value, @"([-_]){2,}", "$1", RegexOptions.Compiled);
-
-//                return $"{value}";
             }
             return value;
         }

@@ -1,11 +1,19 @@
 ﻿using Common.Enums;
 using System;
 using System.Globalization;
+using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
 namespace Common
 {
+    public delegate void EmptyEventHandler();
+    public delegate void IntEventHandler(int n);
+    public delegate void BoolEventHandler(bool b);
+    public delegate void StringEventHandler(string s);
+    public delegate void DecimalEventHandler(decimal d);
+    public delegate void BytesEventHandler(byte[] bytes);
+    public delegate void StreamEventHandler(Stream stream);
     /// <summary>
     /// Collection of variables and resources available to any project and supplied immediately
     /// the application starts.
@@ -58,5 +66,4 @@ namespace Common
         /// </summary>
         public const string UrlRegex = @"(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})";
     }
-    public delegate void EmptyEventHandler();
 }

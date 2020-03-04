@@ -11,9 +11,7 @@ namespace Common.Models
         /// Parameterless constructor
         /// </summary>
         public PropertyUpdateResult()
-        {
-
-        }
+        { }
         /// <summary>
         /// Instanciates property update result object.
         /// </summary>
@@ -46,7 +44,7 @@ namespace Common.Models
         /// Checks whether the new property value is not equal
         /// to the old property value.
         /// </summary>
-        public bool HasChanges => NewValue != OldValue;
+        public bool HasChanges => !NewValue.Equals(OldValue);
 
         /// <summary>
         /// Returns a string that represents the property change.

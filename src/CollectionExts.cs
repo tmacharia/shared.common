@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -7,7 +8,7 @@ namespace Common
 {
     /// <summary>
     /// Represents extension methods for elements that are considered as collections and 
-    /// mostly inherit from <see cref="IEnumerable{T}"/>
+    /// mostly inherit from <see cref="IEnumerable"/>
     /// </summary>
     public static class CollectionExts
     {
@@ -59,11 +60,27 @@ namespace Common
         {
             int index = ts.GetIndexOf(predicate);
             if (index > -1)
-            {
                 return ts.Where((item, i) => i != index);
-            }
             return ts;
         }
+        /// <summary>
+        /// Searches for an element matchind the specified predicate and returns a zero based
+        /// index of the first occurence within the collection.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="ts"></param>
+        /// <param name="predicate">Condition predicate</param>
+        /// <returns></returns>
+        public static int GetIndexOf<T>(this IEnumerable<T> ts, Func<T, bool> predicate)
+            => ts.GetIndexOf(new Predicate<T>(predicate));
+        /// <summary>
+        /// Searches for an element matchind the specified predicate and returns a zero based
+        /// index of the first occurence within the collection.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="ts"></param>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
         public static int GetIndexOf<T>(this IEnumerable<T> ts, Predicate<T> predicate)
             => Array.FindIndex(ts.ToArray(), predicate);
         /// <summary>
@@ -76,6 +93,12 @@ namespace Common
         public static IEnumerable<T> RemoveWhere<T>(this IEnumerable<T> enumerable, Func<T, bool> predicate)
                 => enumerable.IsNotNull() ? enumerable.Any(predicate) ?
                    enumerable.SkipWhile(predicate) : enumerable : null;
+        /// <summary>
+        /// Converts any collection that inherits <see cref="IEnumerable"/> to an <see cref="ObservableCollection{T}"/>
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="ts"></param>
+        /// <returns></returns>
         public static ObservableCollection<T> ToObservableCollection<T>(this IEnumerable<T> ts)
             => new ObservableCollection<T>(ts);
     }

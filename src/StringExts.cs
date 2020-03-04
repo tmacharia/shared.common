@@ -65,12 +65,8 @@ namespace Common
         /// <param name="args">Array of string items to check.</param>
         /// <returns>True or false.</returns>
         public static bool ContainsAnyOf(this string s, params string[] args) {
-            if(s.IsValid() && args.Length > 0) {
-                for (int i = 0; i < args.Length; i++) {
-                    if (s.Contains(args[i]))
-                        return true;
-                }
-            }
+            if(s.IsValid() && args.Length > 0) 
+                return args.Any(x => s.Contains(x));
             return false;
         }
         /// <summary>
@@ -80,14 +76,8 @@ namespace Common
         /// <param name="args">Array of string items to lookup.</param>
         /// <returns>True or false.</returns>
         public static bool ContainsAll(this string s, params string[] args) {
-            if(s.IsValid() && args.Length > 0) {
-                int index = 0;
-                args.ForEach(x => {
-                    if (s.Contains(x))
-                        index++;
-                });
-                return index == args.Length;
-            }
+            if(s.IsValid() && args.Length > 0) 
+                return args.All(x => s.Contains(x));
             return false;
         }
         /// <summary>
@@ -134,7 +124,12 @@ namespace Common
         {
             if (s.IsValid())
             {
-                return string.Join(" ", s.Split(' ').Select(x => $"{char.ToUpper(x[0])}{x.Substring(1, x.Length - 1)}")).TrimEnd();
+                return string.Join(" ", 
+                    s.Split(' ')
+                    .Select(x => 
+                    $"{char.ToUpper(x[0])}" +
+                    $"{x.Substring(1, x.Length - 1)}"))
+                    .TrimEnd();
             }
             return string.Empty;
         }

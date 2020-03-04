@@ -45,14 +45,14 @@ namespace Common.Structs
 
 
         /// <summary>
-        /// Returns a human readable and comprehensible time format to know the exact
+        /// Returns a human friendly and comprehensible time format to know the exact
         /// relative time in the past.
         /// </summary>
         /// <param name="pastDate">This DateTime instance that should represent a time in the past</param>
         /// <param name="currentTime">Current datetime instance to compare to. If not specified
         /// <see cref="DateTime.Now"/> will be used by default.
         /// </param>
-        /// <returns>Human readable time</returns>
+        /// <returns>Human friendly time</returns>
         /// <exception cref="ArgumentNullException"></exception>
         public static string ToMoment(this DateTime pastDate, DateTime? currentTime = null)
         {
@@ -77,14 +77,14 @@ namespace Common.Structs
             return ts.ToMoment(is_past);
         }
         /// <summary>
-        /// Converts a <see cref="TimeSpan"/> to human-readable format.
+        /// Converts a <see cref="TimeSpan"/> to human-friendly format.
         /// </summary>
         /// <param name="span">Timespan instance.</param>
         /// <returns>Moment time.</returns>
         /// <exception cref="ArgumentNullException"></exception>
         public static string ToMoment(this TimeSpan span) => span.ToMoment(true);
         /// <summary>
-        /// Converts a <see cref="TimeSpan"/> to human-readable format.
+        /// Converts a <see cref="TimeSpan"/> to human-friendly format.
         /// </summary>
         /// <param name="span">Timespan instance.</param>
         /// <param name="isInThePast"></param>
@@ -123,6 +123,11 @@ namespace Common.Structs
             if (yrs == 1) return isInThePast ? Resources.OneYearAgo : Resources.InOneYear;
             return isInThePast ? $"{yrs} {Resources.YearsAgo}" : $"{Resources.In} {yrs} {Resources.Years}";
         }
+        /// <summary>
+        /// Converts <see cref="DateTimeOffset"/> to advanced human friendly format.
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <returns></returns>
         public static string ToDateTimeMoment(this DateTimeOffset dt)
         {
             var span = DateTimeOffset.Now.Subtract(dt);
@@ -152,6 +157,11 @@ namespace Common.Structs
                 return $"{Resources.Today.Capitalize()}, {dt.ToString(TimeFormat)}";
             }
         }
+        /// <summary>
+        /// Converts <see cref="DateTime"/> to advanced human friendly format.
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <returns></returns>
         public static string ToDateTimeMoment(this DateTime dt)
         {
             var span = DateTime.Now.Subtract(dt);
@@ -181,6 +191,14 @@ namespace Common.Structs
                 return $"{Resources.Today.Capitalize()}, {dt.ToString(TimeFormat)}";
             }
         }
+        /// <summary>
+        /// Formats <see cref="TimeSpan"/> to show the hr, min, and second values only when available
+        /// e.g 03:45:20, 50:30, 9:20
+        /// </summary>
+        /// <param name="span"></param>
+        /// <param name="padFirst">Whether to add a zero before the first digit if the digit is less than 10.</param>
+        /// <param name="padSecond">Whether to add a zero before the rest of digits if the digits are less than 10.</param>
+        /// <returns></returns>
         public static string FormatTimespan(this TimeSpan span, bool padFirst = false, bool padSecond = true)
         {
             StringBuilder sb = new StringBuilder();
@@ -197,6 +215,11 @@ namespace Common.Structs
             }
             return sb.ToString();
         }
+        /// <summary>
+        /// Formats <see cref="TimeSpan"/> to human friendly format.
+        /// </summary>
+        /// <param name="span"></param>
+        /// <returns></returns>
         public static string TimespanMoment(this TimeSpan span)
         {
             StringBuilder sb = new StringBuilder();
@@ -227,6 +250,30 @@ namespace Common.Structs
                 sb.Append(span.Seconds == 1 ? Resources.Sec : Resources.Secs);
             }
             return sb.ToString();
+        }
+        /// <summary>
+        /// Formats seconds to human friendly time. e.g 3 hrs, 45 secs
+        /// </summary>
+        /// <param name="d"></param>
+        /// <returns></returns>
+        public static string SecondsToMoment(this double d)
+        {
+            int hrs = (int)(d / (60 * 60));
+            if (hrs > 0)
+            {
+                return hrs == 1 ? $"1 {Resources.Hour}" : $"{hrs} {Resources.Hours}";
+            }
+            int mins = (int)(d / 60);
+            if (mins > 0)
+            {
+                return mins == 1 ? $"1 {Resources.Min}" : $"{mins} {Resources.Mins}";
+            }
+            int secs = (int)d;
+            if (secs > 0)
+            {
+                return secs == 1 ? $"1 {Resources.Sec}" : $"{secs} {Resources.Secs}";
+            }
+            return string.Empty;
         }
     }
 }

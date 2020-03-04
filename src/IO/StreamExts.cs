@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.IO;
 
 namespace Common.IO
@@ -14,6 +15,7 @@ namespace Common.IO
         /// </summary>
         /// <param name="inputStream">Input stream.</param>
         /// <returns>Byte Array</returns>
+        /// <exception cref="ArgumentNullException">If input stream is null</exception>
         public static byte[] ToArray(this Stream inputStream)
         {
             if (inputStream == null)

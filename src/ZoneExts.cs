@@ -17,7 +17,7 @@ namespace Common
         private static RegionInfo _region = null;
 
         /// <summary>
-        /// Current International Geographical Name
+        /// Current International Geographical Name/2-Letter ISO Code
         /// </summary>
         public static string CurrentGeo
         {
