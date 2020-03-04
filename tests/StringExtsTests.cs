@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using NUnit.Framework;
 
 namespace Common.UnitTests
@@ -110,6 +111,59 @@ namespace Common.UnitTests
 
             // Act
             bool res = txt.StartsWithAnyOf(args);
+
+            // Assert
+            Assert.IsFalse(res);
+        }
+
+        [Test]
+        public void String_ContainsAnyOf_ReturnsTrue()
+        {
+            // Arrange
+            string txt = "This is after visting the company aa";
+            string[] args = GetTwoLetter_Strings().ToArray();
+
+            // Act
+            bool res = txt.ContainsAnyOf(args);
+
+            // Assert
+            Assert.IsTrue(res);
+        }
+        [Test]
+        public void String_ContainsAnyOf_ReturnsFalse()
+        {
+            // Arrange
+            string txt = "This is after visting the company";
+            string[] args = GetTwoLetter_Strings().ToArray();
+
+            // Act
+            bool res = txt.ContainsAnyOf(args);
+
+            // Assert
+            Assert.IsFalse(res);
+        }
+        [Test]
+        public void String_ContainsAllOf_ReturnsTrue()
+        {
+            // Arrange
+            string txt = "This is after visting the company aa,bb,cc,dd";
+            string[] args = GetTwoLetter_Strings().ToArray();
+
+            // Act
+            bool res = txt.ContainsAll(args);
+
+            // Assert
+            Assert.IsTrue(res);
+        }
+        [Test]
+        public void String_ContainsAll_ReturnsFalse()
+        {
+            // Arrange
+            string txt = "This is after visting the company aa,bb";
+            string[] args = GetTwoLetter_Strings().ToArray();
+
+            // Act
+            bool res = txt.ContainsAll(args);
 
             // Assert
             Assert.IsFalse(res);
