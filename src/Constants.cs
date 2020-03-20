@@ -20,6 +20,7 @@ namespace Common
     /// </summary>
     public static class Constants
     {
+        [ContextStatic]
         public static Random random = new Random();
         /// <summary>
         /// Instance of MD5 Hash Algorithm.

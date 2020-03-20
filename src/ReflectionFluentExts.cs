@@ -29,6 +29,9 @@ namespace Common
             if (updatedModel == null)
                 throw new ArgumentNullException(nameof(updatedModel));
 
+            if (propertySelectors == null || propertySelectors.Length < 1)
+                throw new ArgumentNullException(nameof(propertySelectors), "Specify atleast 1 property selector to update");
+
             string[] props = baseModel.GetMemberNames(propertySelectors);
 
             for (int i = 0; i < props.Length; i++)

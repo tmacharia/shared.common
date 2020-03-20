@@ -41,19 +41,20 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageVersion>1.3.4</PackageVersion>
-    <AssemblyVersion>1.1.109</AssemblyVersion>
+    <PackageVersion>1.3.5-alpha</PackageVersion>
+    <!--<AssemblyVersion>1.1.109</AssemblyVersion>-->
     <PackageLicenseFile></PackageLicenseFile>
     <Language>en-US</Language>
     <LangVersion>7.3</LangVersion>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Product>Shared.Common</Product>
     <Title>Common Shared Library</Title>
-    <Version>1.3.4</Version>
+    <Version>1.3.5-alpha</Version>
     <Win32Resource />
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <AssemblyOriginatorKeyFile>PackageSigningKeyFile.pfx</AssemblyOriginatorKeyFile>
-    <FileVersion>1.3.4</FileVersion>
+    <FileVersion>1.3.5-alpha</FileVersion>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
