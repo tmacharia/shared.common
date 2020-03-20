@@ -26,6 +26,12 @@ namespace Common.IO
         /// <param name="filepath">File path</param>
         /// <returns>Safe file path.</returns>
         public static string ToSafeFileName(string filepath) => FilenameRegex.Replace(filepath, "");
+        /// <summary>
+        /// Re-formats a filename to one that is valid and considered safe and 
+        /// won't fail when trying to save.
+        /// </summary>
+        /// <param name="s">File name</param>
+        /// <returns>Safe file name.</returns>
         public static string CleanFileName(this string s) => FilenameRegex.Replace(s, "");
     }
 }
