@@ -73,58 +73,23 @@ namespace Common
 
                 updates.PropertyUpdates.Add(new PropertyUpdateResult(props[i],oldValue,newValue));
             }
-
             return updates;
         }
         private static string GetMemberName<T, TProperty>(this T instance, Expression<Func<T, TProperty>> expression)
         {
-            return GetMemberName(expression.Body);
+            return ExpressionExts.GetMemberName(expression.Body);
         }
         private static string[] GetMemberNames<T, TProperty>(this T instance, params Expression<Func<T, TProperty>>[] expressions)
         {
             List<string> memberNames = new List<string>();
             foreach (var cExpression in expressions)
-                memberNames.Add(GetMemberName(cExpression.Body));
+                memberNames.Add(ExpressionExts.GetMemberName(cExpression.Body));
 
             return memberNames.ToArray();
         }
         private static string GetMemberName<T>(this T instance, Expression<Action<T>> expression)
         {
-            return GetMemberName(expression.Body);
-        }
-        private static string GetMemberName(Expression expression)
-        {
-            if (expression == null)
-                throw new ArgumentException("Expression cannot be null when getting object member name.");
-            // Reference type property or field
-
-            if (expression is MemberExpression memberExpression)
-            {
-                return memberExpression.Member.Name;
-            }
-            // Reference type method
-
-            if (expression is MethodCallExpression methodCallExpression)
-            {
-                return methodCallExpression.Method.Name;
-            }
-            // Property, field of method returning value type
-
-            if (expression is UnaryExpression unaryExpression)
-            {
-                return GetMemberName(unaryExpression);
-            }
-
-            throw new ArgumentException("Expression passed to get member name is invalid.");
-        }
-        private static string GetMemberName(UnaryExpression unaryExpression)
-        {
-            if (unaryExpression.Operand is MethodCallExpression methodExpression)
-            {
-                return methodExpression.Method.Name;
-            }
-
-            return ((MemberExpression)unaryExpression.Operand).Member.Name;
+            return ExpressionExts.GetMemberName(expression.Body);
         }
     }
 }

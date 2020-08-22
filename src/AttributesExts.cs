@@ -44,8 +44,8 @@ namespace Common
         /// <summary>
         /// Gets the description text of <see cref="DescriptionAttribute"/> for the specified property.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="source">Property</param>
+        /// <param name="enumType"></param>
+        /// <param name="propName">Property</param>
         /// <returns>Value of Description</returns>
         public static string DescriptionAttr(Type enumType,string propName)
         {

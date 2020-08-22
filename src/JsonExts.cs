@@ -1,6 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Serialization;
 
 namespace Common
 {
@@ -64,5 +65,28 @@ namespace Common
         public static T DeserializeTo<T>(this string json)
                 => JsonConvert.DeserializeObject<T>(json,
                     new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
+        /// <summary>
+        /// Deserializes JSON formatted <see cref="string"/> of text to a strongly typed
+        /// generic of 
+        /// </summary>
+        /// <typeparam name="TResult">Type to deserialize to</typeparam>
+        /// <param name="json">JSON text</param>
+        /// <param name="resolver">Contract resolver.</param>
+        /// <returns></returns>
+        public static TResult DeserializeTo<TResult>(this string json, IContractResolver resolver = null)
+            where TResult : class
+        {
+            if (!json.IsValid())
+                return null;
+            if (resolver == null)
+                return JsonConvert.DeserializeObject<TResult>(json);
+            else
+            {
+                return JsonConvert.DeserializeObject<TResult>(json, new JsonSerializerSettings()
+                {
+                    ContractResolver = resolver
+                });
+            }
+        }
     }
 }
