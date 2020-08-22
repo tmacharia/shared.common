@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Web;
 
 namespace Common
 {
@@ -132,6 +133,17 @@ namespace Common
                     .TrimEnd();
             }
             return string.Empty;
+        }
+        /// <summary>
+        /// Converts/Decodes HTML string to human redable plaintext.
+        /// </summary>
+        /// <param name="html">Encoded html</param>
+        /// <returns>Plaintext</returns>
+        public static string DecodeHtml(this string html) {
+            if (html.IsValid()) {
+                html = HttpUtility.HtmlDecode(html);
+            }
+            return html;
         }
         /// <summary>
         /// Converts a text <see cref="string"/> to an <see cref="int"/>
