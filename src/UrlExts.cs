@@ -19,7 +19,7 @@ namespace Common
         {
             return WebUtility.UrlDecode(url);
         }
-        public static Dictionary<string, string> GetQueryStrings(Uri uri)
+        public static Dictionary<string, string> GetQueryStrings(this Uri uri)
         {
             var dic = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
             if (uri == null)
