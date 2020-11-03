@@ -20,7 +20,7 @@ namespace Common
         /// <param name="updatedModel"></param>
         /// <param name="propertySelectors"></param>
         /// <returns></returns>
-        public static TModel UpdateWith<TModel>(this TModel baseModel, TModel updatedModel, params Expression<Func<TModel,object>>[] propertySelectors) 
+        internal static TModel UpdateWith<TModel>(this TModel baseModel, TModel updatedModel, params Expression<Func<TModel,object>>[] propertySelectors) 
             where TModel : class
         {
             if (baseModel == null)
@@ -55,7 +55,7 @@ namespace Common
         /// <param name="updatedModel"></param>
         /// <param name="propertySelectors"></param>
         /// <returns></returns>
-        public static UpdateResult<TModel> GetPropertyUpdates<TModel>(this TModel baseModel, TModel updatedModel, params Expression<Func<TModel, object>>[] propertySelectors)
+        internal static UpdateResult<TModel> GetPropertyUpdates<TModel>(this TModel baseModel, TModel updatedModel, params Expression<Func<TModel, object>>[] propertySelectors)
             where TModel : class
         {
             UpdateResult<TModel> updates = new UpdateResult<TModel>
