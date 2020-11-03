@@ -42,6 +42,7 @@ namespace Common
         /// </summary>
         /// <typeparam name="T">Type of object</typeparam>
         /// <param name="value">Object/Model/Item to serialize</param>
+        /// <param name="formatting"></param>
         /// <returns>JSON text</returns>
         public static string ToJson<T>(this T value, Formatting formatting) where T : class
                 => JsonConvert.SerializeObject(value, formatting);
@@ -50,6 +51,7 @@ namespace Common
         /// </summary>
         /// <typeparam name="T">Type of object</typeparam>
         /// <param name="value">Object/Model/Item to serialize</param>
+        /// <param name="settings"></param>
         /// <returns>JSON text</returns>
         public static string ToJson<T>(this T value, JsonSerializerSettings settings) where T : class
                 => JsonConvert.SerializeObject(value, settings);

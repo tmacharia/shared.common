@@ -25,6 +25,7 @@ namespace Common
         /// </summary>
         /// <typeparam name="TEnum"></typeparam>
         /// <param name="enum">Current/Selected enum</param>
+        /// <param name="propName"></param>
         /// <returns>Name of enum</returns>
         /// <exception cref="ArgumentNullException"></exception>
         public static string GetFullName<TEnum>(this TEnum @enum, string propName)
@@ -58,7 +59,7 @@ namespace Common
             return Enum.GetName(enumType, valueToCheck);
         }
         /// <summary>
-        /// Returns the enum name with the specified corresponding <paramref name="valueToCheck"/>
+        /// Returns the enum name with the specified corresponding <paramref name="propName"/>
         /// </summary>
         /// <param name="enumType"><see cref="Type"/> of <see cref="Enum"/></param>
         /// <param name="propName">Value to check.</param>
