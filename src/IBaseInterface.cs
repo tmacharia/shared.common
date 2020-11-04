@@ -47,7 +47,7 @@ namespace Common
 #else
                 method = item.GetType().GetMethod("Dispose");
 #endif
-                if (method.IsNotNull())
+                if (method != null)
                 {
                     method.Invoke(item, null);
                     item = default;

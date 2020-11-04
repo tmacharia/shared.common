@@ -28,6 +28,63 @@ namespace Common
             }
             return false;
         }
+        /// <summary>
+        /// Determines whether this <see cref="string"/> instance starts with <b>(<paramref name="q"/>)</b>
+        /// using the <see cref="StringComparison.OrdinalIgnoreCase"/> matching, casing, and sorting rules/criteria.
+        /// </summary>
+        /// <param name="s">The current <see cref="string"/></param>
+        /// <param name="q">The query <see cref="string"/> to check.</param>
+        /// <returns>
+        /// true if this instance begins with value; otherwise, false
+        /// </returns>
+        /// <exception cref="ArgumentException"/>
+        public static bool StartsWithIOC(this string s, string q)
+        {
+            if (s.IsValid() && q.IsValid())
+            {
+                return s.StartsWith(q, StringComparison.OrdinalIgnoreCase);
+            }
+            return false;
+        }
+        /// <summary>
+        /// Determines whether this <see cref="string"/> instance is equal to (<paramref name="q"/>)
+        /// using the <see cref="StringComparison.OrdinalIgnoreCase"/> matching, casing, and sorting rules/criteria.
+        /// </summary>
+        /// <param name="s">The current <see cref="string"/></param>
+        /// <param name="q">The <see cref="string"/> to compare to this instance.</param>
+        /// <param name="splitQueryByCommas">Whether to split the query <see cref="string"/> 
+        /// parameter by <b>( , )</b> and compare the individual items instead.
+        /// </param>
+        /// <returns>
+        /// true if the value of the parameter matches this string; otherwise, false
+        /// </returns>
+        /// <exception cref="ArgumentException"/>
+        public static bool EqualsOIC(this string s, string q, bool splitQueryByCommas = false)
+        {
+            if (s.IsValid() && q.IsValid())
+            {
+                if (splitQueryByCommas && q.Contains(','))
+                    return s.EqualsOIC(q.Split(','));
+                return s.Equals(q, StringComparison.OrdinalIgnoreCase);
+            }
+            return false;
+        }
+        /// <summary>
+        /// Determines whether this <see cref="string"/> instance is equal to any of the  (<paramref name="args"/>)
+        /// using the <see cref="StringComparison.OrdinalIgnoreCase"/> matching, casing, and sorting rules/criteria.
+        /// </summary>
+        /// <param name="s">The current <see cref="string"/></param>
+        /// <param name="args">Array of <see cref="string"/> values to compare to this instance.</param>
+        /// <returns>
+        /// true if any of the <see cref="string"/> array items matches the current string; otherwise, false.
+        /// </returns>
+        /// <exception cref="ArgumentException"/>
+        public static bool EqualsOIC(this string s, params string[] args)
+        {
+            if (s.IsValid() && args.Length > 0)
+                return args.Any(x => s.EqualsOIC(x));
+            return false;
+        }
         /// <summary>  
         /// Removes all accents from the input string.  
         /// </summary>  
@@ -86,7 +143,7 @@ namespace Common
         /// Checks if a string equals any of the strings specified.
         /// </summary>
         /// <param name="s"></param>
-        /// <param name="args">Array of string items to lookup.</param>
+        /// <param name="queries">Array of string items to lookup.</param>
         /// <returns>True or false.</returns>
         public static bool EqualsAnyOf(this string s, params string[] queries) {
             if (queries != null && queries.Length > 0) {
@@ -122,7 +179,7 @@ namespace Common
             return false;
         }
         public static string ToTitleCase(this string s) => s.Capitalize();
-        public static string Capitalize(this string s)
+        internal static string Capitalize(this string s)
         {
             if (s.IsValid())
             {
@@ -151,7 +208,7 @@ namespace Common
             return html;
         }
         /// <summary>
-        /// Converts a text <see cref="string"/> to an <see cref="int"/>
+        /// Converts a text <see cref="string"/> to an <see cref="int"/> using the current culture formatting.
         /// </summary>
         /// <param name="intAsString">Text to convert</param>
         /// <returns>
@@ -165,7 +222,7 @@ namespace Common
             throw new ArgumentNullException(nameof(intAsString));
         }
         /// <summary>
-        /// Converts a text <see cref="string"/> to a <see cref="double"/>
+        /// Converts a text <see cref="string"/> to a <see cref="double"/> using the current culture formatting.
         /// </summary>
         /// <param name="doubleAsString">Text to convert</param>
         /// <returns>
@@ -179,7 +236,7 @@ namespace Common
             throw new ArgumentNullException(nameof(doubleAsString));
         }
         /// <summary>
-        /// Converts a text <see cref="string"/> to a <see cref="decimal"/>
+        /// Converts a text <see cref="string"/> to a <see cref="decimal"/> using the current culture formatting.
         /// </summary>
         /// <param name="doubleAsString">Text to convert</param>
         /// <returns>
@@ -201,14 +258,15 @@ namespace Common
         /// <returns>True or False.</returns>
         public static bool StartsWithAnyOf(this string s, params string[] args) {
             if (s.IsValid()) {
-                s = s.ToUpper();
-                int index = 0;
-
-                args.ForEach(x => {
-                    if (s.StartsWith(x.ToUpper()))
-                        index++;
-                });
-                return index > 0;
+                int i = 0;
+                while (i < args.Length)
+                {
+                    if (s.StartsWith(args[i]))
+                    {
+                        return true;
+                    }
+                    i++;
+                }
             }
             return false;
         }
@@ -233,7 +291,7 @@ namespace Common
         /// </summary>
         /// <param name="s">Text to check</param>
         /// <returns>True or False</returns>
-        public static bool HasDigit(this string s) => s.IsValid() ? s.ToCharArray().Any(c => Char.IsDigit(c)) : false;
+        public static bool HasDigit(this string s) => s.IsValid() && s.ToCharArray().Any(c => char.IsDigit(c));
         /// <summary>
         /// Checks if two strings match.
         /// </summary>
@@ -309,7 +367,7 @@ namespace Common
             if (s.IsValid()) {
                 return s.Split(' ').Where(x => x.IsValid()).ToArray();
             }
-            return new string[0];
+            return Array.Empty<string>();
         }
         /// <summary>
         /// Truncates a <see cref="string"/> of text to a certain number of words and
@@ -453,7 +511,6 @@ namespace Common
             }
             return null;
         }
-
         /// <summary>
         /// Verify that Strings Are in Valid Email Format.
         /// </summary>

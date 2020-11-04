@@ -17,12 +17,14 @@ namespace Common
         /// </summary>
         /// <param name="value">Object to check</param>
         /// <returns>true or false</returns>
+        [Obsolete]
         public static bool IsNotNull(this object value) => value != null;
         /// <summary>
         /// Checks if an object is null
         /// </summary>
         /// <param name="value"><see cref="object"/> to check</param>
         /// <returns></returns>
+        [Obsolete]
         public static bool IsNull(this object value) => value == null;
         
         /// <summary>
@@ -30,6 +32,7 @@ namespace Common
         /// </summary>
         /// <param name="value">Value to convert</param>
         /// <returns>Integral equivalent</returns>
+        [Obsolete]
         public static int? ToInt(this object value) =>
             value.IsNotNull() ? Convert.ToInt32(value, Constants.Culture) : 0;
 
@@ -42,88 +45,6 @@ namespace Common
         public static bool IsOfType<T>(this object obj) where T : class
             => obj.GetType() == typeof(T);
 
-        /// <summary>
-        /// Formats an <see cref="int"/> to a comma separated string.
-        /// </summary>
-        /// <param name="i">Integer value to format</param>
-        /// <returns>Formatted <see cref="string"/></returns>
-        [Obsolete("Use to .ToHuman() instead",true)]
-        public static string ToCommaSeparated(this int i)
-            => ToCommaSeparated(i);
-
-        /// <summary>
-        /// Formats an <see cref="long"/> to a comma separated string.
-        /// </summary>
-        /// <param name="l">Long value to format</param>
-        /// <returns>Formatted <see cref="string"/></returns>
-        [Obsolete("Use to .ToHuman() instead", true)]
-        public static string ToCommaSeparated(this long l)
-            => l.ToString("N0", Constants.Culture);
-
-        /// <summary>
-        /// Formats an <see cref="double"/> to a comma separated string.
-        /// </summary>
-        /// <param name="d">Double value to format</param>
-        /// <param name="precision">Number of decimal places to keep</param>
-        /// <returns>Formatted <see cref="string"/></returns>
-        [Obsolete("Use to .ToHuman() instead", true)]
-        public static string ToCommaSeparated(this double d, int precision = 2)
-            => d.ToString($"N{precision}", Constants.Culture);
-
-        /// <summary>
-        /// Formats an <see cref="decimal"/> to a comma separated string.
-        /// </summary>
-        /// <param name="d">Decimal value to format</param>
-        /// <param name="precision">Number of decimal places to keep</param>
-        /// <returns>Formatted <see cref="string"/></returns>
-        [Obsolete("Use to .ToHuman() instead", true)]
-        public static string ToCommaSeparated(this decimal d, int precision = 2)
-            => d.ToString($"N{precision}", Constants.Culture);
-
-        /// <summary>
-        /// Reflects all the properties in a model of generic <see cref="Type"/> that must be
-        /// a class and returns a <see cref="IDictionary{TKey, TValue}"/> pairs 
-        /// collection mapped in the following way:
-        /// 
-        /// Key: PropertyName,
-        /// Value: PropertyValue
-        /// </summary>
-        /// <typeparam name="T">Type of model</typeparam>
-        /// <param name="model">Model to reflect</param>
-        /// <returns></returns>
-        /// <exception cref="ArgumentNullException"></exception>
-        [Obsolete("",true)]
-        public static IDictionary<string, string> ToDictionary<T>(this T model)
-            where T : class
-        {
-            if (model == null)
-                throw new ArgumentNullException(nameof(model));
-
-            Dictionary<string, string> pairs = new Dictionary<string, string>();
-            PropertyDescriptor[] props = typeof(T).GetPropertyDescriptors();
-            for (int i = 0; i < props.Length; i++)
-            {
-                string name = props[i].Name;
-                pairs.Add(name, model.GetPropertyValue<T, string>(name));
-            }
-            return pairs;
-        }
-        /// <summary>
-        /// Converts a series of bytes to human readable notation. e.g 45KB, 3.5GB
-        /// </summary>
-        /// <param name="byteCount"></param>
-        /// <returns></returns>
-        [Obsolete("Use the data formatting methods in Common.Primitives; .ConvertData() or .HumanizeData()",true)]
-        public static string BytesToString(this long byteCount)
-        {
-            string[] suf = { "B", "KB", "MB", "GB", "TB", "PB", "EB" }; //Longs run out around EB
-            if (byteCount == 0)
-                return "0" + suf[0];
-            long bytes = Math.Abs(byteCount);
-            int place = Convert.ToInt32(Math.Floor(Math.Log(bytes, 1024)));
-            double num = Math.Round(bytes / Math.Pow(1024, place), 1);
-            return (Math.Sign(byteCount) * num).ToString() + suf[place];
-        }
         /// <summary>
         /// Formats an <see cref="int"/> to a comma separated <see cref="string"/> using the current culture
         /// </summary>

@@ -22,7 +22,7 @@ namespace Common
         /// <typeparam name="TClass"></typeparam>
         /// <param name="class">Model class</param>
         /// <returns>Array</returns>
-        public static PropertyDescriptor[] GetPropertyDescriptors<TClass>(this TClass @class)
+        internal static PropertyDescriptor[] GetPropertyDescriptors<TClass>(this TClass @class)
             where TClass : class {
             PropertyDescriptorCollection props;
             if (_cache.ContainsKey(typeof(TClass)))
@@ -48,7 +48,7 @@ namespace Common
         /// <param name="class">Current model.</param>
         /// <param name="propertyName">Name of the property to check.</param>
         /// <returns>Property Type.</returns>
-        public static Type GetPropertyType<TClass>(this TClass @class, string propertyName)
+        internal static Type GetPropertyType<TClass>(this TClass @class, string propertyName)
             where TClass : class {
             PropertyDescriptor prop = GetDescriptor(@class, propertyName);
             if(prop == null)
@@ -191,7 +191,7 @@ namespace Common
         /// <param name="class"></param>
         /// <param name="prop"></param>
         /// <returns></returns>
-        private static IEnumerable<TAttribute> GetAttributes<TClass, TAttribute>(this TClass @class, string prop)
+        public static IEnumerable<TAttribute> GetAttributes<TClass, TAttribute>(this TClass @class, string prop)
             where TClass : class
             where TAttribute : Attribute {
             List<TAttribute> attributes = new List<TAttribute>();

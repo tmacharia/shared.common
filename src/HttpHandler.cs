@@ -37,7 +37,7 @@ namespace Common
         /// <exception cref="ArgumentNullException"></exception>
         public HttpHandler(HttpClientHandler httpClientHandler)
         {
-            if (httpClientHandler.IsNull())
+            if (httpClientHandler == null)
                 throw new ArgumentNullException(nameof(httpClientHandler));
 
             _client = new HttpClient(httpClientHandler);
