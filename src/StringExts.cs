@@ -265,6 +265,7 @@ namespace Common
                     {
                         return true;
                     }
+                    i++;
                 }
             }
             return false;
