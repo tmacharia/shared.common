@@ -1,7 +1,6 @@
 ﻿using System.Globalization;
 using System.Reflection.Extensions;
 using Common;
-using Common.Enums;
 
 namespace System.Formatting
 {

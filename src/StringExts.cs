@@ -1,13 +1,13 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
+using Common;
 
-namespace Common
+namespace System.Extensions
 {
     /// <summary>
     /// Contains extensions methods on <see cref="Type"/> <see cref="string"/>
@@ -178,6 +178,11 @@ namespace Common
             }
             return false;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
         public static string ToTitleCase(this string s) => s.Capitalize();
         internal static string Capitalize(this string s)
         {

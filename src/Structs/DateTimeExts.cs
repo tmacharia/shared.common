@@ -1,5 +1,5 @@
-﻿using System.Text;
-using Common;
+﻿using System.Extensions;
+using System.Text;
 
 namespace System.Formatting
 {

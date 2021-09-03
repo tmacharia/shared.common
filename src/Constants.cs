@@ -1,58 +1,9 @@
-﻿using Common.Enums;
-using System;
+﻿using System;
 using System.Globalization;
-using System.IO;
-using System.Security.Cryptography;
 using System.Text;
 
 namespace Common
 {
-    /// <summary>
-    /// Event handler delegate with no parameters and returns void.
-    /// </summary>
-    public delegate void EmptyEventHandler();
-    /// <summary>
-    /// Event handler delegate that receives an <see cref="int"/> parameter
-    /// and returns void.
-    /// </summary>
-    /// <param name="n"></param>
-    public delegate void IntEventHandler(int n);
-    /// <summary>
-    /// Event handler delegate that receives a <see cref="bool"/> parameter
-    /// and returns void.
-    /// </summary>
-    /// <param name="b"></param>
-    public delegate void BoolEventHandler(bool b);
-    /// <summary>
-    /// Event handler delegate that receives a <see cref="string"/> parameter
-    /// and returns void.
-    /// </summary>
-    /// <param name="s"></param>
-    public delegate void StringEventHandler(string s);
-    /// <summary>
-    /// Event handler delegate that receives a <see cref="decimal"/> parameter
-    /// and returns void.
-    /// </summary>
-    /// <param name="d"></param>
-    public delegate void DecimalEventHandler(decimal d);
-    /// <summary>
-    /// Event handler delegate that receives a <see cref="double"/> parameter
-    /// and returns void.
-    /// </summary>
-    /// <param name="d"></param>
-    public delegate void DoubleEventHandler(double d);
-    /// <summary>
-    /// Event handler delegate that receives a <see cref="byte"/> array parameter
-    /// and returns void.
-    /// </summary>
-    /// <param name="bytes"></param>
-    public delegate void BytesEventHandler(byte[] bytes);
-    /// <summary>
-    /// Event handler delegate that receives a <see cref="Stream"/> parameter
-    /// and returns void.
-    /// </summary>
-    /// <param name="stream"></param>
-    public delegate void StreamEventHandler(Stream stream);
     /// <summary>
     /// Collection of variables and resources available to any project and supplied immediately
     /// the application starts.
@@ -64,10 +15,6 @@ namespace Common
         /// </summary>
         [ContextStatic]
         public static Random random = new Random();
-        /// <summary>
-        /// Instance of MD5 Hash Algorithm.
-        /// </summary>
-        public static MD5 md5 { get; } = MD5.Create();
         /// <summary>
         /// Trailing text to append to shortened text.
         /// </summary>
@@ -84,16 +31,7 @@ namespace Common
         /// Current UI Thread <see cref="CultureInfo"/>
         /// </summary>
         public static CultureInfo Culture => Properties.Resources.Culture;
-        /// <summary>
-        /// Gets the current <see cref="RegionInfo"/>
-        /// </summary>
-        [Obsolete("Consider migrating to 'ZoneExts.Region' as this properties will be removed from here soon")]
-        public static RegionInfo Region => ZoneExts.Region;
-        /// <summary>
-        /// Current Country
-        /// </summary>
-        [Obsolete("Consider migrating to 'ZoneExts.CurrentCountry' as this properties will be removed from here soon")]
-        public static Country CurrentCountry => ZoneExts.CurrentCountry;
+        
         /// <summary>
         /// Base UTF8 Encoding to re-use.
         /// </summary>

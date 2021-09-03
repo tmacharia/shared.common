@@ -2,23 +2,38 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Text.RegularExpressions;
+using Common;
 
-namespace Common
+namespace System.Extensions
 {
     /// <summary>
     /// Contains extensions methods for http urls strings.
     /// </summary>
     public static class UrlExts
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
         public static string UrlEncode(this string url)
         {
             return WebUtility.UrlEncode(url);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
         public static string UrlDecode(this string url)
         {
             return WebUtility.UrlDecode(url);
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="uri"></param>
+        /// <returns></returns>
         public static Dictionary<string, string> GetQueryStrings(this Uri uri)
         {
             var dic = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);

@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Extensions;
 using System.Linq;
 using NUnit.Framework;
 

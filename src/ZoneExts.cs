@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Collections.Generic;
+using System.Extensions;
+using System.Formatting;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Common.Enums;
-using Common.Models;
 using Newtonsoft.Json;
 
-namespace Common
+namespace System.Globalization
 {
     /// <summary>
     /// Contains methods &amp; properties for identifying a machine's Local TimeZone Info &amp; Region

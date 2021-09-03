@@ -6,6 +6,7 @@ namespace Common.Models
     /// Model with a custom type or Key for the Id.
     /// </summary>
     /// <typeparam name="TKey"></typeparam>
+    [Obsolete]
     public class BaseModel<TKey>
     {
         /// <summary>

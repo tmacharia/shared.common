@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Extensions;
+using NUnit.Framework;
 
 namespace Common.UnitTests
 {

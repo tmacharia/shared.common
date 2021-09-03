@@ -1,6 +1,7 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Extensions;
+using System.Text.RegularExpressions;
 
-namespace Common.IO
+namespace System.IO
 {
     /// <summary>
     /// Extension methods for file related jobs.

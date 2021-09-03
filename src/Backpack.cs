@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Extensions;
 using System.IO;
 using System.Linq;
-using Common.IO;
 using Common.Models;
 using Newtonsoft.Json;
 using static System.Environment;
@@ -14,6 +14,7 @@ namespace Common
     /// Represents a service to store and retrieve data in your app's
     /// local application folder
     /// </summary>
+    [Obsolete]
     public static class Backpack
     {
         /// <summary>
