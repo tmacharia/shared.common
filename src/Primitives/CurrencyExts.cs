@@ -1,4 +1,6 @@
-﻿using Common.Enums;
+﻿using System;
+using System.Globalization;
+using Common.Enums;
 
 namespace Common.Primitives
 {
@@ -17,13 +19,13 @@ namespace Common.Primitives
         /// <returns></returns>
         public static string ToLocalCurrency(this int n)
         {
-            return $"{ZoneExts.CurrentCountry.GetSymbolAttribute()} {n.ToString($"N0", Constants.Culture)}";
+            return string.Format(Constants.Culture, "{0} {1:N0}", ZoneExts.CurrentCountry.GetSymbolAttribute(), n);
         }
         /// <summary>
         /// Formats a <see cref="decimal"/> to currency <see cref="string"/> using the currency symbol of the 
         /// country where this device is located.
         /// </summary>
-        /// <param name="n"></param>
+        /// <param name="d"></param>
         /// <param name="precision">Number of decimal places to use.</param>
         /// <returns></returns>
         public static string ToLocalCurrency(this decimal d,int precision=2)
@@ -34,7 +36,7 @@ namespace Common.Primitives
         /// Formats a <see cref="float"/> to currency <see cref="string"/> using the currency symbol of the 
         /// country where this device is located.
         /// </summary>
-        /// <param name="n"></param>
+        /// <param name="f"></param>
         /// <param name="precision">Number of decimal places to use.</param>
         /// <returns></returns>
         public static string ToLocalCurrency(this float f, int precision = 2)
@@ -106,7 +108,10 @@ namespace Common.Primitives
         /// <returns>Formatted value as currency.</returns>
         public static string ToMoney(this double d, Country country = Country.US)
         {
-            return $"{country.GetSymbolAttribute()} " + (_useFormat ? d.ToString(d % 1 == 0 ? "N0" : "N2", Constants.Culture) : d.ToString("N1", Constants.Culture));
+            var provider = CultureInfo.GetCultureInfo(country.ToString());
+            string format = d % 1 == 0 ? "N0" : "N2";
+            string num = d.ToString(format, provider);
+            return string.Format(provider, "{0} {1}", country.GetSymbolAttribute(), num);
         }
         /// <summary>
         /// Formats a <see cref="double"/> number to Kenyan currency with precision

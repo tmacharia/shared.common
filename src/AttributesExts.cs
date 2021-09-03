@@ -21,12 +21,22 @@ namespace Common
         public static string GetSymbolAttribute<T>(this T source) where T : Enum
         {
             FieldInfo fi = null;
+            Type type = typeof(T);
+            string fieldName = $"{type.Name}-{source}";
+            if (_fieldsCache.ContainsKey(fieldName))
+                fi = _fieldsCache[fieldName];
+            else
+            {
 #if NETSTANDARD1_5 || NETSTANDARD1_6
             fi = source.GetType().GetRuntimeField(source.ToString());
 #else
-            fi = source.GetType().GetField(source.ToString());
+                fi = source.GetType().GetField(source.ToString());
 #endif
-            
+                if (fi != null)
+                    _fieldsCache.Add(fieldName, fi);
+            }
+
+
             SymbolAttribute[] attributes = (SymbolAttribute[])fi.GetCustomAttributes(
                 typeof(SymbolAttribute), false);
 
