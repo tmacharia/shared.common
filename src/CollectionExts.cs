@@ -11,7 +11,8 @@ namespace System.Linq
     public static class CollectionExts
     {
         /// <summary>
-        /// Determines whether an item that satisfies the specified condition exists in the sequence.
+        /// Determines whether any item exists in the sequence that satisfies 
+        /// the specified predicate condition.
         /// </summary>
         /// <typeparam name="T">The type of the elements of the collection.</typeparam>
         /// <param name="enumerable">Collection</param>
