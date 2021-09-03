@@ -1,14 +1,16 @@
-﻿using System;
-using System.ComponentModel;
-using System.IO;
-
-namespace Common.IO
+﻿namespace System.IO
 {
     /// <summary>
     /// Extension methods for all Streams.
     /// </summary>
     public static class StreamExts
     {
+        /// <summary>
+        /// Converts a byte[] to a <see cref="Stream"/>
+        /// </summary>
+        /// <param name="bytes">Array of bytes to convert</param>
+        /// <returns>A stream</returns>
+        public static Stream ToStream(this byte[] bytes) => bytes != null ? new MemoryStream(bytes) : null;
         /// <summary>
         /// Converts any object that inherits from <see cref="Stream"/> to a 
         /// byte[]

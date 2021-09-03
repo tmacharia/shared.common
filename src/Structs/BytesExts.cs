@@ -1,7 +1,6 @@
-﻿using System;
-using System.IO;
+﻿using Common;
 
-namespace Common.Structs
+namespace System
 {
     /// <summary>
     /// Represents extension methods on byte arrays.
@@ -24,11 +23,5 @@ namespace Common.Structs
         /// <param name="bytes">Byte array</param>
         /// <returns>Base64 encoded <see cref="string"/></returns>
         public static string ToBase64String(this byte[] bytes) => Convert.ToBase64String(bytes);
-        /// <summary>
-        /// Converts a byte[] to a <see cref="Stream"/>
-        /// </summary>
-        /// <param name="bytes">Array of bytes to convert</param>
-        /// <returns>A stream</returns>
-        public static Stream ToStream(this byte[] bytes) => bytes.IsNotNull() ? new MemoryStream(bytes) : null;
     }
 }
