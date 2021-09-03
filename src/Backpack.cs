@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using Common.IO;
 using Common.Models;
+using Newtonsoft.Json;
 using static System.Environment;
 
 namespace Common
@@ -155,12 +156,12 @@ namespace Common
         {
             string path = GetAppFilePath<T>();
             File.WriteAllText(path, string.Empty);
-            File.WriteAllText(path, obj.ToJsonUnIndented());
+            File.WriteAllText(path, obj.ToJson());
         }
         private static void Save(string path, object obj)
         {
             File.WriteAllText(path, string.Empty);
-            File.WriteAllText(path, obj.ToJsonUnIndented());
+            File.WriteAllText(path, obj.ToJson());
         }
        
         private static T GetFile<T>() where T : class

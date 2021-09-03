@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Common.Enums;
 using Common.Models;
+using Newtonsoft.Json;
 
 namespace Common
 {
@@ -76,7 +77,7 @@ namespace Common
         /// Reads TimeZoneInfo json data and returns it as a list of <see cref="ZoneInfo"/>
         /// </summary>
         /// <returns></returns>
-        private static List<ZoneInfo> GetZoneInfos() => Data.DeserializeTo<List<ZoneInfo>>();
+        private static List<ZoneInfo> GetZoneInfos() => Data.DeserializeTo<List<ZoneInfo>>(ReferenceLoopHandling.Ignore);
 
         #region Data Region
         /// <summary>
