@@ -1,10 +1,8 @@
 ﻿using Common.Attributes;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Reflection;
 
-namespace Common
+namespace System.Reflection.Extensions
 {
     /// <summary>
     /// Collection of extension methods for class property attributes.
