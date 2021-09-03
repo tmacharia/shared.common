@@ -199,7 +199,7 @@ namespace Common
         /// <returns>Plaintext</returns>
         public static string DecodeHtml(this string html) {
             if (html.IsValid()) {
-#if NET47
+#if NET472
                 html = WebUtility.HtmlDecode(html);
 #else
                 html = HttpUtility.HtmlDecode(html);
