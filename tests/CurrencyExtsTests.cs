@@ -1,7 +1,5 @@
-﻿using Common.Enums;
-using Common.Primitives;
+﻿using System.Formatting;
 using NUnit.Framework;
-using System;
 
 namespace Common.UnitTests
 {

@@ -1,7 +1,6 @@
-﻿using System;
+﻿using System.Formatting;
 using System.Linq;
 using Common.Enums;
-using Common.Primitives;
 using NUnit.Framework;
 
 namespace Common.UnitTests

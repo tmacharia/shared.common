@@ -1,8 +1,9 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
+using System.Reflection.Extensions;
+using Common;
 using Common.Enums;
 
-namespace Common.Primitives
+namespace System.Formatting
 {
     /// <summary>
     /// Represents extension methods for currency formatting.
