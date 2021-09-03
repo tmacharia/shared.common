@@ -58,7 +58,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
   <ItemGroup Condition="&#xD;&#xA;&#xD;&#xA;    '$(TargetFramework)' == 'net45' or &#xD;&#xA;&#xD;&#xA;    &#xD;&#xA;    '$(TargetFramework)' == 'net451' or &#xD;&#xA;&#xD;&#xA;    &#xD;&#xA;    '$(TargetFramework)' == 'net452' or &#xD;&#xA;&#xD;&#xA;&#xD;&#xA;    '$(TargetFramework)' == 'net46' or &#xD;&#xA;&#xD;&#xA;    &#xD;&#xA;    '$(TargetFramework)' == 'net461' or &#xD;&#xA; &#xD;&#xA;    &#xD;&#xA;    '$(TargetFramework)' == 'net462' or &#xD;&#xA; &#xD;&#xA;    &#xD;&#xA;    '$(TargetFramework)' == 'net47' or &#xD;&#xA; &#xD;&#xA;    &#xD;&#xA;    '$(TargetFramework)' == 'net471' or &#xD;&#xA; &#xD;&#xA;    &#xD;&#xA;    '$(TargetFramework)' == 'net472' or &#xD;&#xA; &#xD;&#xA;    &#xD;&#xA;    '$(TargetFramework)' == 'net48'">
