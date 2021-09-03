@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 
-namespace Common
+namespace System.Linq
 {
     /// <summary>
     /// Represents extension methods for elements that are considered as collections and 
@@ -13,93 +11,113 @@ namespace Common
     public static class CollectionExts
     {
         /// <summary>
-        /// Checks if the current collection has an item that matches the specified predicate.
+        /// Determines whether an item that satisfies the specified condition exists in the sequence.
         /// </summary>
-        /// <typeparam name="T">Type of collection</typeparam>
+        /// <typeparam name="T">The type of the elements of the collection.</typeparam>
         /// <param name="enumerable">Collection</param>
         /// <param name="predicate">Predicate function for evaluation.</param>
-        /// <returns>true or false.</returns>
+        /// <returns>
+        /// true if any elements in the source sequence pass the test in the specified predicate; otherwise, false.
+        /// </returns>
         public static bool Contains<T>(this IEnumerable<T> enumerable, Func<T, bool> predicate)
-                => enumerable.IsNotNull() ? enumerable.Any(predicate) : false;
+                => enumerable != null && enumerable.Any(predicate);
         /// <summary>
         /// Steps through the collection subjecting each item to the <see cref="Action"/>
         /// specified.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="T">The type of the elements of the collection.</typeparam>
         /// <param name="enumerable"></param>
         /// <param name="action">Function/method to execute on each item in the collection.</param>
+        /// <exception cref="InvalidOperationException"/>
         public static void ForEach<T>(this IEnumerable<T> enumerable, Action<T> action)
         {
-            int total = enumerable.Count();
-            for (int i = 0; i < total; i++) {
-                action(enumerable.ElementAt(i));
+            if (enumerable == null)
+                return;
+
+            IEnumerator<T> enumerator = enumerable.GetEnumerator();
+            while (enumerator.MoveNext())
+            {
+                action(enumerator.Current);
             }
         }
         /// <summary>
         /// Steps through the collection subjecting each item to the <see cref="Action"/>
         /// specified.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="T">The type of the elements of the collection.</typeparam>
         /// <param name="enumerable"></param>
         /// <param name="action">Delegate method that receives both the index and current item in the collection.</param>
+        /// <exception cref="InvalidOperationException"/>
         public static void ForEach<T>(this IEnumerable<T> enumerable, Action<int,T> action)
         {
-            int total = enumerable.Count();
-            for (int i = 0; i < total; i++) {
-                action(i,enumerable.ElementAt(i));
+            if (enumerable == null)
+                return;
+
+            int n = 0;
+            IEnumerator<T> enumerator = enumerable.GetEnumerator();
+            while (enumerator.MoveNext())
+            {
+                action(n, enumerator.Current);
+                n++;
             }
         }
         /// <summary>
         /// Remove all items in a collection that matches a specified predicate.
         /// </summary>
-        /// <typeparam name="T">Item <see cref="Type"/></typeparam>
+        /// <typeparam name="T">The type of the elements of the collection.</typeparam>
         /// <param name="enumerable">Collection to filter</param>
         /// <param name="predicate">Predicate of items to remove.</param>
         /// <returns>Filtered collection</returns>
-        public static IEnumerable<T> RemoveWherePredicate<T>(this IEnumerable<T> ts, Predicate<T> predicate)
+        public static IEnumerable<T> RemoveWherePredicate<T>(this IEnumerable<T> enumerable, Predicate<T> predicate)
         {
-            int index = ts.GetIndexOf(predicate);
+            int index = enumerable.GetIndexOf(predicate);
             if (index > -1)
-                return ts.Where((item, i) => i != index);
-            return ts;
+                return enumerable.Where((item, i) => i != index);
+            return enumerable;
         }
         /// <summary>
         /// Searches for an element matchind the specified predicate and returns a zero based
         /// index of the first occurence within the collection.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="ts"></param>
+        /// <typeparam name="T">The type of the elements of the collection.</typeparam>
+        /// <param name="enumerable"></param>
         /// <param name="predicate">Condition predicate</param>
-        /// <returns></returns>
-        public static int GetIndexOf<T>(this IEnumerable<T> ts, Func<T, bool> predicate)
-            => ts.GetIndexOf(new Predicate<T>(predicate));
+        /// <returns>The zero-based index of the first occurrence of an element that matches the conditions defined by match, 
+        /// if found; otherwise, -1.
+        /// </returns>
+        public static int GetIndexOf<T>(this IEnumerable<T> enumerable, Func<T, bool> predicate)
+            => enumerable.GetIndexOf(new Predicate<T>(predicate));
         /// <summary>
         /// Searches for an element matchind the specified predicate and returns a zero based
         /// index of the first occurence within the collection.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="ts"></param>
-        /// <param name="predicate"></param>
-        /// <returns></returns>
-        public static int GetIndexOf<T>(this IEnumerable<T> ts, Predicate<T> predicate)
-            => Array.FindIndex(ts.ToArray(), predicate);
+        /// <typeparam name="T">The type of the elements of the collection.</typeparam>
+        /// <param name="enumerable"></param>
+        /// <param name="predicate">The <see cref="Predicate{T}"/> that defines the conditions of the element to search for.
+        /// </param>
+        /// <returns>The zero-based index of the first occurrence of an element that matches the conditions defined by match, 
+        /// if found; otherwise, -1.
+        /// </returns>
+        /// <exception cref="ArgumentNullException"/>
+        public static int GetIndexOf<T>(this IEnumerable<T> enumerable, Predicate<T> predicate)
+            => Array.FindIndex(enumerable.ToArray(), predicate);
         /// <summary>
         /// Remove all items in a collection that matches a specified predicate.
         /// </summary>
-        /// <typeparam name="T">Item <see cref="Type"/></typeparam>
+        /// <typeparam name="T">The type of the elements of the collection.</typeparam>
         /// <param name="enumerable">Collection to filter</param>
         /// <param name="predicate">Predicate of items to remove.</param>
         /// <returns>Filtered collection</returns>
         public static IEnumerable<T> RemoveWhere<T>(this IEnumerable<T> enumerable, Func<T, bool> predicate)
-                => enumerable.IsNotNull() ? enumerable.Any(predicate) ?
+                => enumerable != null ? enumerable.Any(predicate) ?
                    enumerable.SkipWhile(predicate) : enumerable : null;
         /// <summary>
         /// Converts any collection that inherits <see cref="IEnumerable"/> to an <see cref="ObservableCollection{T}"/>
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="ts"></param>
+        /// <typeparam name="T">The type of the elements of the collection.</typeparam>
+        /// <param name="enumerable"></param>
         /// <returns></returns>
-        public static ObservableCollection<T> ToObservableCollection<T>(this IEnumerable<T> ts)
-            => new ObservableCollection<T>(ts);
+        public static ObservableCollection<T> ToObservableCollection<T>(this IEnumerable<T> enumerable)
+            => new ObservableCollection<T>(enumerable);
     }
 }
