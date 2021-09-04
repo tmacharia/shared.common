@@ -44,4 +44,4 @@ jobs:
       - name: Pack
         run: dotnet pack -c Release
       - name: Publish Github Package
-        run: dotnet nuget push "src/bin/Release/Shared.Common.*.nupkg" --source "github" --skip-duplicate
+        run: dotnet nuget push "src/bin/Release/Shared.Common.*.nupkg" --source "github" --skip-duplicate 
