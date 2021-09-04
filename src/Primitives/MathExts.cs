@@ -1,4 +1,4 @@
-﻿namespace Common.Primitives
+﻿namespace System
 {
     /// <summary>
     /// Represents extension methods that are mathematically related.

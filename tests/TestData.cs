@@ -8,6 +8,10 @@ namespace Common.UnitTests
 {
     public class TestData
     {
+        #region Traits
+        internal const string COLLECTION_TESTS = "Collections";
+        #endregion
+
 #if DEBUG
         public static bool _printToConsole = true;
 #else
@@ -17,8 +21,6 @@ namespace Common.UnitTests
         public const string Color2 = "White";
 
         public static string RootDir = Directory.GetCurrentDirectory();
-        public static string DocFile = @"C:\Users\george\Source\Repos\Re-Usable Resources\Common\github\Common\XmlDocumentation.xml";
-        public static string DocSavePath = @"C:\Users\george\Source\Repos\Re-Usable Resources\Common\github\Docs\README.md";
 
         public static string[] CarNames = "Bmw,Audi,Golf".Split(',');
 

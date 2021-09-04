@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Extensions;
 using System.IO;
 using System.Linq;
-using Common.IO;
 using Common.Models;
+using Newtonsoft.Json;
 using static System.Environment;
 
 namespace Common
@@ -13,6 +14,7 @@ namespace Common
     /// Represents a service to store and retrieve data in your app's
     /// local application folder
     /// </summary>
+    [Obsolete]
     public static class Backpack
     {
         /// <summary>
@@ -155,12 +157,12 @@ namespace Common
         {
             string path = GetAppFilePath<T>();
             File.WriteAllText(path, string.Empty);
-            File.WriteAllText(path, obj.ToJsonUnIndented());
+            File.WriteAllText(path, obj.ToJson());
         }
         private static void Save(string path, object obj)
         {
             File.WriteAllText(path, string.Empty);
-            File.WriteAllText(path, obj.ToJsonUnIndented());
+            File.WriteAllText(path, obj.ToJson());
         }
        
         private static T GetFile<T>() where T : class

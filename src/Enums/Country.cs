@@ -1,7 +1,7 @@
 using Common.Attributes;
 using System.ComponentModel;
 
-namespace Common.Enums
+namespace System.Formatting
 {
     /// <summary>
     /// Represents supported countries current types.

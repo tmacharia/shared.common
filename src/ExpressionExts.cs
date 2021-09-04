@@ -1,13 +1,15 @@
-﻿using System;
-using System.Linq.Expressions;
-
-namespace Common
+﻿namespace System.Linq.Expressions
 {
     /// <summary>
     /// Provides methods for working with <see cref="Expression"/>
     /// </summary>
     public static class ExpressionExts
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="exp"></param>
+        /// <returns></returns>
         public static string GetMemberName(Expression exp)
         {
             if (exp == null)

@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Extensions;
+using System.Formatting;
+using System.Linq;
 using Common.Enums;
 using NUnit.Framework;
 
@@ -43,7 +46,7 @@ namespace Common.UnitTests
         [Theory]
         [TestCase(typeof(DataFormat))]
         [TestCase(typeof(HttpVerb))]
-        [TestCase(typeof(Enums.Country))]
+        [TestCase(typeof(System.Formatting.Country))]
         public void GetEnumPairs_AsDictionary(Type enumType)
         {
             // Act

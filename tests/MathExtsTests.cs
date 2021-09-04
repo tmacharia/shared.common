@@ -1,4 +1,4 @@
-﻿using Common.Primitives;
+﻿using System;
 using NUnit.Framework;
 
 namespace Common.UnitTests

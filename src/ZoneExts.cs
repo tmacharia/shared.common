@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Collections.Generic;
+using System.Extensions;
+using System.Formatting;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Common.Enums;
-using Common.Models;
+using Newtonsoft.Json;
 
-namespace Common
+namespace System.Globalization
 {
     /// <summary>
     /// Contains methods &amp; properties for identifying a machine's Local TimeZone Info &amp; Region
@@ -76,7 +75,7 @@ namespace Common
         /// Reads TimeZoneInfo json data and returns it as a list of <see cref="ZoneInfo"/>
         /// </summary>
         /// <returns></returns>
-        private static List<ZoneInfo> GetZoneInfos() => Data.DeserializeTo<List<ZoneInfo>>();
+        private static List<ZoneInfo> GetZoneInfos() => Data.DeserializeTo<List<ZoneInfo>>(ReferenceLoopHandling.Ignore);
 
         #region Data Region
         /// <summary>

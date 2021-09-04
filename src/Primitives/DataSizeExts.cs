@@ -1,7 +1,8 @@
-﻿using System;
+﻿using System.Extensions;
+using Common;
 using Common.Enums;
 
-namespace Common.Primitives
+namespace System.Formatting
 {
     /// <summary>
     /// Represents extension methods used in formatting data byte(s) to

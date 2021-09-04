@@ -5,6 +5,7 @@ namespace Common.Models
     /// <summary>
     /// Model of type BaseModel with the Key/Id as a <see cref="string"/>
     /// </summary>
+    [Obsolete]
     public class RootModel : BaseModel<string>
     {
         /// <summary>

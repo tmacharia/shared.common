@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Concurrent;
+﻿using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 
-namespace Common
+namespace System.Reflection.Extensions
 {
     /// <summary>
     /// Collection of extension methods that require Reflection to access class

@@ -1,17 +1,28 @@
-﻿using System;
+﻿using System.Extensions;
 using System.Text;
-using Common.Properties;
 
-namespace Common.Structs
+namespace System.Formatting
 {
     /// <summary>
     /// Represents extension methods on <see cref="DateTime"/> instances.
     /// </summary>
     public static class DateTimeExts
     {
+        /// <summary>
+        /// ddd
+        /// </summary>
         public static string ShortDayFormat = "ddd";
+        /// <summary>
+        /// h:mm tt
+        /// </summary>
         public static string TimeFormat = "h:mm tt";
+        /// <summary>
+        /// MMM. d, yyyy
+        /// </summary>
         public static string DateFormat = "MMM. d, yyyy";
+        /// <summary>
+        /// dd/MM
+        /// </summary>
         public static string DayMonthFormat = "dd/MM";
 
         /// <summary>
@@ -97,31 +108,31 @@ namespace Common.Structs
 
             double delta = span.TotalSeconds;
             // Seconds
-            if (delta == 0 || (delta > 0 && delta < OneSec)) return Resources.JustNow;
-            if (delta == OneSec) return isInThePast ? Resources.OneSecAgo : Resources.InOneSec;
-            if (delta < OneMin) return isInThePast ? $"{span.Seconds} {Resources.SecsAgo}" : $"{Resources.In} {span.Seconds} {Resources.Secs}";
+            if (delta == 0 || (delta > 0 && delta < OneSec)) return Common.Properties.Resources.JustNow;
+            if (delta == OneSec) return isInThePast ? Common.Properties.Resources.OneSecAgo : Common.Properties.Resources.InOneSec;
+            if (delta < OneMin) return isInThePast ? $"{span.Seconds} {Common.Properties.Resources.SecsAgo}" : $"{Common.Properties.Resources.In} {span.Seconds} {Common.Properties.Resources.Secs}";
 
             // Minutes
-            if (delta > OneMin && delta < OneMin * 2) return isInThePast ? Resources.OneMinAgo : Resources.InOneMin;
-            if (delta > OneMin && delta < OneHr) return isInThePast ? $"{span.Minutes} {Resources.MinsAgo}" : $"{Resources.In} {span.Minutes} {Resources.Mins}";
+            if (delta > OneMin && delta < OneMin * 2) return isInThePast ? Common.Properties.Resources.OneMinAgo : Common.Properties.Resources.InOneMin;
+            if (delta > OneMin && delta < OneHr) return isInThePast ? $"{span.Minutes} {Common.Properties.Resources.MinsAgo}" : $"{Common.Properties.Resources.In} {span.Minutes} {Common.Properties.Resources.Mins}";
 
             // Hours
-            if (delta > OneHr && delta < OneHr * 2) return isInThePast ? Resources.OneHrAgo : Resources.InOneHr;
-            if (delta > OneHr && delta < OneDay) return isInThePast ? $"{span.Hours} {Resources.HoursAgo}" : $"{Resources.In} {span.Hours} {Resources.Hours}";
+            if (delta > OneHr && delta < OneHr * 2) return isInThePast ? Common.Properties.Resources.OneHrAgo : Common.Properties.Resources.InOneHr;
+            if (delta > OneHr && delta < OneDay) return isInThePast ? $"{span.Hours} {Common.Properties.Resources.HoursAgo}" : $"{Common.Properties.Resources.In} {span.Hours} {Common.Properties.Resources.Hours}";
 
             // Days
             int days = span.Days;
-            if (days == 1) return isInThePast ? Resources.Yesterday : Resources.Tomorrow;
-            if (delta > OneDay && delta < OneMonth) return isInThePast ? $"{days} {Resources.DaysAgo}" : $"{Resources.In} {days} {Resources.Days}";
+            if (days == 1) return isInThePast ? Common.Properties.Resources.Yesterday : Common.Properties.Resources.Tomorrow;
+            if (delta > OneDay && delta < OneMonth) return isInThePast ? $"{days} {Common.Properties.Resources.DaysAgo}" : $"{Common.Properties.Resources.In} {days} {Common.Properties.Resources.Days}";
 
             // Months
-            if (delta == OneMonth || (delta > OneMonth && delta < OneMonth * 2)) return isInThePast ? Resources.OneMonthAgo : Resources.InOneMonth;
+            if (delta == OneMonth || (delta > OneMonth && delta < OneMonth * 2)) return isInThePast ? Common.Properties.Resources.OneMonthAgo : Common.Properties.Resources.InOneMonth;
             int months = (int)(delta / OneMonth);
-            if (delta > OneMonth && delta < OneYear) return isInThePast ? $"{months} {Resources.MonthsAgo}" : $"{Resources.In} {months} {Resources.Months}";
+            if (delta > OneMonth && delta < OneYear) return isInThePast ? $"{months} {Common.Properties.Resources.MonthsAgo}" : $"{Common.Properties.Resources.In} {months} {Common.Properties.Resources.Months}";
 
             int yrs = (int)(delta / OneYear);
-            if (yrs == 1) return isInThePast ? Resources.OneYearAgo : Resources.InOneYear;
-            return isInThePast ? $"{yrs} {Resources.YearsAgo}" : $"{Resources.In} {yrs} {Resources.Years}";
+            if (yrs == 1) return isInThePast ? Common.Properties.Resources.OneYearAgo : Common.Properties.Resources.InOneYear;
+            return isInThePast ? $"{yrs} {Common.Properties.Resources.YearsAgo}" : $"{Common.Properties.Resources.In} {yrs} {Common.Properties.Resources.Years}";
         }
         /// <summary>
         /// Converts <see cref="DateTimeOffset"/> to advanced human friendly format.
@@ -145,7 +156,7 @@ namespace Common.Structs
             }
             else if (span.TotalDays >= 1 && span.TotalDays <= 2)
             {
-                return $"{Resources.Yesterday.Capitalize()}, {dt.ToString(TimeFormat)}";
+                return $"{Common.Properties.Resources.Yesterday.Capitalize()}, {dt.ToString(TimeFormat)}";
             }
             else
             {
@@ -154,7 +165,7 @@ namespace Common.Structs
                     return span.ToMoment();
                 }
 
-                return $"{Resources.Today.Capitalize()}, {dt.ToString(TimeFormat)}";
+                return $"{Common.Properties.Resources.Today.Capitalize()}, {dt.ToString(TimeFormat)}";
             }
         }
         /// <summary>
@@ -179,7 +190,7 @@ namespace Common.Structs
             }
             else if (span.TotalDays >= 1 && span.TotalDays <= 2)
             {
-                return $"{Resources.Yesterday.Capitalize()}, {dt.ToString(TimeFormat)}";
+                return $"{Common.Properties.Resources.Yesterday.Capitalize()}, {dt.ToString(TimeFormat)}";
             }
             else
             {
@@ -188,7 +199,7 @@ namespace Common.Structs
                     return span.ToMoment();
                 }
 
-                return $"{Resources.Today.Capitalize()}, {dt.ToString(TimeFormat)}";
+                return $"{Common.Properties.Resources.Today.Capitalize()}, {dt.ToString(TimeFormat)}";
             }
         }
         /// <summary>
@@ -227,27 +238,27 @@ namespace Common.Structs
             {
                 sb.Append(span.Hours);
                 sb.Append(" ");
-                sb.Append(span.Hours == 1 ? Resources.Hour : Resources.Hours);
+                sb.Append(span.Hours == 1 ? Common.Properties.Resources.Hour : Common.Properties.Resources.Hours);
                 sb.Append(" ");
                 sb.Append(span.Minutes);
                 sb.Append(" ");
-                sb.Append(span.Minutes == 1 ? Resources.Min : Resources.Mins);
+                sb.Append(span.Minutes == 1 ? Common.Properties.Resources.Min : Common.Properties.Resources.Mins);
             }
             else if (span.Minutes > 0)
             {
                 sb.Append(span.Minutes);
                 sb.Append(" ");
-                sb.Append(span.Minutes == 1 ? Resources.Min : Resources.Mins);
+                sb.Append(span.Minutes == 1 ? Common.Properties.Resources.Min : Common.Properties.Resources.Mins);
                 sb.Append(" ");
                 sb.Append(span.Seconds);
                 sb.Append(" ");
-                sb.Append(span.Seconds == 1 ? Resources.Sec : Resources.Secs);
+                sb.Append(span.Seconds == 1 ? Common.Properties.Resources.Sec : Common.Properties.Resources.Secs);
             }
             else if (span.Seconds > 0)
             {
                 sb.Append(span.Seconds);
                 sb.Append(" ");
-                sb.Append(span.Seconds == 1 ? Resources.Sec : Resources.Secs);
+                sb.Append(span.Seconds == 1 ? Common.Properties.Resources.Sec : Common.Properties.Resources.Secs);
             }
             return sb.ToString();
         }
@@ -261,17 +272,17 @@ namespace Common.Structs
             int hrs = (int)(d / (60 * 60));
             if (hrs > 0)
             {
-                return hrs == 1 ? $"1 {Resources.Hour}" : $"{hrs} {Resources.Hours}";
+                return hrs == 1 ? $"1 {Common.Properties.Resources.Hour}" : $"{hrs} {Common.Properties.Resources.Hours}";
             }
             int mins = (int)(d / 60);
             if (mins > 0)
             {
-                return mins == 1 ? $"1 {Resources.Min}" : $"{mins} {Resources.Mins}";
+                return mins == 1 ? $"1 {Common.Properties.Resources.Min}" : $"{mins} {Common.Properties.Resources.Mins}";
             }
             int secs = (int)d;
             if (secs > 0)
             {
-                return secs == 1 ? $"1 {Resources.Sec}" : $"{secs} {Resources.Secs}";
+                return secs == 1 ? $"1 {Common.Properties.Resources.Sec}" : $"{secs} {Common.Properties.Resources.Secs}";
             }
             return string.Empty;
         }

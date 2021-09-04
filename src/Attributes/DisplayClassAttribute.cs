@@ -1,18 +1,28 @@
 ﻿using System;
+using System.Extensions;
 
 namespace Common.Attributes
 {
     /// <summary>
-    /// Specifies name & description of a class.
+    /// Specifies name &amp; description of a class.
     /// </summary>
     [AttributeUsage(AttributeTargets.Class)]
     public sealed class DisplayClassAttribute : Attribute
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
         public DisplayClassAttribute(string name)
         {
             if (name.IsValid())
                 Name = name;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="description"></param>
         public DisplayClassAttribute(string name,string description)
             :this(name)
         {

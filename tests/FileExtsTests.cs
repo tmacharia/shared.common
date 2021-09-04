@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Common.IO;
+﻿using System.IO;
 using NUnit.Framework;
 
 namespace Common.UnitTests

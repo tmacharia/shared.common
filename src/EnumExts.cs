@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
+using System.Reflection.Extensions;
 
-namespace Common
+namespace System.Extensions
 {
     /// <summary>
     /// Represents extension methods on Enum objects
