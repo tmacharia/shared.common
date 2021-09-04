@@ -6,6 +6,7 @@ namespace Common.UnitTests
     public class BackpackTests
     {
         [Test]
+        [Ignore("Obsolete")]
         public void PredictFileName_Returns_ClassName()
         {
             // Arrange
