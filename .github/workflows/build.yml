@@ -18,10 +18,12 @@ jobs:
     needs: restore
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - run: dotnet build --configuration Release
   
   tests:
     needs: [restore,build]
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - run: dotnet test
