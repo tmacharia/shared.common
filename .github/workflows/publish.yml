@@ -1,0 +1,24 @@
+name: Publish NuGet
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: dotnet build --configuration Release
+      - name: Publish NuGet
+        uses: brandedoutcast/publish-nuget@v2.5.5
+        with:
+          PROJECT_FILE_PATH: src/Common.csproj
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+      - name: Add Github Nuget Source
+        run: dotnet nuget add source --username tmacharia --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/tmacharia/index.json"
+      - name: Pack
+        run: dotnet pack -c Release
+      - name: Publish Github Package
+        run: dotnet nuget push "src/bin/Release/Shared.Common.*.nupkg" --source "github" --skip-duplicate 
