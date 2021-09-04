@@ -22,14 +22,14 @@ jobs:
       - run: dotnet build
   
   tests:
-    needs: [restore,build]
+    needs: restore
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - run: dotnet test
   
   publish:
-    needs: [build]
+    needs: [build,tests]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
