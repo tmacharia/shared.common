@@ -60,7 +60,7 @@ N.B: To update to this version, MAKE SURE to test
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
   </ItemGroup>
 
   <!--<ItemGroup Condition="&#xD;&#xA; &#xD;&#xA;    &#xD;&#xA;    '$(TargetFramework)' == 'net472'">
