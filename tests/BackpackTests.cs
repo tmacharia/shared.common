@@ -17,10 +17,10 @@ namespace Common.UnitTests
             string n3 = Backpack.PredictFileName<IList<BackpackTests>>();
             string n4 = Backpack.PredictFileName<IEnumerable<BackpackTests>>();
             // Assert
-            Assert.AreEqual(ans, n1);
-            Assert.AreEqual(ans, n2);
-            Assert.AreEqual(ans, n3);
-            Assert.AreEqual(ans, n4);
+            Assert.Equals(ans, n1);
+            Assert.Equals(ans, n2);
+            Assert.Equals(ans, n3);
+            Assert.Equals(ans, n4);
         }
     }
 }
