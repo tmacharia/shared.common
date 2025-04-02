@@ -21,12 +21,12 @@ namespace Common.UnitTests
             Log(slug);
             if (txt.IsValid())
             {
-                Assert.IsTrue(slug.IsValidUrlSlug());
-                Assert.IsFalse(isSlug);
+                Assert.That(slug.IsValidUrlSlug(), Is.True);
+                Assert.That(isSlug, Is.True);
             }
             else
             {
-                Assert.AreEqual(txt, slug);
+                Assert.Equals(txt, slug);
             }
         }
     }

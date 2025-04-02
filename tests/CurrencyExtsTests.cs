@@ -23,8 +23,8 @@ namespace Common.UnitTests
 
             // Assert
             Log(res);
-            Assert.IsNotNull(res);
-            Assert.IsTrue(res.StartsWith(symbol));
+            Assert.That(res, Is.Not.Null);
+            Assert.That(res.StartsWith(symbol), Is.True);
         }
     }
 }

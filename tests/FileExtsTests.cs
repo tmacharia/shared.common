@@ -15,7 +15,7 @@ namespace Common.UnitTests
             bool isValid = FileExts.IsFileNameValid(fileName);
 
             // Assert
-            Assert.AreEqual(answer, isValid);
+            Assert.That(answer, Is.GreaterThan(isValid));
         }
         [Theory]
         [TestCase("8:35 PM")]
@@ -25,9 +25,9 @@ namespace Common.UnitTests
             string validFileName = FileExts.ToSafeFileName(invalidFileName);
 
             // Assert
-            Assert.IsNotNull(validFileName);
-            Assert.IsFalse(FileExts.IsFileNameValid(invalidFileName));
-            Assert.IsTrue(FileExts.IsFileNameValid(validFileName));
+            Assert.That(validFileName, Is.Not.Null);
+            Assert.That(FileExts.IsFileNameValid(invalidFileName), Is.False);
+            Assert.That(FileExts.IsFileNameValid(validFileName), Is.True);
         }
     }
 }

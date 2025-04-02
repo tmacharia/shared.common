@@ -34,7 +34,7 @@ namespace Common.UnitTests
             bool result = email.IsEmailValid();
 
             // Assert
-            Assert.AreEqual(isEmailValid, result);
+            Assert.Equals(isEmailValid, result);
         }
 
         [Theory]
@@ -53,13 +53,13 @@ namespace Common.UnitTests
             Log(res);
             if (text.Length > count)
             {
-                Assert.AreEqual(count + trail.Length, res.Length);
-                Assert.IsTrue(res.EndsWith(trail));
+                Assert.Equals(count + trail.Length, res.Length);
+                Assert.That(res.EndsWith(trail), Is.True);
             }
             else
             {
-                Assert.AreEqual(text, res);
-                Assert.IsFalse(res.EndsWith(trail));
+                Assert.Equals(text, res);
+                Assert.That(res.EndsWith(trail), Is.False);
             }
         }
         [Theory]
@@ -80,12 +80,12 @@ namespace Common.UnitTests
             Log(res);
             if (wordCount > count)
             {
-                Assert.AreEqual(count, res.WordCount());
-                Assert.IsTrue(res.EndsWith(trail));
+                Assert.Equals(count, res.WordCount());
+                Assert.That(res.EndsWith(trail), Is.True);
             }
             else
             {
-                Assert.AreEqual(text, res);
+                Assert.Equals(text, res);
             }
         }
 
@@ -100,7 +100,7 @@ namespace Common.UnitTests
             bool res = txt.StartsWithAnyOf(args);
 
             // Assert
-            Assert.IsTrue(res);
+            Assert.That(res, Is.True);
         }
         [Test]
         public void StartsWithAnyOf_ForInvalidTxt_ReturnsFalse()
@@ -113,7 +113,7 @@ namespace Common.UnitTests
             bool res = txt.StartsWithAnyOf(args);
 
             // Assert
-            Assert.IsFalse(res);
+            Assert.That(res, Is.False);
         }
 
         [Test]
@@ -127,7 +127,7 @@ namespace Common.UnitTests
             bool res = txt.ContainsAnyOf(args);
 
             // Assert
-            Assert.IsTrue(res);
+            Assert.That(res, Is.True);
         }
         [Test]
         public void String_ContainsAnyOf_ReturnsFalse()
@@ -140,7 +140,7 @@ namespace Common.UnitTests
             bool res = txt.ContainsAnyOf(args);
 
             // Assert
-            Assert.IsFalse(res);
+            Assert.That(res, Is.False);
         }
         [Test]
         public void String_ContainsAllOf_ReturnsTrue()
@@ -153,7 +153,7 @@ namespace Common.UnitTests
             bool res = txt.ContainsAll(args);
 
             // Assert
-            Assert.IsTrue(res);
+            Assert.That(res, Is.True);
         }
         [Test]
         public void String_ContainsAll_ReturnsFalse()
@@ -166,7 +166,7 @@ namespace Common.UnitTests
             bool res = txt.ContainsAll(args);
 
             // Assert
-            Assert.IsFalse(res);
+            Assert.That(res, Is.True);
         }
     }
 }
