@@ -44,14 +44,14 @@ N.B: To update to this version, MAKE SURE to test
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageVersion>2.0.0-alpha</PackageVersion>
+    <PackageVersion>2.0.0-beta</PackageVersion>
     <PackageLicenseFile></PackageLicenseFile>
     <Language>en-US</Language>
     <LangVersion>7.3</LangVersion>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Product>Shared.Common</Product>
     <Title>Common Shared Library</Title>
-    <Version>2.0.0-alpha</Version>
+    <Version>2.0.0-beta</Version>
     <Win32Resource />
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <AssemblyOriginatorKeyFile>PackageSigningKeyFile.pfx</AssemblyOriginatorKeyFile>
