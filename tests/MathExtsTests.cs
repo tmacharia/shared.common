@@ -16,7 +16,7 @@ namespace Common.UnitTests
             bool isPositive = i.IsPositive();
 
             // Assert
-            Assert.AreEqual(ans, isPositive);
+            Assert.Equals(ans, isPositive);
         }
         [Theory]
         [TestCase(arg1: 1, arg2: true)]
@@ -29,7 +29,7 @@ namespace Common.UnitTests
             bool isPositive = d.IsPositive();
 
             // Assert
-            Assert.AreEqual(ans, isPositive);
+            Assert.Equals(ans, isPositive);
         }
         [Theory]
         [TestCase(arg1: 1, arg2: true)]
@@ -42,7 +42,7 @@ namespace Common.UnitTests
             bool isPositive = d.IsPositive();
 
             // Assert
-            Assert.AreEqual(ans, isPositive);
+            Assert.Equals(ans, isPositive);
         }
     }
 }

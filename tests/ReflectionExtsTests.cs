@@ -30,9 +30,9 @@ namespace Common.UnitTests
             DateTime? time = car.GetPropertyValue<Car, DateTime?>("Timestamp");
 
             // Assert
-            Assert.AreEqual(CarNames[0], name);
-            Assert.AreEqual(Color1, color);
-            Assert.IsFalse(time.HasValue);
+            Assert.Equals(CarNames[0], name);
+            Assert.Equals(Color1, color);
+            Assert.That(time.HasValue, Is.False);
         }
         [Test]
         public void GetPropertyValue_As_Object()
@@ -46,9 +46,9 @@ namespace Common.UnitTests
             DateTime? time = car.GetPropertyValue("Timestamp") as DateTime?;
 
             // Assert
-            Assert.AreEqual(CarNames[0], name);
-            Assert.AreEqual(Color1, color);
-            Assert.IsFalse(time.HasValue);
+            Assert.Equals(CarNames[0], name);
+            Assert.Equals(Color1, color);
+            Assert.That(time.HasValue, Is.False);
         }
         [Test]
         public void SetPropertyValue_As_Object()
@@ -65,11 +65,11 @@ namespace Common.UnitTests
             car.SetPropertyValue("Timestamp", (object)time);
 
             // Assert
-            Assert.AreEqual(newId, car.Id);
-            Assert.AreEqual(CarNames[1], car.Name);
-            Assert.AreEqual(Color2, car.Color);
-            Assert.IsTrue(car.Timestamp.HasValue);
-            Assert.AreEqual(time, car.Timestamp);
+            Assert.Equals(newId, car.Id);
+            Assert.Equals(CarNames[1], car.Name);
+            Assert.Equals(Color2, car.Color);
+            Assert.That(car.Timestamp.HasValue, Is.True);
+            Assert.Equals(time, car.Timestamp);
         }
         [Test]
         public void GetPropertyType_ReturnsValid_Type()

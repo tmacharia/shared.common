@@ -20,7 +20,7 @@ namespace Common.UnitTests
             string name = format.GetName();
 
             // Assert
-            Assert.IsNotNull(name);
+            Assert.That(name, Is.Not.Null);
             Log(name);
         }
         [Test]
@@ -40,7 +40,7 @@ namespace Common.UnitTests
             string result = EnumExts.GetName(enumType, value);
 
             // Assert
-            Assert.AreEqual(enumName, result);
+            Assert.Equals(enumName, result);
         }
 
         [Theory]
@@ -53,7 +53,7 @@ namespace Common.UnitTests
             Dictionary<string, int> pairs = EnumExts.GetEnumPairs(enumType);
 
             // Assert
-            Assert.Greater(pairs.Count, 0);
+            Assert.That(pairs.Count, Is.GreaterThan(0));
             pairs.ForEach(x =>
             {
                 Log("{0}: {1}", x.Key, x.Value);

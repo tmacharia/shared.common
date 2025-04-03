@@ -17,10 +17,10 @@ namespace Common.UnitTests
                    tb = 1000000000000;
 
             // Assert
-            Assert.AreEqual(kb, DataSizeExts.OneKb);
-            Assert.AreEqual(mb, DataSizeExts.OneMb);
-            Assert.AreEqual(gb, DataSizeExts.OneGb);
-            Assert.AreEqual(tb, DataSizeExts.OneTb);
+            Assert.Equals(kb, DataSizeExts.OneKb);
+            Assert.Equals(mb, DataSizeExts.OneMb);
+            Assert.Equals(gb, DataSizeExts.OneGb);
+            Assert.Equals(tb, DataSizeExts.OneTb);
         }
         [Theory]
         [TestCase(arg1: 1000, arg2: DataFormat.KB)]
@@ -33,9 +33,9 @@ namespace Common.UnitTests
             string res = dataSize.HumanizeData(DataFormat.Bytes, 0);
 
             // Assert
-            Assert.IsNotNull(res);
+            Assert.That(res, Is.Not.Null);
             Log(res);
-            Assert.AreEqual((int)format, res.Count(c => c == '0'));
+            Assert.Equals((int)format, res.Count(c => c == '0'));
         }
         [Theory]
         [TestCase(arg1: 0,arg2: null)]
@@ -52,9 +52,9 @@ namespace Common.UnitTests
             string result = dataSize.HumanizeData(format);
 
             // Assert
-            Assert.IsNotNull(result);
+            Assert.That(result, Is.Not.Null);
             Log(result);
-            Assert.IsTrue(result.EndsWith(format.ToString()));
+            Assert.That(result.EndsWith(format.ToString()), Is.True);
         }
     }
 }

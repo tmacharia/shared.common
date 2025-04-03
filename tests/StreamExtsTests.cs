@@ -14,8 +14,8 @@ namespace Common.UnitTests
             // Act
             byte[] bytes = stream.ToArray();
             // Assert
-            Assert.IsNotNull(bytes);
-            Assert.IsTrue(bytes.Length == stream.Length);
+            Assert.That(bytes, Is.False);
+            Assert.That(bytes.Length == stream.Length, Is.True);
         }
         [Test]
         public void ConvertStreamToArray_If_StreamIsNull_ThrowsException()
