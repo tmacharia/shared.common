@@ -1,4 +1,4 @@
-﻿using System.Extensions;
+using System.Extensions;
 using System.Linq;
 using NUnit.Framework;
 
@@ -34,7 +34,7 @@ namespace Common.UnitTests
             bool result = email.IsEmailValid();
 
             // Assert
-            Assert.Equals(isEmailValid, result);
+            Assert.AreEqual(isEmailValid, result);
         }
 
         [Theory]
@@ -53,12 +53,12 @@ namespace Common.UnitTests
             Log(res);
             if (text.Length > count)
             {
-                Assert.Equals(count + trail.Length, res.Length);
+                Assert.AreEqual(count + trail.Length, res.Length);
                 Assert.That(res.EndsWith(trail), Is.True);
             }
             else
             {
-                Assert.Equals(text, res);
+                Assert.AreEqual(text, res);
                 Assert.That(res.EndsWith(trail), Is.False);
             }
         }
@@ -80,12 +80,12 @@ namespace Common.UnitTests
             Log(res);
             if (wordCount > count)
             {
-                Assert.Equals(count, res.WordCount());
+                Assert.AreEqual(count, res.WordCount());
                 Assert.That(res.EndsWith(trail), Is.True);
             }
             else
             {
-                Assert.Equals(text, res);
+                Assert.AreEqual(text, res);
             }
         }
 
@@ -160,13 +160,13 @@ namespace Common.UnitTests
         {
             // Arrange
             string txt = "This is after visting the company aa,bb";
-            string[] args = GetTwoLetter_Strings().ToArray();
+            string[] args = "aa,bb".Split(',');
 
             // Act
             bool res = txt.ContainsAll(args);
 
             // Assert
-            Assert.That(res, Is.True);
+            Assert.AreEqual(true, res);
         }
     }
 }
