@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -19,7 +19,7 @@ namespace Common.UnitTests
             list.ForEach((index, num) =>
             {
                 Log("{0:N0}. {1:N0}", index, num);
-                Assert.Equals(n, index);
+                Assert.AreEqual(n, index);
                 n++;
             });
         }
@@ -28,10 +28,10 @@ namespace Common.UnitTests
         public void Contains_Predicate()
         {
             bool b = list.Contains(x => x == 45);
-            Assert.Equals(true, b);
+            Assert.AreEqual(true, b);
 
             b = list.Contains(x => x == 65);
-            Assert.Equals(false, b);
+            Assert.AreEqual(false, b);
         }
     }
 }

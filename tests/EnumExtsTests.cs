@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Extensions;
 using System.Formatting;
@@ -40,7 +40,7 @@ namespace Common.UnitTests
             string result = EnumExts.GetName(enumType, value);
 
             // Assert
-            Assert.Equals(enumName, result);
+            Assert.AreEqual(enumName, result);
         }
 
         [Theory]

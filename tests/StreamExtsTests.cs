@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using NUnit.Framework;
 
@@ -14,7 +14,7 @@ namespace Common.UnitTests
             // Act
             byte[] bytes = stream.ToArray();
             // Assert
-            Assert.That(bytes, Is.False);
+            Assert.That(bytes.Length == 0, Is.False);
             Assert.That(bytes.Length == stream.Length, Is.True);
         }
         [Test]
