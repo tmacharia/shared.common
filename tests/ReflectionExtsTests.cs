@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Reflection.Extensions;
 using NUnit.Framework;
 
@@ -30,8 +30,8 @@ namespace Common.UnitTests
             DateTime? time = car.GetPropertyValue<Car, DateTime?>("Timestamp");
 
             // Assert
-            Assert.Equals(CarNames[0], name);
-            Assert.Equals(Color1, color);
+            Assert.AreEqual(CarNames[0], name);
+            Assert.AreEqual(Color1, color);
             Assert.That(time.HasValue, Is.False);
         }
         [Test]
@@ -46,8 +46,8 @@ namespace Common.UnitTests
             DateTime? time = car.GetPropertyValue("Timestamp") as DateTime?;
 
             // Assert
-            Assert.Equals(CarNames[0], name);
-            Assert.Equals(Color1, color);
+            Assert.AreEqual(CarNames[0], name);
+            Assert.AreEqual(Color1, color);
             Assert.That(time.HasValue, Is.False);
         }
         [Test]
@@ -65,11 +65,11 @@ namespace Common.UnitTests
             car.SetPropertyValue("Timestamp", (object)time);
 
             // Assert
-            Assert.Equals(newId, car.Id);
-            Assert.Equals(CarNames[1], car.Name);
-            Assert.Equals(Color2, car.Color);
+            Assert.AreEqual(newId, car.Id);
+            Assert.AreEqual(CarNames[1], car.Name);
+            Assert.AreEqual(Color2, car.Color);
             Assert.That(car.Timestamp.HasValue, Is.True);
-            Assert.Equals(time, car.Timestamp);
+            Assert.AreEqual(time, car.Timestamp);
         }
         [Test]
         public void GetPropertyType_ReturnsValid_Type()
