@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using NUnit.Framework;
 
 namespace Common.UnitTests
@@ -15,7 +15,7 @@ namespace Common.UnitTests
             bool isValid = FileExts.IsFileNameValid(fileName);
 
             // Assert
-            Assert.That(answer, Is.GreaterThan(isValid));
+            Assert.AreEqual(answer, isValid);
         }
         [Theory]
         [TestCase("8:35 PM")]
